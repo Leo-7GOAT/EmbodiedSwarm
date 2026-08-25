@@ -1,0 +1,320 @@
+<mujoco model="embodied_swarm_mobile_manipulator">
+
+    <compiler angle="radian"/>
+
+    <option
+        timestep="0.002"
+        gravity="0 0 -9.81"
+    />
+
+    <default>
+        <joint
+            damping="2.0"
+            armature="0.05"
+        />
+
+        <geom
+            density="500"
+            friction="1.0 0.1 0.1"
+        />
+    </default>
+
+    <worldbody>
+
+        <geom
+            name="floor"
+            type="plane"
+            size="5 5 0.1"
+            rgba="0.8 0.8 0.8 1"
+        />
+
+        <!-- ====================================================== -->
+        <!-- Mobile base                                            -->
+        <!-- ====================================================== -->
+
+        <body
+            name="base_link"
+            pos="0 0 0.15"
+        >
+
+            <joint
+                name="base_x"
+                type="slide"
+                axis="1 0 0"
+            />
+
+            <joint
+                name="base_y"
+                type="slide"
+                axis="0 1 0"
+            />
+
+            <joint
+                name="base_yaw"
+                type="hinge"
+                axis="0 0 1"
+            />
+
+            <geom
+                name="base_geom"
+                type="box"
+                size="0.30 0.22 0.10"
+                mass="20"
+                rgba="0.20 0.25 0.30 1"
+            />
+
+            <!-- ================================================== -->
+            <!-- Panda-compatible 7DoF arm skeleton                 -->
+            <!-- ================================================== -->
+
+            <body
+                name="panda_link0"
+                pos="0 0 0.10"
+            >
+
+                <geom
+                    type="cylinder"
+                    size="0.08 0.05"
+                    mass="2.0"
+                    rgba="0.85 0.85 0.85 1"
+                />
+
+                <body
+                    name="panda_link1"
+                    pos="0 0 0.05"
+                >
+
+                    <joint
+                        name="panda_joint1"
+                        type="hinge"
+                        axis="0 0 1"
+                        limited="true"
+                        range="-3.0 3.0"
+                    />
+
+                    <geom
+                        type="capsule"
+                        fromto="0 0 0 0 0 0.25"
+                        size="0.04"
+                        mass="1.5"
+                    />
+
+                    <body
+                        name="panda_link2"
+                        pos="0 0 0.25"
+                    >
+
+                        <joint
+                            name="panda_joint2"
+                            type="hinge"
+                            axis="0 1 0"
+                            limited="true"
+                            range="-3.0 3.0"
+                        />
+
+                        <geom
+                            type="capsule"
+                            fromto="0 0 0 0 0 0.25"
+                            size="0.04"
+                            mass="1.4"
+                        />
+
+                        <body
+                            name="panda_link3"
+                            pos="0 0 0.25"
+                        >
+
+                            <joint
+                                name="panda_joint3"
+                                type="hinge"
+                                axis="0 0 1"
+                                limited="true"
+                                range="-3.0 3.0"
+                            />
+
+                            <geom
+                                type="capsule"
+                                fromto="0 0 0 0 0 0.20"
+                                size="0.038"
+                                mass="1.2"
+                            />
+
+                            <body
+                                name="panda_link4"
+                                pos="0 0 0.20"
+                            >
+
+                                <joint
+                                    name="panda_joint4"
+                                    type="hinge"
+                                    axis="0 1 0"
+                                    limited="true"
+                                    range="-3.0 3.0"
+                                />
+
+                                <geom
+                                    type="capsule"
+                                    fromto="0 0 0 0 0 0.20"
+                                    size="0.035"
+                                    mass="1.0"
+                                />
+
+                                <body
+                                    name="panda_link5"
+                                    pos="0 0 0.20"
+                                >
+
+                                    <joint
+                                        name="panda_joint5"
+                                        type="hinge"
+                                        axis="0 0 1"
+                                        limited="true"
+                                        range="-3.0 3.0"
+                                    />
+
+                                    <geom
+                                        type="capsule"
+                                        fromto="0 0 0 0 0 0.18"
+                                        size="0.032"
+                                        mass="0.8"
+                                    />
+
+                                    <body
+                                        name="panda_link6"
+                                        pos="0 0 0.18"
+                                    >
+
+                                        <joint
+                                            name="panda_joint6"
+                                            type="hinge"
+                                            axis="0 1 0"
+                                            limited="true"
+                                            range="-3.0 3.0"
+                                        />
+
+                                        <geom
+                                            type="capsule"
+                                            fromto="0 0 0 0 0 0.15"
+                                            size="0.030"
+                                            mass="0.7"
+                                        />
+
+                                        <body
+                                            name="panda_link7"
+                                            pos="0 0 0.15"
+                                        >
+
+                                            <joint
+                                                name="panda_joint7"
+                                                type="hinge"
+                                                axis="0 0 1"
+                                                limited="true"
+                                                range="-3.0 3.0"
+                                            />
+
+                                            <geom
+                                                type="capsule"
+                                                fromto="0 0 0 0 0 0.12"
+                                                size="0.028"
+                                                mass="0.5"
+                                            />
+
+                                            <body
+                                                name="panda_hand"
+                                                pos="0 0 0.12"
+                                            >
+
+                                                <geom
+                                                    type="box"
+                                                    size="0.05 0.05 0.04"
+                                                    mass="0.3"
+                                                    rgba="0.25 0.25 0.25 1"
+                                                />
+
+                                                <site
+                                                    name="end_effector"
+                                                    pos="0 0 0.06"
+                                                    size="0.015"
+                                                    rgba="1 0 0 1"
+                                                />
+
+                                            </body>
+
+                                        </body>
+
+                                    </body>
+
+                                </body>
+
+                            </body>
+
+                        </body>
+
+                    </body>
+
+                </body>
+
+            </body>
+
+        </body>
+
+    </worldbody>
+
+    <!-- ========================================================== -->
+    <!-- Panda position actuators                                   -->
+    <!-- ========================================================== -->
+
+    <actuator>
+
+        <position
+            name="panda_joint1_position"
+            joint="panda_joint1"
+            kp="80"
+            ctrlrange="-3 3"
+        />
+
+        <position
+            name="panda_joint2_position"
+            joint="panda_joint2"
+            kp="80"
+            ctrlrange="-3 3"
+        />
+
+        <position
+            name="panda_joint3_position"
+            joint="panda_joint3"
+            kp="80"
+            ctrlrange="-3 3"
+        />
+
+        <position
+            name="panda_joint4_position"
+            joint="panda_joint4"
+            kp="80"
+            ctrlrange="-3 3"
+        />
+
+        <position
+            name="panda_joint5_position"
+            joint="panda_joint5"
+            kp="80"
+            ctrlrange="-3 3"
+        />
+
+        <position
+            name="panda_joint6_position"
+            joint="panda_joint6"
+            kp="80"
+            ctrlrange="-3 3"
+        />
+
+        <position
+            name="panda_joint7_position"
+            joint="panda_joint7"
+            kp="80"
+            ctrlrange="-3 3"
+        />
+
+    </actuator>
+
+</mujoco>
