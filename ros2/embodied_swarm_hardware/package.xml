@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>embodied_swarm_hardware</name>
+  <version>0.0.1</version>
+  <description>W02 ros2_control hardware interface skeleton for EmbodiedSwarm.</description>
+  <maintainer email="leo-7goat@users.noreply.github.com">Leo-7GOAT</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>hardware_interface</depend>
+  <depend>pluginlib</depend>
+  <depend>rclcpp</depend>
+  <depend>rclcpp_lifecycle</depend>
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

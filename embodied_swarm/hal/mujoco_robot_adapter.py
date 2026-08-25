@@ -1,10 +1,13 @@
 from pathlib import Path
-import math
 
 import mujoco
 import numpy as np
 
 from embodied_swarm.core.robot_command import RobotCommand
+from embodied_swarm.core.frames import (
+    body_to_world_velocity,
+    world_to_body_velocity,
+)
 from embodied_swarm.core.robot_state import RobotState
 from embodied_swarm.hal.robot_adapter import RobotAdapter
 
@@ -76,6 +79,8 @@ class MujocoRobotAdapter(RobotAdapter):
 
         self._running = True
         self._command = RobotCommand()
+        self._gripper_width = 0.0
+        self._gripper_target: float | None = None
 
         # ----------------------------------------------------------
         # Base addresses
@@ -212,60 +217,6 @@ class MujocoRobotAdapter(RobotAdapter):
         return int(actuator_id)
 
     # ==============================================================
-    # Base coordinate conversion
-    # ==============================================================
-
-    def _body_to_world_velocity(
-        self,
-        vx_body: float,
-        vy_body: float,
-        yaw: float,
-    ) -> tuple[float, float]:
-
-        cos_yaw = math.cos(yaw)
-        sin_yaw = math.sin(yaw)
-
-        x_dot_world = (
-            cos_yaw * vx_body
-            - sin_yaw * vy_body
-        )
-
-        y_dot_world = (
-            sin_yaw * vx_body
-            + cos_yaw * vy_body
-        )
-
-        return (
-            x_dot_world,
-            y_dot_world,
-        )
-
-    def _world_to_body_velocity(
-        self,
-        x_dot_world: float,
-        y_dot_world: float,
-        yaw: float,
-    ) -> tuple[float, float]:
-
-        cos_yaw = math.cos(yaw)
-        sin_yaw = math.sin(yaw)
-
-        vx_body = (
-            cos_yaw * x_dot_world
-            + sin_yaw * y_dot_world
-        )
-
-        vy_body = (
-            -sin_yaw * x_dot_world
-            + cos_yaw * y_dot_world
-        )
-
-        return (
-            vx_body,
-            vy_body,
-        )
-
-    # ==============================================================
     # Internal command application
     # ==============================================================
 
@@ -274,76 +225,6 @@ class MujocoRobotAdapter(RobotAdapter):
         self._data.ctrl[
             self._arm_actuator_ids
         ] = self._arm_target
-
-    def _step_base_kinematics(
-        self,
-        dt: float,
-    ) -> None:
-        """
-        Kinematic planar-base update.
-
-        The current W02 model does not yet simulate real wheel
-        contact dynamics. Therefore the mobile base follows the
-        differential-drive kinematic command deterministically.
-        """
-
-        x = float(
-            self._data.qpos[
-                self._base_x_qpos_addr
-            ]
-        )
-
-        y = float(
-            self._data.qpos[
-                self._base_y_qpos_addr
-            ]
-        )
-
-        yaw = float(
-            self._data.qpos[
-                self._base_yaw_qpos_addr
-            ]
-        )
-
-        vx_body, vy_body, wz = (
-            self._command.base_twist
-        )
-
-        x_dot_world, y_dot_world = (
-            self._body_to_world_velocity(
-                vx_body,
-                vy_body,
-                yaw,
-            )
-        )
-
-        x_next = x + x_dot_world * dt
-        y_next = y + y_dot_world * dt
-        yaw_next = yaw + wz * dt
-
-        self._data.qpos[
-            self._base_x_qpos_addr
-        ] = x_next
-
-        self._data.qpos[
-            self._base_y_qpos_addr
-        ] = y_next
-
-        self._data.qpos[
-            self._base_yaw_qpos_addr
-        ] = yaw_next
-
-        self._data.qvel[
-            self._base_x_dof_addr
-        ] = x_dot_world
-
-        self._data.qvel[
-            self._base_y_dof_addr
-        ] = y_dot_world
-
-        self._data.qvel[
-            self._base_yaw_dof_addr
-        ] = wz
 
     # ==============================================================
     # RobotAdapter interface
@@ -357,6 +238,8 @@ class MujocoRobotAdapter(RobotAdapter):
         )
 
         self._command = RobotCommand()
+        self._gripper_width = 0.0
+        self._gripper_target = None
 
         self._running = True
 
@@ -420,7 +303,7 @@ class MujocoRobotAdapter(RobotAdapter):
         )
 
         vx_body, vy_body = (
-            self._world_to_body_velocity(
+            world_to_body_velocity(
                 x_dot_world,
                 y_dot_world,
                 yaw,
@@ -466,7 +349,7 @@ class MujocoRobotAdapter(RobotAdapter):
 
             joint_velocities=joint_velocities,
 
-            gripper_width=0.0,
+            gripper_width=self._gripper_width,
         )
 
     def send_command(
@@ -496,9 +379,7 @@ class MujocoRobotAdapter(RobotAdapter):
             )
 
         if command.gripper_width_target is not None:
-            raise NotImplementedError(
-                "MuJoCo gripper is not implemented in W02"
-            )
+            self._gripper_target = command.gripper_width_target
 
         self._command = RobotCommand(
             timestamp=command.timestamp,
@@ -506,7 +387,7 @@ class MujocoRobotAdapter(RobotAdapter):
             joint_position_targets=(
                 command.joint_position_targets
             ),
-            gripper_width_target=None,
+            gripper_width_target=command.gripper_width_target,
         )
 
     def step(
@@ -582,7 +463,7 @@ class MujocoRobotAdapter(RobotAdapter):
             )
 
             x_dot_world, y_dot_world = (
-                self._body_to_world_velocity(
+                body_to_world_velocity(
                     vx_body,
                     vy_body,
                     yaw,
@@ -639,13 +520,22 @@ class MujocoRobotAdapter(RobotAdapter):
                 self._base_yaw_qpos_addr
             ] = expected_yaw
 
+            # qvel represents the instantaneous velocity at the new pose.
+            # Rotate the persistent body command using the updated yaw so a
+            # readback transform does not invent lateral body velocity.
+            x_dot_world_next, y_dot_world_next = body_to_world_velocity(
+                vx_body,
+                vy_body,
+                expected_yaw,
+            )
+
             self._data.qvel[
                 self._base_x_dof_addr
-            ] = x_dot_world
+            ] = x_dot_world_next
 
             self._data.qvel[
                 self._base_y_dof_addr
-            ] = y_dot_world
+            ] = y_dot_world_next
 
             self._data.qvel[
                 self._base_yaw_dof_addr
@@ -655,6 +545,11 @@ class MujocoRobotAdapter(RobotAdapter):
                 self._model,
                 self._data,
             )
+
+        # W02 exposes an ideal logical gripper channel. The MJCF intentionally
+        # has no finger joints or contact physics yet.
+        if self._gripper_target is not None:
+            self._gripper_width = self._gripper_target
 
         return self.read_state()
 

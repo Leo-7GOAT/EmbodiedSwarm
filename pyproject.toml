@@ -25,3 +25,7 @@ dev = [
 include = [
     "embodied_swarm*",
 ]
+
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

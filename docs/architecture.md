@@ -1,59 +1,73 @@
-# Architecture
+# W01/W02 architecture and interface contract
 
-EmbodiedSwarm is planned around a mobile manipulator: a mobile base and a
-6DoF or 7DoF robotic arm. The first target platform is a differential-drive
-base with a Franka Panda 7DoF arm.
-
-W01 defines the boundaries below. It does not implement the robot stack.
-
-## System layers
+## Layer boundary
 
 ```text
-Task
-  |
-  v
-Planning
-  |
-  v
-Control
-  |
-  v
-Robot HAL
-  |
-  v
-Simulator / Hardware
+Task (future)
+  -> Planning (future)
+  -> Control (future)
+  -> RobotCommand
+  -> RobotAdapter
+  -> MockHardware / MuJoCo / future ROS2 hardware
 ```
 
-Task definitions describe the intended outcome. Planning will later produce
-base and arm motion. Control will translate planned motion into commands.
+`RobotState`, `RobotCommand`, and `RobotAdapter` are the project-owned boundary.
+No task, planning, or control code should import MuJoCo or a future driver API.
 
-The Robot HAL will keep simulator and hardware details outside the planning
-and control layers. MuJoCo is the first simulator target. ROS2, MoveIt2, and
-ros2_control are later integration targets.
+## State and command
 
-## State and command boundary
+`RobotState` contains timestamp, world-frame planar base pose, body-frame base
+twist, seven arm joint positions/velocities, and gripper width. Construction
+accepts list-like inputs, validates exact shapes and finite values, and copies
+all arrays. Adapter `read_state()` implementations create independent snapshots.
 
-`RobotState` and `RobotCommand` are names for future shared interfaces. They
-are architecture notes in W01, not implemented types.
+`RobotCommand` contains a body-frame base twist plus optional seven-joint
+position and gripper-width targets. `None` means that no new command is provided
+for that channel; zero is an actual command. Adapters copy incoming commands.
 
-The state boundary is intended to cover the mobile base, arm joints, and end
-effector without tying upstream modules to one backend.
+## Differential-drive base
 
-## Coordinate hierarchy
+Both W02 backends reject nonzero lateral body velocity `vy`. The mock applies
+explicit Euler integration:
 
 ```text
-world
-  |
-  v
-base
-  |
-  v
-arm
-  |
-  v
-end_effector
+x_dot_world = vx_body cos(yaw)
+y_dot_world = vx_body sin(yaw)
+yaw_dot     = wz
 ```
 
-This hierarchy records the frames that later model and integration work must
-connect. Transform algorithms and a TF tree are outside the W01 scope.
+MuJoCo stores `base_x/base_y` generalized velocities in World, so the MuJoCo
+adapter rotates commanded body velocity into World before stepping and rotates
+readback velocity back into Body. The pure transforms live in `core/frames.py`.
 
+## Arm and gripper
+
+The MJCF exposes `panda_joint1..7` and matching
+`panda_joint1_position..7_position` actuators. Joint targets flow through
+`data.ctrl`; `qpos/qvel` flow back into `RobotState`.
+
+W02 gripper behavior is logical only: both adapters preserve the command/state
+contract, but the MJCF contains no finger joints or contact physics. This is
+explicitly not a grasp-physics claim.
+
+## Frames
+
+Code and MJCF use the same chain:
+
+```text
+world -> base_link -> panda_link0 -> panda_link1 -> ... -> panda_link7
+      -> panda_hand -> end_effector
+```
+
+## Backend switch
+
+`demos/adapter_switch_smoke.py` passes each backend to the same function typed
+against `RobotAdapter`. Tests repeat this contract and verify finite state,
+array shapes, and all command channels. Simulator-specific logic remains below
+the adapter boundary.
+
+## Later scope
+
+Navigation, manipulation planning, MoveIt2, a live ROS2 transport, official
+Franka dynamics, real wheel/contact dynamics, calibration, safety supervision,
+and hardware deployment are later milestones, not W02 claims.

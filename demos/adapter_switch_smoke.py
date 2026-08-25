@@ -64,6 +64,7 @@ def run_backend(
                 0.2,
             ],
             joint_position_targets=arm_target,
+            gripper_width_target=0.03,
         )
 
         adapter.send_command(
@@ -108,6 +109,8 @@ def run_backend(
         assert state.joint_velocities.shape == (
             7,
         )
+
+        assert state.gripper_width == 0.03
 
         assert np.all(
             np.isfinite(

@@ -5,6 +5,7 @@
     <option
         timestep="0.002"
         gravity="0 0 -9.81"
+        integrator="implicitfast"
     />
 
     <default>
@@ -17,6 +18,9 @@
             density="500"
             friction="1.0 0.1 0.1"
         />
+
+        <!-- Velocity feedback damps the W02 position servos. -->
+        <position kv="40"/>
     </default>
 
     <worldbody>
@@ -269,49 +273,49 @@
         <position
             name="panda_joint1_position"
             joint="panda_joint1"
-            kp="80"
+            kp="300"
             ctrlrange="-3 3"
         />
 
         <position
             name="panda_joint2_position"
             joint="panda_joint2"
-            kp="80"
+            kp="300"
             ctrlrange="-3 3"
         />
 
         <position
             name="panda_joint3_position"
             joint="panda_joint3"
-            kp="80"
+            kp="300"
             ctrlrange="-3 3"
         />
 
         <position
             name="panda_joint4_position"
             joint="panda_joint4"
-            kp="80"
+            kp="300"
             ctrlrange="-3 3"
         />
 
         <position
             name="panda_joint5_position"
             joint="panda_joint5"
-            kp="80"
+            kp="300"
             ctrlrange="-3 3"
         />
 
         <position
             name="panda_joint6_position"
             joint="panda_joint6"
-            kp="80"
+            kp="300"
             ctrlrange="-3 3"
         />
 
         <position
             name="panda_joint7_position"
             joint="panda_joint7"
-            kp="80"
+            kp="300"
             ctrlrange="-3 3"
         />
 

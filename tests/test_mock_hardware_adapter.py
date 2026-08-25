@@ -131,14 +131,12 @@ def test_gripper_command():
 def test_rejects_lateral_velocity():
     robot = MockHardwareAdapter()
 
-    robot.send_command(
-        RobotCommand(
-            base_twist=[0.0, 0.2, 0.0]
-        )
-    )
-
     with pytest.raises(ValueError):
-        robot.step(0.1)
+        robot.send_command(
+            RobotCommand(
+                base_twist=[0.0, 0.2, 0.0]
+            )
+        )
 
 
 def test_reset():

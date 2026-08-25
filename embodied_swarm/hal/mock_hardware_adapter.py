@@ -65,6 +65,11 @@ class MockHardwareAdapter(RobotAdapter):
                 "cannot send command: adapter is shut down"
             )
 
+        if not np.isclose(command.base_twist[1], 0.0):
+            raise ValueError(
+                "differential-drive mock does not support lateral velocity vy"
+            )
+
         # Store an independent command snapshot
         self._command = RobotCommand(
             timestamp=command.timestamp,
@@ -96,14 +101,6 @@ class MockHardwareAdapter(RobotAdapter):
 
         x, y, yaw = self._state.base_pose
         vx, vy, wz = self._command.base_twist
-
-        # This particular backend models a differential-drive robot.
-        # A differential-drive base cannot ideally move sideways.
-        if not np.isclose(vy, 0.0):
-            raise ValueError(
-                "differential-drive mock does not support "
-                "lateral velocity vy"
-            )
 
         # Differential-drive kinematics:
         #
