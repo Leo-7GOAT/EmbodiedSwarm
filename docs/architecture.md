@@ -1,34 +1,59 @@
-# W01/W02 architecture and interface contract
+# EmbodiedSwarm architecture and interface contracts
 
 ## Layer boundary
 
 ```text
-Task (future)
-  -> Planning (future)
-  -> Control (future)
-  -> RobotCommand
-  -> RobotAdapter
-  -> MockHardware / MuJoCo / future ROS2 hardware
+occupancy map / task state
+    -> grid or continuous-pose planning
+    -> remaining-path validation and replanning
+    -> path tracking control
+    -> RobotCommand
+    -> RobotAdapter
+    -> mock hardware / MuJoCo / future ROS2 hardware
 ```
 
 `RobotState`, `RobotCommand`, and `RobotAdapter` are the project-owned boundary.
-No task, planning, or control code should import MuJoCo or a future driver API.
+Planning and control code does not import MuJoCo or a future driver API.
 
 ## State and command
 
-`RobotState` contains timestamp, world-frame planar base pose, body-frame base
+`RobotState` contains timestamp, World-frame planar base pose, Body-frame base
 twist, seven arm joint positions/velocities, and gripper width. Construction
-accepts list-like inputs, validates exact shapes and finite values, and copies
-all arrays. Adapter `read_state()` implementations create independent snapshots.
+validates exact shapes and finite values and owns copies of all arrays.
 
-`RobotCommand` contains a body-frame base twist plus optional seven-joint
-position and gripper-width targets. `None` means that no new command is provided
-for that channel; zero is an actual command. Adapters copy incoming commands.
+`RobotCommand` contains a Body-frame base twist plus optional seven-joint
+position and gripper-width targets. `None` means no new command on that channel;
+zero remains a real command.
 
-## Differential-drive base
+## Navigation stack
 
-Both W02 backends reject nonzero lateral body velocity `vy`. The mock applies
-explicit Euler integration:
+`OccupancyGrid` owns resolution and World/grid conversion. Dijkstra and A*
+provide four-connected grid baselines. Bresenham line-of-sight supports path
+simplification; iterative smoothing accepts an update only when both adjacent
+continuous segments remain collision-free.
+
+Hybrid A* searches a discretized `(row, column, yaw_bin)` key while carrying a
+continuous `(x, y, yaw)` pose. Each expansion simulates forward unicycle
+primitives at negative, zero, or positive angular rate. Every integration sample
+is checked against the occupancy map; reconstruction concatenates the accepted
+continuous primitive trajectories.
+
+`replan_if_needed()` validates the remaining path after a map update. If
+invalid, it calls Hybrid A* from the current robot pose. This is reactive map
+replanning, not predicted dynamic-obstacle or spatiotemporal planning.
+
+## Control stack
+
+Pure Pursuit selects a lookahead point, transforms it into Body coordinates,
+and commands `omega = v * curvature`.
+
+The LQR baseline uses `e = [e_y, e_yaw]^T`, a discrete constant-speed error
+model, iterative discrete Riccati solution, `u = -K e`, and angular-velocity
+saturation. `Q` and `R` expose tracking-error versus control-effort tuning.
+
+## Differential-drive and MuJoCo backends
+
+Both backends reject nonzero lateral Body velocity. The mock integrates:
 
 ```text
 x_dot_world = vx_body cos(yaw)
@@ -36,38 +61,20 @@ y_dot_world = vx_body sin(yaw)
 yaw_dot     = wz
 ```
 
-MuJoCo stores `base_x/base_y` generalized velocities in World, so the MuJoCo
-adapter rotates commanded body velocity into World before stepping and rotates
-readback velocity back into Body. The pure transforms live in `core/frames.py`.
+MuJoCo stores base x/y generalized velocities in World coordinates, so the
+adapter rotates commanded Body velocity into World before stepping and rotates
+readback velocity back into Body. Pure transforms live in `core/frames.py`.
 
-## Arm and gripper
+The MJCF exposes seven Panda-compatible joints and position actuators. Gripper
+behavior is logical only; the model contains no finger contact physics.
 
-The MJCF exposes `panda_joint1..7` and matching
-`panda_joint1_position..7_position` actuators. Joint targets flow through
-`data.ctrl`; `qpos/qvel` flow back into `RobotState`.
+## Safety boundary and limitations
 
-W02 gripper behavior is logical only: both adapters preserve the command/state
-contract, but the MJCF contains no finger joints or contact physics. This is
-explicitly not a grasp-physics claim.
-
-## Frames
-
-Code and MJCF use the same chain:
-
-```text
-world -> base_link -> panda_link0 -> panda_link1 -> ... -> panda_link7
-      -> panda_hand -> end_effector
-```
-
-## Backend switch
-
-`demos/adapter_switch_smoke.py` passes each backend to the same function typed
-against `RobotAdapter`. Tests repeat this contract and verify finite state,
-array shapes, and all command channels. Simulator-specific logic remains below
-the adapter boundary.
-
-## Later scope
-
-Navigation, manipulation planning, MoveIt2, a live ROS2 transport, official
-Franka dynamics, real wheel/contact dynamics, calibration, safety supervision,
-and hardware deployment are later milestones, not W02 claims.
+- The current Hybrid A* occupancy check treats the robot as a point; the W04
+  integration demo inflates injected obstacles to provide tracking clearance.
+- Pure Pursuit and LQR are kinematic baselines without actuator delay, wheel
+  slip, state-estimation noise, or formal safety guarantees.
+- Hybrid A* is forward-only with three steering rates and no analytic expansion.
+- ROS2 hardware transport, official Franka dynamics, calibration, safety
+  supervision, real robot control, and multi-robot coordination are not
+  implemented or claimed.

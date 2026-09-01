@@ -1,25 +1,26 @@
-# Task milestones
+# Milestones
 
-The milestones below define a gradual route from arm-only work to mobile
-manipulation. They do not set performance claims or imply current support.
+## Completed foundation
 
-## R1: Fixed-base tabletop reach / grasp
+- **W01:** validated robot state/command models and deterministic mock hardware.
+- **W02:** backend-neutral HAL, MuJoCo mobile-manipulator skeleton, and a
+  reviewable ros2_control interface skeleton.
+- **W03:** occupancy grid, Dijkstra/A*, line-of-sight simplification, safe path
+  smoothing, and Pure Pursuit tracking.
+- **W04:** continuous-pose Hybrid A*, minimal map-update replanning, LQR
+  tracking, controller/planner benchmarks, and an integrated navigation GIF.
 
-Use a stationary base and a single tabletop object. Establish the arm model,
-end-effector target, and a basic reach or grasp task definition.
+## Next single-robot milestones
 
-## R2: Navigate to a table and manipulate an object
+1. Add footprint-aware and reverse-capable nonholonomic planning.
+2. Add time-aware obstacle prediction and controller-aware safety checks.
+3. Add arm FK/IK/Jacobians and a collision-aware manipulation baseline.
+4. Sequence navigation and manipulation with explicit state/failure handling.
+5. Integrate and validate a real ROS2 runtime before any hardware claim.
 
-Add a differential-drive approach to a known table, then run a manipulation
-stage. Base navigation and arm motion can remain separate in this milestone.
+## Multi-robot roadmap
 
-## R3: Navigation + manipulation task sequence
-
-Represent navigation and manipulation as an ordered task sequence. Define how
-state and failure information move between the two stages.
-
-## R4: Multi-stage mobile manipulation benchmark
-
-Combine several navigation and manipulation stages in one repeatable task.
-Use it later to compare integration choices and identify interface gaps.
-
+After the single-robot stack has measurable planning/control contracts, add
+task allocation, reservation/conflict handling, and repeatable multi-robot
+benchmarks. The project name reflects this direction; the current release does
+not claim swarm coordination.
