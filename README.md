@@ -17,7 +17,7 @@ coordination and manipulation planning remain explicit roadmap items.
 - **Classical navigation:** `OccupancyGrid`, Dijkstra, A*, Bresenham
   line-of-sight, collision-aware path simplification/smoothing, and Pure
   Pursuit tracking.
-- **Hybrid A* (W04):** continuous `(x, y, yaw)` propagation, yaw discretization,
+- **Hybrid A\* (W04):** continuous `(x, y, yaw)` propagation, yaw discretization,
   three forward unicycle motion primitives, per-primitive collision checking,
   Euclidean heuristic search, turn penalty, and continuous path reconstruction.
 - **Dynamic replanning (W04):** remaining-path validation after an occupancy-map
