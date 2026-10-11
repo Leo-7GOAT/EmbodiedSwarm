@@ -1,18 +1,18 @@
 	Command being timed: "bash /mnt/c/Users/Leo/Desktop/project/EmbodiedSwarm/ros2/accept.sh --backend mujoco"
-	User time (seconds): 10.25
-	System time (seconds): 3.78
-	Percent of CPU this job got: 61%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:22.95
+	User time (seconds): 4.99
+	System time (seconds): 2.28
+	Percent of CPU this job got: 88%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:08.22
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 261396
+	Maximum resident set size (kbytes): 265088
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 175744
-	Voluntary context switches: 115559
-	Involuntary context switches: 1526
+	Minor (reclaiming a frame) page faults: 183530
+	Voluntary context switches: 72566
+	Involuntary context switches: 2560
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 0

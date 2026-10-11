@@ -5,53 +5,57 @@
   "plan_error_code": 1,
   "execute_error_code": 1,
   "trajectory_points": 12,
-  "plan_wall_ms": 51.51066200005516,
-  "execution_wall_s": 1.1260316880000119,
+  "plan_wall_ms": 32.329699999991135,
+  "execution_wall_s": 1.1264283499999976,
   "final_joint_error_rad": [
-    7.826042175257397e-05,
-    0.0007698920328130798,
-    0.000950414184059417,
-    0.0006135650005778537,
-    0.0006224733186919334,
-    0.00032800842870428504,
-    -0.0003635116589916221
+    1.4377543704147122e-05,
+    -6.228365928007129e-06,
+    0.0008457520149058588,
+    -0.00040089849040292336,
+    -3.2955458378502966e-05,
+    -0.00022254869130611254,
+    -0.0009042432964356806
   ],
-  "max_joint_error_rad": 0.000950414184059417,
+  "max_joint_error_rad": 0.0009042432964356806,
   "tf2_pass": true,
   "invalid_action_rejected": true,
   "software_estop_reset_pass": true,
+  "startup_state_validity_pass": true,
+  "startup_home_max_error_rad": 1.5051258511523307e-23,
   "estop_trajectory_failure_code": -4,
   "state_timeout_reset_rejection_recovery": true,
-  "ros_vs_physics_joint_max_error_rad": 7.872587130808295e-14,
+  "ros_vs_physics_joint_max_error_rad": 7.952148596730713e-16,
   "latency_ms": {
-    "p50": 0.756059,
-    "p95": 1.2375509499999997,
-    "p99": 12.308181280000149
+    "p50": 0.446767,
+    "p95": 0.7357244999999999,
+    "p99": 9.676511180000011
   },
-  "sample_count": 642,
+  "sample_count": 347,
   "nominal_latency_ms": {
-    "p50": 0.6937665,
-    "p95": 1.0541915,
-    "p99": 3.2674415
+    "p50": 0.421417,
+    "p95": 0.6521987999999999,
+    "p99": 0.9764647800000011
   },
-  "nominal_sample_count": 476,
+  "nominal_sample_count": 167,
+  "startup_sample_count": 15,
+  "nominal_measurement_window": "After complete fresh state/controller/TF/home/state-validity readiness, through planning, execution and 0.5 s settled state; before fault injection",
   "nominal_interval_ms": {
-    "p50": 9.987249999994674,
-    "p95": 10.534334000021772,
-    "p99": 11.193961080066398
+    "p50": 9.982753999999261,
+    "p95": 10.523337750004913,
+    "p99": 10.622907100000845
   },
-  "nominal_jitter_std_ms": 1.883987494928571,
+  "nominal_jitter_std_ms": 0.7753250546477707,
   "joint_state_interval_ms": {
-    "p50": 9.980751000057353,
-    "p95": 10.608217000026343,
-    "p99": 12.150515599887514
+    "p50": 9.982753999999261,
+    "p95": 10.560550499999266,
+    "p99": 12.613634699997093
   },
-  "interval_jitter_std_ms": 2.473675928903102,
+  "interval_jitter_std_ms": 1.9271475724714389,
   "controller_manager_period_ms": {
-    "p50": 10.027659,
-    "p95": 10.428622299999999,
-    "p99": 10.52478968
+    "p50": 9.950254,
+    "p95": 10.492408500000002,
+    "p99": 10.53673335
   },
-  "control_period_jitter_std_ms": 0.25776105912317054,
+  "control_period_jitter_std_ms": 0.24456381174009353,
   "measurement": "Same WSL host wall clock ROS stamp-to-callback; interarrival includes DDS/executor scheduling. Not RT/HIL."
 }

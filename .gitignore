@@ -19,3 +19,9 @@ artifacts/package/*.whl
 dist/
 build/
 *.egg-info/
+# Complete failed CI downloads and intermediate bags stay in local backups.
+ros2/evidence/ci_38147716851/
+ros2/evidence/mock/bag_1791730005327974668/
+ros2/evidence/mock/bag_1791730126748934094/
+ros2/evidence/mujoco/bag_1791730023403014741/
+ros2/evidence/mujoco/bag_1791730133672328894/

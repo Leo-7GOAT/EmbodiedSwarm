@@ -19,7 +19,7 @@ MoveGroup action / OMPL RRTConnect
     -> joint_state_broadcaster / JointState / TF2 / MoveIt state monitor
 ```
 
-The model uses the [official MoveIt Panda description and semantic configuration](https://github.com/moveit/moveit_resources). MuJoCo uses the project's licensed [Menagerie Panda asset](https://github.com/google-deepmind/mujoco_menagerie/tree/main/franka_emika_panda), loaded from `assets/mjcf/panda_pick_place.xml`. The bridge maps ROS `panda_joint1..7` to model `joint1..7`. SI angular units are radians/radians per second. It initializes a model home keyframe once, then writes only actuator `ctrl` and arm feed-forward forces; moving state is never synthesized by assigning qpos. The object's free-body physics is not gravity-compensated.
+The model uses the [official MoveIt Panda description and semantic configuration](https://github.com/moveit/moveit_resources). MuJoCo uses the project's licensed [Menagerie Panda asset](https://github.com/google-deepmind/mujoco_menagerie/tree/main/franka_emika_panda), loaded from `assets/mjcf/panda_pick_place.xml`. The bridge maps ROS `panda_joint1..7` to model `joint1..7`. SI angular units are radians/radians per second. Before the first physics step, it reads the same URDF/Xacro initial joint configuration as ros2_control and sets physical qpos, zero velocity and position-actuator ctrl once. This is a documented reset initial condition; all moving state subsequently comes from actuator-driven `mj_step`. The object's free-body physics is not gravity-compensated.
 
 `ros2/embodied_swarm_hardware` now contains a working plugin, package manifest, URDF/Xacro, controller YAML, launch, physics bridge, ROS action client, and GoogleTest. The old transport hooks that always returned false were replaced. Base navigation is accepted separately; this plugin exports seven arm position commands and fourteen position/velocity states, without fictitious base motor interfaces.
 
@@ -33,7 +33,8 @@ sudo apt-get install -y ros-humble-ros-base ros-humble-moveit \
   ros-humble-ros2-control ros-humble-ros2-controllers ros-humble-xacro \
   ros-humble-moveit-resources-panda-description \
   ros-humble-moveit-resources-panda-moveit-config \
-  ros-humble-ament-cmake-gtest python3-colcon-common-extensions python3-numpy
+  ros-humble-ament-cmake-gtest ros-humble-ament-cmake-pytest \
+  python3-colcon-common-extensions python3-numpy python3-pytest time
 python3 -m pip install mujoco==3.12.0
 
 # Run from the repository root in Ubuntu/WSL, not PowerShell:
@@ -45,7 +46,7 @@ bash ros2/accept.sh --backend mock
 bash ros2/accept.sh --backend mujoco
 ```
 
-The builder creates `$HOME/embodied_acceptance_ws`; override with `EMBODIED_ROS_WS`. It refuses to overwrite an unrelated package. `verify.sh` builds, runs GoogleTest, saves versions/resources, runs both backends, records topics, and replays bags into an actual rclpy subscriber. It uses localhost ROS domain 73 and domain 75 for C++ tests. All spawned processes are tracked by their process groups and stopped at completion, without killing unrelated ROS nodes.
+The builder creates `$HOME/embodied_acceptance_ws`; override with `EMBODIED_ROS_WS`. It refuses to overwrite an unrelated package. `verify.sh` builds, runs GoogleTest and real-physics initialization pytest, saves versions/resources, runs both backends, records topics, and replays bags into an actual rclpy subscriber. It uses localhost ROS domain 73 and domain 75 for C++ tests. All spawned processes, including the acceptance action client, are tracked by their process groups and stopped at completion or timeout, without killing unrelated ROS nodes. Startup uses measured conditions instead of fixed sleep durations. Result JSONs are removed at the start of a new run and `run_status.json` records RUNNING/PASS/FAIL, so a failed CI artifact cannot reuse a checked-out old PASS JSON.
 
 Manual launch after sourcing the installation:
 
@@ -76,10 +77,12 @@ The MuJoCo backend intentionally requires a fresh measured-state reset after sta
 | `/hardware/reset_safety` | Trigger; stale MuJoCo state rejects reset, fresh state permits explicit hold-position reset |
 | `/mujoco/pause_state` | SetBool fault injection; physics continues, state output pauses |
 | `/hardware/control_period` | Measured controller_manager update period in seconds, distinct from subscriber interarrival |
+| `/controller_manager/list_controllers` | Both broadcaster and arm controller must actually reach active before planning; bounded condition wait |
+| `/check_state_validity` | MoveIt validates the fresh measured complete start state, retaining self-collision checks |
 
 Finite joint limits and complete measured state are enforced. Out-of-bounds/nonfinite commands latch hold. A state age over 250 ms latches hold; future stamps over 50 ms and old stamps are rejected. The physics bridge also holds after its own command timeout. `software_estop` is software-only: no independent physical emergency stop has been validated.
 
-Two GoogleTest cases passed: malformed configuration rejection (count, NaN, inverted bounds, missing parameter, unsupported backend), and mock rate-limit plus invalid-command latch (2 rad/s at a 10 ms period, no automatic recovery). CTest executes one binary containing those two cases; colcon's result summary counts an additional wrapper result. Two Python XML/model contract tests also passed. Full project Python/C++/physics numbers are reported separately in the final delivery report.
+Two GoogleTest cases passed: malformed configuration rejection (count, NaN, inverted bounds, missing parameter, unsupported backend), and mock rate-limit plus invalid-command latch (2 rad/s at a 10 ms period, no automatic recovery). Four new pytest cases use actual MuJoCo: the no-keyframe project scene matches the shared initial contract after 500 physics steps, and NaN/out-of-bounds/wrong-shape initial conditions are rejected without mutation. CTest runs two test targets containing six actual cases; colcon reports eight results including wrappers. The separate two Python XML/model contract tests and full project Python/C++/physics numbers have different denominators.
 
 ## Latest measured evidence
 
@@ -89,26 +92,37 @@ Sources of every number: `ros2/evidence/mock/acceptance.json`, `ros2/evidence/mu
 |---|---:|---:|
 | Planning / execution error codes | 1 / 1 | 1 / 1 |
 | RRTConnect trajectory points | 12 | 12 |
-| Planning action wall time | 52.214 ms | 51.511 ms |
-| Trajectory execution wall time | 1.126 s | 1.126 s |
-| Maximum final joint error | 0.00097946 rad | 0.00095041 rad |
-| Nominal latency P50 / P95 / P99 | 0.659 / 0.916 / 2.207 ms | 0.694 / 1.054 / 3.267 ms |
-| Nominal samples | 480 | 476 |
-| Whole-run latency including faults P50 / P95 / P99 | 0.662 / 0.948 / 6.994 ms | 0.756 / 1.238 / 12.308 ms |
-| Whole-run samples | 582 | 642 |
-| Actual controller period P50 / P95 / P99 | 9.981 / 10.499 / 10.534 ms | 10.028 / 10.429 / 10.525 ms |
-| Actual controller period jitter standard deviation | 0.248 ms | 0.258 ms |
-| JointState subscriber interarrival jitter standard deviation | 1.973 ms | 2.474 ms |
+| Startup home contract max error | 0 rad | 1.505e-23 rad |
+| Measured MoveIt start-state validity | true | true |
+| Planning action wall time | 30.838 ms | 32.330 ms |
+| Trajectory execution wall time | 1.086 s | 1.126 s |
+| Maximum final joint error | 0.00096066 rad | 0.00090424 rad |
+| Nominal latency P50 / P95 / P99 | 0.426 / 0.680 / 11.563 ms | 0.421 / 0.652 / 0.976 ms |
+| Nominal samples | 164 | 167 |
+| Startup samples excluded from nominal | 108 | 15 |
+| Whole-run latency including startup/faults P50 / P95 / P99 | 0.420 / 0.798 / 23.285 ms | 0.447 / 0.736 / 9.677 ms |
+| Whole-run samples | 374 | 347 |
+| Actual controller period P50 / P95 / P99 | 9.999 / 10.025 / 10.040 ms | 9.950 / 10.492 / 10.537 ms |
+| Actual controller period jitter standard deviation | 0.020 ms | 0.245 ms |
+| JointState subscriber interarrival jitter standard deviation | 3.258 ms | 1.927 ms |
 | Estop trajectory error | -4, PATH_TOLERANCE_VIOLATED | -4, PATH_TOLERANCE_VIOLATED |
 | Pause-state fault / stale reset refusal / recovery | Not applicable to mock | All passed |
-| ROS broadcast vs physics joint maximum difference | Not applicable | 7.87e-14 rad |
-| JointState messages received through real rosbag replay | 678 | 702 |
+| ROS broadcast vs physics joint maximum difference | Not applicable | 7.95e-16 rad |
+| JointState messages received through real rosbag replay | 392 | 367 |
 
-Latency is ROS wall publication-stamp to observer callback on the same WSL host, including DDS/executor scheduling. It is not planner-to-actuator latency. Nominal samples stop before fault injection; whole-run samples include failure actions, services and delayed observer processing. Percentiles use NumPy's default linear interpolation. Control jitter uses the actual controller_manager `period` argument; subscriber jitter is listed separately. An earlier instrumented run had fault-stage P99 around 267 ms, demonstrating that observation backlog can be much larger than the control period. No hard real-time or target-hardware latency claim follows from these measurements.
+Latency is ROS wall publication-stamp to observer callback on the same WSL host, including DDS/executor scheduling. It is not planner-to-actuator latency. Nominal samples begin after complete fresh state, active-controller, TF, home-contract and MoveIt state-validity checks and include planning/execution plus 0.5 s settled observation; they stop before fault injection. Whole-run samples retain startup work, failure actions, services and delayed observer processing. Percentiles use NumPy's default linear interpolation. Control jitter uses the actual controller_manager `period` argument; subscriber jitter is listed separately.
 
-GNU `time -v` resource logs record mock 18.05 s / 49% job CPU / 72,252 KiB maximum RSS and MuJoCo 22.95 s / 61% job CPU / 261,396 KiB maximum RSS. These include launch, action checks, recording, teardown and replay; CPU is the Linux job metric and maximum RSS is a maximum process measurement rather than a sum of the entire ROS process tree.
+An independent immediate-start repeat is retained under `ros2/evidence/startup_repeat_mujoco`: all action/fault/valid-start/replay checks also passed; max joint error 0.00084854 rad, nominal 164 samples with P50/P95/P99 0.397/0.571/11.225 ms, controller-period jitter 0.332 ms, replay 367 messages. The two accepted current MuJoCo runs show nominal P99 varying from 0.976 to 11.225 ms; the lower number is not a bound. Earlier pre-fix evidence had 476 nominal samples and 0.694/1.054/3.267 ms; those samples used a different startup window and are a historical checkpoint, not the current table. Another earlier instrumented fault stage had P99 around 267 ms. No hard real-time or target-hardware latency claim follows.
+
+GNU `time -v` resource logs for the latest complete verify record mock 8.16 s / 58% job CPU / 96,368 KiB maximum RSS and MuJoCo 8.22 s / 88% job CPU / 265,088 KiB maximum RSS. These include launch, action checks, recording, teardown and replay; CPU is the Linux job metric and maximum RSS is a maximum process measurement rather than a sum of the entire ROS process tree.
 
 ## Failures resolved and remaining boundary
+
+Cloud run [38147716851](https://github.com/Leo-7GOAT/EmbodiedSwarm/actions/runs/38147716851) at `b1c13cc` failed with MoveIt `START_STATE_INVALID` (-26). This was a real self-collision between panda_hand and panda_link5, not a missing planner or an assumed discovery delay. The generated project MJCF has no home keyframe; the old bridge used zero qpos/ctrl, then controller activation captured a near-zero measured hold. The failed bag records joint4=-0.069837 and joint6=0.198276 instead of the URDF home -2.356194/1.570796 rad. Compact original logs, measured bag-state extraction and source provenance are preserved in `ros2/evidence/ci_failure_38147716851`.
+
+The fix initializes physical state and actuator targets once from the same URDF contract, verifies fresh complete state/home alignment and invokes real MoveIt state validity before using that measured start state. Removing fixed startup sleeps also exposed broadcaster-before-arm activation; the client now polls controller lifecycle states with a deadline rather than asserting one early snapshot. Both native backends and a second MuJoCo cold start passed with unchanged collision checking, safety TTLs and physical-error thresholds. These local repeats fix and exercise the cause; latest remote CI acceptance is reported separately by the coordinator.
+
+Subsequent cloud runs [38148702669](https://github.com/Leo-7GOAT/EmbodiedSwarm/actions/runs/38148702669) and [38148952528](https://github.com/Leo-7GOAT/EmbodiedSwarm/actions/runs/38148952528) stopped before initialization-test collection: pytest 9 removed the `path` hook argument used by the globally installed Humble `launch_testing` plugin. The plain MuJoCo test target now disables optional plugin autoload for that target only. All four physical assertions remain active; native colcon and an independent pytest 9.1.1 environment both passed them. No tolerance was relaxed and no test skipped.
 
 The initial physics bridge actuator lookup mistakenly treated a tendon actuator sharing numeric transmission ID zero as an arm joint actuator. Filtering by MuJoCo joint transmission type fixed the mapping. Initial DDS discovery correctly latched the state watchdog; an explicit fresh-state reset was added before execution. A measured-position hold without bias-force feed-forward slowly followed gravity sag; the real arm bridge now supplies gravity/Coriolis compensation while retaining physical joint integration and actuator limits. Original replay received zero messages because the observer had a different ROS domain; its domain is now explicitly aligned before rclpy initialization. Subsequent real replay counts appear above.
 

@@ -1,15 +1,15 @@
 
-Files:             bag_1791726597247130670_0.db3
-Bag size:          775.6 KiB
+Files:             bag_1791730209573752855_0.db3
+Bag size:          475.6 KiB
 Storage id:        sqlite3
-Duration:          6.760040906s
-Start:             Oct 11 2026 21:49:57.566691274 (1791726597.566691274)
-End:               Oct 11 2026 21:50:04.326732180 (1791726604.326732180)
-Messages:          2831
-Topic information: Topic: /hardware/control_period | Type: std_msgs/msg/Float64 | Count: 677 | Serialization Format: cdr
-                   Topic: /hardware/safety_status | Type: std_msgs/msg/String | Count: 677 | Serialization Format: cdr
-                   Topic: /joint_states | Type: sensor_msgs/msg/JointState | Count: 678 | Serialization Format: cdr
-                   Topic: /mujoco/joint_commands | Type: sensor_msgs/msg/JointState | Count: 678 | Serialization Format: cdr
-                   Topic: /tf | Type: tf2_msgs/msg/TFMessage | Count: 119 | Serialization Format: cdr
+Duration:          4.250203494s
+Start:             Oct 11 2026 22:50:09.976830761 (1791730209.976830761)
+End:               Oct 11 2026 22:50:14.227034255 (1791730214.227034255)
+Messages:          1743
+Topic information: Topic: /joint_states | Type: sensor_msgs/msg/JointState | Count: 392 | Serialization Format: cdr
                    Topic: /tf_static | Type: tf2_msgs/msg/TFMessage | Count: 2 | Serialization Format: cdr
+                   Topic: /tf | Type: tf2_msgs/msg/TFMessage | Count: 72 | Serialization Format: cdr
+                   Topic: /mujoco/joint_commands | Type: sensor_msgs/msg/JointState | Count: 425 | Serialization Format: cdr
+                   Topic: /hardware/safety_status | Type: std_msgs/msg/String | Count: 426 | Serialization Format: cdr
+                   Topic: /hardware/control_period | Type: std_msgs/msg/Float64 | Count: 426 | Serialization Format: cdr
 

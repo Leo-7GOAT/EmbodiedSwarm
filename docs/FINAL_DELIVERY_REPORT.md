@@ -1,6 +1,6 @@
 # Delivery report — measured software stage, 2026-10-11
 
-Repository: [Leo-7GOAT/EmbodiedSwarm](https://github.com/Leo-7GOAT/EmbodiedSwarm). Source checkpoint while this report was written: `81354757b1c47ebf6dca7e0696f5055a17e0deb0`; the physical/C++ core is in `66fd9e2` and subsequent verification/documentation commits are recorded by the parent task and Git history. Use `git rev-parse HEAD` for the checked-out release SHA. Never interpret this report as physical robot or target-platform HIL validation.
+Repository: [Leo-7GOAT/EmbodiedSwarm](https://github.com/Leo-7GOAT/EmbodiedSwarm). ROS initialization/readiness source checkpoint: `f756c3e54d2719cbfad7b01e897cbf31e1cec6bb`; subsequent test-environment and evidence commits are recorded in Git history. Use `git rev-parse HEAD` for the checked-out release SHA; the final delivery message gives the exact published SHA. Never interpret this report as physical robot or target-platform HIL validation.
 
 ## Stage gates and completion denominator
 
@@ -41,7 +41,7 @@ No fake hardware frames, camera perception, target HIL or multi-robot result is 
 - Baseline: **161 Python tests**, five original demos executed; raw baseline stdout retained.
 - Latest project regression before final parent profiling: **220 passed in 20.69 s**, independently profiled in `artifacts/final_regression_profile.stdout.txt` (earlier agent run: 17.90 s).
 - C++: **4 release GoogleTests + 4 ASan/UBSan passes**; 30 full-range C++/Python numerical parity configurations.
-- ROS2: **2 plugin GoogleTests**, actual mock and MuJoCo acceptance runs, TF/service/action/fault tests and bag replay; latest precise metrics in `docs/ROS2_ACCEPTANCE.md`.
+- ROS2: **2 plugin GoogleTests + 4 real-physics initialization pytest cases**, actual mock and MuJoCo acceptance runs, TF/service/action/fault tests and bag replay; latest precise metrics in `docs/ROS2_ACCEPTANCE.md`. These six ROS-package cases have a separate denominator from the 220 project tests.
 - Physical benchmark: **40/40 runs** (20 navigation, 5 fixed-arm, 5 mobile, 10 contact), five seeds. Bounded IK reachable target study: **100/100**.
 - Failed-grasp injection: actual fingers remain open → failed contact criterion → fresh state recovery → success, recovery count 1.
 - Physical engine startup/load: MuJoCo 3.12.0 models 16 qpos (Panda/object) and 19 qpos (mobile Panda/object); EGL renderer generated and visually verified actual frames. Wheel install outside the repository loaded both models from packaged assets.
@@ -57,9 +57,10 @@ No fake hardware frames, camera perception, target HIL or multi-robot result is 
 | Physical force RMSE fixed → admittance | 6.525 → 0.0300 N |
 | IK max reachable-target position error | 0.0001989 m |
 | FK+Jacobian Python/C++ P50 | 363.675 / 0.758 μs |
-| Latest ROS2 physical trajectory max error | 0.0009504 rad |
-| Latest nominal ROS latency P50/P95/P99 | 0.694 / 1.054 / 3.267 ms |
-| Actual controller-manager period jitter std | 0.258 ms |
+| Latest ROS2 physical trajectory max error | 0.00090424 rad |
+| Latest nominal ROS latency P50/P95/P99 | 0.421 / 0.652 / 0.976 ms, 167 samples |
+| Independent cold-start repeat nominal latency P50/P95/P99 | 0.397 / 0.571 / 11.225 ms, 164 samples |
+| Actual controller-manager period jitter std | 0.245 ms; repeat 0.332 ms |
 
 Full statistics, sample domains, software versions, hardware-host caveats and raw log pointers: [SIMULATION_BENCHMARK.md](SIMULATION_BENCHMARK.md).
 

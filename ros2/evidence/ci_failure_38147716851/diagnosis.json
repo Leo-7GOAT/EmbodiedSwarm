@@ -1,0 +1,22 @@
+{
+  "status": "FAIL_CI_RETAINED",
+  "run_id": 38147716851,
+  "failed_commit": "b1c13cc8d7f273d028151916c5d9b8c4e513bb35",
+  "url": "https://github.com/Leo-7GOAT/EmbodiedSwarm/actions/runs/38147716851",
+  "error_code": -26,
+  "error_name": "START_STATE_INVALID",
+  "collision_pair": [
+    "panda_hand",
+    "panda_link5"
+  ],
+  "failed_scene_git_blob": "7689b89678bb8bdc4bc7935a4979d46925853387",
+  "failed_bridge_git_blob": "1b26de7d3de71eab606756036917e00f6e665c9a",
+  "cause": "Generated project model has no keyframe. Old bridge used its zero default qpos/ctrl; controller activation captured a near-zero self-colliding measured hold. Recorded joint4=-0.069837 and joint6=0.198276, unlike URDF home joint4=-2.356194 and joint6=1.570796.",
+  "fix": "Initialize qpos and position ctrl once before first mj_step from the same URDF/Xacro joint initial contract. Wait complete fresh measured state, both active controllers, TF and real MoveIt state validity before planning. Never disable collision checking or loosen physics/safety assertions.",
+  "artifact_warning": "Downloaded artifact contained old tracked passing acceptance/replay JSON and bags. Those inherited result files do not prove this failed job passed. Only this job launch/acceptance logs and newly recorded bag rows are retained here.",
+  "fixed_source_sha256": {
+    "ros2/run_acceptance.py": "008c28debacbc3acfdb6fcd28715d0bf3717163da044412dec5694a09c5cc615",
+    "ros2/embodied_swarm_hardware/scripts/acceptance.py": "7c158be0634bd0e91502e6a73714541c4806447dcdfc1c8eb4b997d5b88caf4c",
+    "ros2/embodied_swarm_hardware/scripts/mujoco_bridge.py": "341d41815360288251635fcf04f0990b89a35b716d3968a70e32473183dae0da"
+  }
+}

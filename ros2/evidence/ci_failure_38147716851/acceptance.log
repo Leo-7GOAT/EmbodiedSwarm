@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/github/home/embodied_acceptance_ws/install/embodied_swarm_hardware/lib/embodied_swarm_hardware/acceptance.py", line 172, in <module>
+    main()
+  File "/github/home/embodied_acceptance_ws/install/embodied_swarm_hardware/lib/embodied_swarm_hardware/acceptance.py", line 163, in main
+    result = node.run()
+  File "/github/home/embodied_acceptance_ws/install/embodied_swarm_hardware/lib/embodied_swarm_hardware/acceptance.py", line 91, in run
+    assert planned.error_code.val == 1, f'MoveIt planning failed {planned.error_code.val}'
+AssertionError: MoveIt planning failed -26
+[ros2run]: Process exited with failure 1

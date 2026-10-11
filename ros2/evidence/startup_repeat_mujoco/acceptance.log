@@ -1,0 +1,61 @@
+{
+  "status": "PASS_REAL_SIM_ROS",
+  "backend": "mujoco",
+  "planner": "OMPL geometric::RRTConnect",
+  "plan_error_code": 1,
+  "execute_error_code": 1,
+  "trajectory_points": 12,
+  "plan_wall_ms": 32.44097399999646,
+  "execution_wall_s": 1.0866435810000041,
+  "final_joint_error_rad": [
+    -0.0008485408527569571,
+    -0.0005042278762091845,
+    -0.000277807425811652,
+    0.00043485505476414943,
+    -0.00014193948760915477,
+    0.00012089493476930002,
+    -0.0008222379112173828
+  ],
+  "max_joint_error_rad": 0.0008485408527569571,
+  "tf2_pass": true,
+  "invalid_action_rejected": true,
+  "software_estop_reset_pass": true,
+  "startup_state_validity_pass": true,
+  "startup_home_max_error_rad": 1.387882510623693e-29,
+  "estop_trajectory_failure_code": -4,
+  "state_timeout_reset_rejection_recovery": true,
+  "ros_vs_physics_joint_max_error_rad": 3.425672289239512e-15,
+  "latency_ms": {
+    "p50": 0.42203749999999995,
+    "p95": 0.912778,
+    "p99": 28.60501225000004
+  },
+  "sample_count": 346,
+  "nominal_latency_ms": {
+    "p50": 0.3965805,
+    "p95": 0.5714317999999999,
+    "p99": 11.224823280000045
+  },
+  "nominal_sample_count": 164,
+  "startup_sample_count": 20,
+  "nominal_measurement_window": "After complete fresh state/controller/TF/home/state-validity readiness, through planning, execution and 0.5 s settled state; before fault injection",
+  "nominal_interval_ms": {
+    "p50": 9.987288999980137,
+    "p95": 10.193144500004792,
+    "p99": 10.276892059993656
+  },
+  "nominal_jitter_std_ms": 1.1875471906199853,
+  "joint_state_interval_ms": {
+    "p50": 9.98882300001469,
+    "p95": 10.244299199979423,
+    "p99": 11.20427355999823
+  },
+  "interval_jitter_std_ms": 3.868896592156534,
+  "controller_manager_period_ms": {
+    "p50": 10.001289,
+    "p95": 10.061312,
+    "p99": 10.105956
+  },
+  "control_period_jitter_std_ms": 0.3322802468995947,
+  "measurement": "Same WSL host wall clock ROS stamp-to-callback; interarrival includes DDS/executor scheduling. Not RT/HIL."
+}

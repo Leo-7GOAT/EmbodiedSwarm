@@ -1,16 +1,16 @@
 
-Files:             bag_1791726617387135836_0.db3
-Bag size:          1.0 MiB
+Files:             bag_1791730217687972927_0.db3
+Bag size:          568.1 KiB
 Storage id:        sqlite3
-Duration:          7.006067565s
-Start:             Oct 11 2026 21:50:17.758530026 (1791726617.758530026)
-End:               Oct 11 2026 21:50:24.764597591 (1791726624.764597591)
-Messages:          3597
-Topic information: Topic: /hardware/control_period | Type: std_msgs/msg/Float64 | Count: 701 | Serialization Format: cdr
-                   Topic: /hardware/safety_status | Type: std_msgs/msg/String | Count: 702 | Serialization Format: cdr
-                   Topic: /joint_states | Type: sensor_msgs/msg/JointState | Count: 702 | Serialization Format: cdr
-                   Topic: /mujoco/joint_commands | Type: sensor_msgs/msg/JointState | Count: 703 | Serialization Format: cdr
-                   Topic: /tf | Type: tf2_msgs/msg/TFMessage | Count: 124 | Serialization Format: cdr
-                   Topic: /mujoco/joint_states | Type: sensor_msgs/msg/JointState | Count: 663 | Serialization Format: cdr
+Duration:          4.210916167s
+Start:             Oct 11 2026 22:50:18.071573357 (1791730218.071573357)
+End:               Oct 11 2026 22:50:22.282489524 (1791730222.282489524)
+Messages:          2021
+Topic information: Topic: /mujoco/joint_states | Type: sensor_msgs/msg/JointState | Count: 323 | Serialization Format: cdr
+                   Topic: /joint_states | Type: sensor_msgs/msg/JointState | Count: 367 | Serialization Format: cdr
                    Topic: /tf_static | Type: tf2_msgs/msg/TFMessage | Count: 2 | Serialization Format: cdr
+                   Topic: /tf | Type: tf2_msgs/msg/TFMessage | Count: 66 | Serialization Format: cdr
+                   Topic: /mujoco/joint_commands | Type: sensor_msgs/msg/JointState | Count: 420 | Serialization Format: cdr
+                   Topic: /hardware/safety_status | Type: std_msgs/msg/String | Count: 421 | Serialization Format: cdr
+                   Topic: /hardware/control_period | Type: std_msgs/msg/Float64 | Count: 422 | Serialization Format: cdr
 

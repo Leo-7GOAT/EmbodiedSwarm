@@ -1,0 +1,93 @@
+{
+  "/joint_states": {
+    "sample_count": 329,
+    "first_and_last": [
+      {
+        "record_stamp_ns": 1791729366926141948,
+        "state": {
+          "panda_finger_joint1": 0.0,
+          "panda_joint1": -6.495209957636401e-06,
+          "panda_joint2": 0.00028568741168495166,
+          "panda_finger_joint2": 0.0,
+          "panda_joint3": -8.337404466989174e-06,
+          "panda_joint4": -0.0698369968070642,
+          "panda_joint5": -1.550266254062469e-05,
+          "panda_joint6": 0.19827601980990464,
+          "panda_joint7": -0.01989145418129688
+        }
+      },
+      {
+        "record_stamp_ns": 1791729370206092037,
+        "state": {
+          "panda_finger_joint1": 0.0,
+          "panda_joint1": -6.4952099575396935e-06,
+          "panda_joint2": 0.00028568741168421923,
+          "panda_finger_joint2": 0.0,
+          "panda_joint3": -8.337404466871272e-06,
+          "panda_joint4": -0.06983699680706373,
+          "panda_joint5": -1.550266254045293e-05,
+          "panda_joint6": 0.19827601980990406,
+          "panda_joint7": -0.019891454181296966
+        }
+      }
+    ]
+  },
+  "/mujoco/joint_states": {
+    "sample_count": 329,
+    "first_and_last": [
+      {
+        "record_stamp_ns": 1791729366921470064,
+        "state": {
+          "panda_joint1": -6.495209957636401e-06,
+          "panda_joint2": 0.00028568741168495166,
+          "panda_joint3": -8.337404466989174e-06,
+          "panda_joint4": -0.0698369968070642,
+          "panda_joint5": -1.550266254062469e-05,
+          "panda_joint6": 0.19827601980990464,
+          "panda_joint7": -0.01989145418129688
+        }
+      },
+      {
+        "record_stamp_ns": 1791729370201473888,
+        "state": {
+          "panda_joint1": -6.4952099575396935e-06,
+          "panda_joint2": 0.00028568741168421923,
+          "panda_joint3": -8.337404466871272e-06,
+          "panda_joint4": -0.06983699680706373,
+          "panda_joint5": -1.550266254045293e-05,
+          "panda_joint6": 0.19827601980990406,
+          "panda_joint7": -0.019891454181296966
+        }
+      }
+    ]
+  },
+  "/mujoco/joint_commands": {
+    "sample_count": 330,
+    "first_and_last": [
+      {
+        "record_stamp_ns": 1791729366917471036,
+        "state": {
+          "panda_joint1": -6.495209957113672e-06,
+          "panda_joint2": 0.0002856874116835689,
+          "panda_joint3": -8.337404466322356e-06,
+          "panda_joint4": -0.06983699680706346,
+          "panda_joint5": -1.5502662539606726e-05,
+          "panda_joint6": 0.1982760198099032,
+          "panda_joint7": -0.019891454181296897
+        }
+      },
+      {
+        "record_stamp_ns": 1791729370206079809,
+        "state": {
+          "panda_joint1": -6.495209957171529e-06,
+          "panda_joint2": 0.00028568741168367946,
+          "panda_joint3": -8.337404466396765e-06,
+          "panda_joint4": -0.06983699680706348,
+          "panda_joint5": -1.5502662539721367e-05,
+          "panda_joint6": 0.19827601980990278,
+          "panda_joint7": -0.01989145418129697
+        }
+      }
+    ]
+  }
+}
