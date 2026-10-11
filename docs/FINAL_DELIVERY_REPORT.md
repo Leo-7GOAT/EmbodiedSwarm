@@ -87,3 +87,7 @@ Hardware integration proceeds through a verified manufacturer adapter, read-only
 ## Cloud verification checkpoint
 
 GitHub Actions actually passed at source `87685e9ea10916909f8ff7c6d7f1a7f79809d306`: [software/MuJoCo four-job matrix](https://github.com/Leo-7GOAT/EmbodiedSwarm/actions/runs/38146273854) and [ROS2/MoveIt2/MuJoCo acceptance](https://github.com/Leo-7GOAT/EmbodiedSwarm/actions/runs/38146273793). The earlier container failed on old pip editable hooks and then missing `/usr/bin/time`; both failures were diagnosed and fixed. Subsequent source revisions require their own CI results; this historical checkpoint is not a badge for untested revisions.
+
+## Actual isolated release staging
+
+Release A (`d743ec17ed4e3ba7a1c8809cc293ec90120ff279`) was exported from committed Git sources to a separate Linux directory, installed in a fully isolated venv, passed `pip check`, 4 C++ GoogleTests and 220 Python tests (12.15 s), then selected with hardware disabled and no process launched. [Raw deployment evidence](../artifacts/deployment/) includes dependency versions, independently verified wheel hashes, C++/Python logs and the earlier inherited-environment build failure. A second tested release and selection rollback are verified in the subsequent checkpoint; only its actual recorded transitions establish rollback. This is host software staging, not target Pi deployment, running-process stop coordination or hardware HIL.

@@ -1,0 +1,72 @@
+Looking in links: /home/leo/release_wheels
+Requirement already satisfied: pip in /home/leo/software_releases_embodied_offline_20261011/releases/d743ec17ed4e3ba7a1c8809cc293ec90120ff279/.venv/lib/python3.10/site-packages (22.0.2)
+Processing /home/leo/release_wheels/pip-25.1.1-py3-none-any.whl
+Requirement already satisfied: setuptools in /home/leo/software_releases_embodied_offline_20261011/releases/d743ec17ed4e3ba7a1c8809cc293ec90120ff279/.venv/lib/python3.10/site-packages (59.6.0)
+Processing /home/leo/release_wheels/setuptools-75.8.2-py3-none-any.whl
+Processing /home/leo/release_wheels/wheel-0.45.1-py3-none-any.whl
+Processing /home/leo/release_wheels/packaging-24.2-py3-none-any.whl
+Installing collected packages: wheel, setuptools, pip, packaging
+  Attempting uninstall: setuptools
+    Found existing installation: setuptools 59.6.0
+    Uninstalling setuptools-59.6.0:
+      Successfully uninstalled setuptools-59.6.0
+  Attempting uninstall: pip
+    Found existing installation: pip 22.0.2
+    Uninstalling pip-22.0.2:
+      Successfully uninstalled pip-22.0.2
+Successfully installed packaging-24.2 pip-25.1.1 setuptools-75.8.2 wheel-0.45.1
+Looking in links: /home/leo/release_wheels
+Obtaining file:///home/leo/software_releases_embodied_offline_20261011/releases/d743ec17ed4e3ba7a1c8809cc293ec90120ff279
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Processing /home/leo/release_wheels/numpy-1.26.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/mujoco-3.12.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (from embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/scipy-1.11.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/psutil-6.1.1-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/pytest-8.3.5-py3-none-any.whl (from embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/matplotlib-3.8.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/pillow-10.4.0-cp310-cp310-manylinux_2_28_x86_64.whl (from embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/contourpy-1.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from matplotlib>=3.7->embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/cycler-0.12.1-py3-none-any.whl (from matplotlib>=3.7->embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/fonttools-4.60.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (from matplotlib>=3.7->embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/kiwisolver-1.4.8-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (from matplotlib>=3.7->embodied-swarm==0.2.0)
+Requirement already satisfied: packaging>=20.0 in /home/leo/software_releases_embodied_offline_20261011/releases/d743ec17ed4e3ba7a1c8809cc293ec90120ff279/.venv/lib/python3.10/site-packages (from matplotlib>=3.7->embodied-swarm==0.2.0) (24.2)
+Processing /home/leo/release_wheels/pyparsing-3.2.5-py3-none-any.whl (from matplotlib>=3.7->embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/python_dateutil-2.9.0.post0-py2.py3-none-any.whl (from matplotlib>=3.7->embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/absl_py-2.3.1-py3-none-any.whl (from mujoco>=3.1->embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/etils-1.12.2-py3-none-any.whl (from mujoco>=3.1->embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/glfw-2.9.0-py2.py27.py3.py30.py31.py32.py33.py34.py35.py36.py37.py38.p39.p310.p311.p312.p313-none-manylinux2014_x86_64.whl (from mujoco>=3.1->embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/PyOpenGL-3.1.9-py3-none-any.whl (from mujoco>=3.1->embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/exceptiongroup-1.3.0-py3-none-any.whl (from pytest>=8->embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/iniconfig-2.1.0-py3-none-any.whl (from pytest>=8->embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/pluggy-1.6.0-py3-none-any.whl (from pytest>=8->embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/tomli-2.2.1-py3-none-any.whl (from pytest>=8->embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/typing_extensions-4.14.1-py3-none-any.whl (from exceptiongroup>=1.0.0rc8->pytest>=8->embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/six-1.17.0-py2.py3-none-any.whl (from python-dateutil>=2.7->matplotlib>=3.7->embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/fsspec-2025.5.1-py3-none-any.whl (from etils[epath]->mujoco>=3.1->embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/importlib_resources-6.5.2-py3-none-any.whl (from etils[epath]->mujoco>=3.1->embodied-swarm==0.2.0)
+Processing /home/leo/release_wheels/zipp-3.21.0-py3-none-any.whl (from etils[epath]->mujoco>=3.1->embodied-swarm==0.2.0)
+Building wheels for collected packages: embodied-swarm
+  Building editable for embodied-swarm (pyproject.toml): started
+  Building editable for embodied-swarm (pyproject.toml): finished with status 'done'
+  Created wheel for embodied-swarm: filename=embodied_swarm-0.2.0-0.editable-py3-none-any.whl size=3042 sha256=36dba2100952967d13f9a312697ee21d1b09989e5413c8265a34a212011393e8
+  Stored in directory: /tmp/pip-ephem-wheel-cache-dlll8w68/wheels/bf/e0/21/416a7654003c135f050b725f2330090cf4a0e5a8a4b9870c64
+Successfully built embodied-swarm
+Installing collected packages: pyopengl, glfw, zipp, typing-extensions, tomli, six, pyparsing, psutil, pluggy, pillow, numpy, kiwisolver, iniconfig, importlib_resources, fsspec, fonttools, etils, cycler, absl-py, scipy, python-dateutil, exceptiongroup, contourpy, pytest, matplotlib, mujoco, embodied-swarm
+
+Successfully installed absl-py-2.3.1 contourpy-1.3.2 cycler-0.12.1 embodied-swarm-0.2.0 etils-1.12.2 exceptiongroup-1.3.0 fonttools-4.60.1 fsspec-2025.5.1 glfw-2.9.0 importlib_resources-6.5.2 iniconfig-2.1.0 kiwisolver-1.4.8 matplotlib-3.8.4 mujoco-3.12.0 numpy-1.26.4 pillow-10.4.0 pluggy-1.6.0 psutil-6.1.1 pyopengl-3.1.9 pyparsing-3.2.5 pytest-8.3.5 python-dateutil-2.9.0.post0 scipy-1.11.4 six-1.17.0 tomli-2.2.1 typing-extensions-4.14.1 zipp-3.21.0
+No broken requirements found.
+{
+  "commit": "d743ec17ed4e3ba7a1c8809cc293ec90120ff279",
+  "source": "/mnt/c/Users/Leo/Desktop/project/EmbodiedSwarm",
+  "release": "/home/leo/software_releases_embodied_offline_20261011/releases/d743ec17ed4e3ba7a1c8809cc293ec90120ff279",
+  "hardware_enabled": false,
+  "status": "STAGED_TESTED",
+  "physical_validation": "PENDING_HARDWARE"
+}

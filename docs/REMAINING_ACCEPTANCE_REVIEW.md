@@ -19,7 +19,7 @@ Counts below use named acceptance checks as the denominator, splitting compound 
 
 ## Current evidence and claim boundaries
 
-- Latest project stdout audited: [220 passed in 17.90 s](../artifacts/physical/pytest.txt). The coordinator may record later guard/profile additions separately; do not silently substitute an anticipated count.
+- Final independent host regression: [220 passed in 20.69 s](../artifacts/final_regression_profile.stdout.txt); an isolated staged release separately passed 220 tests in 12.15 s. These are observed runs, not anticipated counts.
 - C++: four release GoogleTests and four ASan/UBSan passes, 30 FK/Jacobian parity configurations.
 - [Physical benchmark](../artifacts/physical/benchmark.json): 40 runs (20 navigation, five fixed-arm, five same-world mobile, ten force-contact), five seeds; 100/100 reachable IK targets. These are a bounded benchmark set, not general task reliability estimates.
 - Latest native MuJoCo ROS execution: 12 trajectory points, max error 0.000950414 rad; nominal latency 476 samples, P50/P95/P99 0.693767/1.054192/3.267442 ms; controller-period jitter standard deviation 0.257761 ms. Whole-run fault samples and replay counts are separately retained in [ROS report](ROS2_ACCEPTANCE.md).

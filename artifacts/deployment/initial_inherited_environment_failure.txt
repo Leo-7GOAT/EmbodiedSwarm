@@ -1,0 +1,89 @@
+Looking in indexes: https://mirrors.aliyun.com/pypi/simple/
+Obtaining file:///home/leo/software_releases_embodied_20261011/releases/a542baca5bc91f87f12a96c0ae167c7fbf7276f5
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'error'
+  error: subprocess-exited-with-error
+
+  × Getting requirements to build editable did not run successfully.
+  │ exit code: 1
+  ╰─> [52 lines of output]
+      Could not find an up-to-date installation of `packaging`. License expressions might not be validated. To enforce validation, please install `packaging>=24.2`.
+      running egg_info
+      creating embodied_swarm.egg-info
+      writing embodied_swarm.egg-info/PKG-INFO
+      writing dependency_links to embodied_swarm.egg-info/dependency_links.txt
+      writing requirements to embodied_swarm.egg-info/requires.txt
+      writing top-level names to embodied_swarm.egg-info/top_level.txt
+      writing manifest file 'embodied_swarm.egg-info/SOURCES.txt'
+      reading manifest file 'embodied_swarm.egg-info/SOURCES.txt'
+      Traceback (most recent call last):
+        File "/home/leo/software_releases_embodied_20261011/releases/a542baca5bc91f87f12a96c0ae167c7fbf7276f5/.venv/lib/python3.10/site-packages/pip/_vendor/pep517/in_process/_in_process.py", line 363, in <module>
+          main()
+        File "/home/leo/software_releases_embodied_20261011/releases/a542baca5bc91f87f12a96c0ae167c7fbf7276f5/.venv/lib/python3.10/site-packages/pip/_vendor/pep517/in_process/_in_process.py", line 345, in main
+          json_out['return_val'] = hook(**hook_input['kwargs'])
+        File "/home/leo/software_releases_embodied_20261011/releases/a542baca5bc91f87f12a96c0ae167c7fbf7276f5/.venv/lib/python3.10/site-packages/pip/_vendor/pep517/in_process/_in_process.py", line 144, in get_requires_for_build_editable
+          return hook(config_settings)
+        File "/usr/local/lib/python3.10/dist-packages/setuptools/build_meta.py", line 481, in get_requires_for_build_editable
+          return self.get_requires_for_build_wheel(config_settings)
+        File "/usr/local/lib/python3.10/dist-packages/setuptools/build_meta.py", line 333, in get_requires_for_build_wheel
+          return self._get_build_requires(config_settings, requirements=[])
+        File "/usr/local/lib/python3.10/dist-packages/setuptools/build_meta.py", line 301, in _get_build_requires
+          self.run_setup()
+        File "/usr/local/lib/python3.10/dist-packages/setuptools/build_meta.py", line 317, in run_setup
+          exec(code, locals())  # noqa: S102 # exec is intentional here
+        File "<string>", line 1, in <module>
+        File "/usr/local/lib/python3.10/dist-packages/setuptools/__init__.py", line 117, in setup
+          return distutils.core.setup(**attrs)  # type: ignore[return-value]
+        File "/usr/local/lib/python3.10/dist-packages/setuptools/_distutils/core.py", line 168, in setup
+          return run_commands(dist)
+        File "/usr/local/lib/python3.10/dist-packages/setuptools/_distutils/core.py", line 184, in run_commands
+          dist.run_commands()
+        File "/usr/local/lib/python3.10/dist-packages/setuptools/_distutils/dist.py", line 1028, in run_commands
+          self.run_command(cmd)
+        File "/usr/local/lib/python3.10/dist-packages/setuptools/dist.py", line 1106, in run_command
+          super().run_command(command)
+        File "/usr/local/lib/python3.10/dist-packages/setuptools/_distutils/dist.py", line 1047, in run_command
+          cmd_obj.run()
+        File "/usr/local/lib/python3.10/dist-packages/setuptools/command/egg_info.py", line 342, in run
+          self.find_sources()
+        File "/usr/local/lib/python3.10/dist-packages/setuptools/command/egg_info.py", line 350, in find_sources
+          mm.run()
+        File "/usr/local/lib/python3.10/dist-packages/setuptools/command/egg_info.py", line 577, in run
+          self.prune_file_list()
+        File "/usr/local/lib/python3.10/dist-packages/setuptools/command/sdist.py", line 166, in prune_file_list
+          super().prune_file_list()
+        File "/usr/local/lib/python3.10/dist-packages/setuptools/_distutils/command/sdist.py", line 397, in prune_file_list
+          base_dir = self.distribution.get_fullname()
+        File "/usr/local/lib/python3.10/dist-packages/setuptools/_core_metadata.py", line 275, in get_fullname
+          return _distribution_fullname(self.get_name(), self.get_version())
+        File "/usr/local/lib/python3.10/dist-packages/setuptools/_core_metadata.py", line 293, in _distribution_fullname
+          canonicalize_version(version, strip_trailing_zero=False),
+      TypeError: canonicalize_version() got an unexpected keyword argument 'strip_trailing_zero'
+      [end of output]
+
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+error: subprocess-exited-with-error
+
+× Getting requirements to build editable did not run successfully.
+│ exit code: 1
+╰─> See above for output.
+
+note: This error originates from a subprocess, and is likely not a problem with pip.
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/mnt/c/Users/Leo/Desktop/project/EmbodiedSwarm/tools/hardware/deploy.py", line 111, in <module>
+    main()
+  File "/mnt/c/Users/Leo/Desktop/project/EmbodiedSwarm/tools/hardware/deploy.py", line 99, in main
+    result = stage(args.repo, args.root, not args.skip_tests)
+  File "/mnt/c/Users/Leo/Desktop/project/EmbodiedSwarm/tools/hardware/deploy.py", line 55, in stage
+    subprocess.run([str(executable), "-m", "pip", "install", "-e", str(destination)+"[dev,profiling]"], check=True)
+  File "/usr/lib/python3.10/subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/home/leo/software_releases_embodied_20261011/releases/a542baca5bc91f87f12a96c0ae167c7fbf7276f5/.venv/bin/python', '-m', 'pip', 'install', '-e', '/home/leo/software_releases_embodied_20261011/releases/a542baca5bc91f87f12a96c0ae167c7fbf7276f5[dev,profiling]']' returned non-zero exit status 1.

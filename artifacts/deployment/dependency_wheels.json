@@ -1,0 +1,233 @@
+[
+  {
+    "package": "pytest",
+    "version": "8.3.5",
+    "filename": "pytest-8.3.5-py3-none-any.whl",
+    "sha256": "c69214aa47deac29fad6c2a4f590b9c4a9fdb16a403176fe154b79c0b4d4d820",
+    "canonical_url": "https://files.pythonhosted.org/packages/30/3d/64ad57c803f1fa1e963a7946b6e0fea4a70df53c1a7fed304586539c2bac/pytest-8.3.5-py3-none-any.whl"
+  },
+  {
+    "package": "psutil",
+    "version": "6.1.1",
+    "filename": "psutil-6.1.1-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+    "sha256": "97f7cb9921fbec4904f522d972f0c0e1f4fabbdd4e0287813b21215074a0f160",
+    "canonical_url": "https://files.pythonhosted.org/packages/9c/39/0f88a830a1c8a3aba27fededc642da37613c57cbff143412e3536f89784f/psutil-6.1.1-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+  },
+  {
+    "package": "fonttools",
+    "version": "4.60.1",
+    "filename": "fonttools-4.60.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+    "sha256": "282dafa55f9659e8999110bd8ed422ebe1c8aecd0dc396550b038e6c9a08b8ea",
+    "canonical_url": "https://files.pythonhosted.org/packages/ce/20/9b2b4051b6ec6689480787d506b5003f72648f50972a92d04527a456192c/fonttools-4.60.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl"
+  },
+  {
+    "package": "pip",
+    "version": "25.1.1",
+    "filename": "pip-25.1.1-py3-none-any.whl",
+    "sha256": "2913a38a2abf4ea6b64ab507bd9e967f3b53dc1ede74b01b0931e1ce548751af",
+    "canonical_url": "https://files.pythonhosted.org/packages/29/a2/d40fb2460e883eca5199c62cfc2463fd261f760556ae6290f88488c362c0/pip-25.1.1-py3-none-any.whl"
+  },
+  {
+    "package": "contourpy",
+    "version": "1.3.2",
+    "filename": "contourpy-1.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+    "sha256": "ad687a04bc802cbe8b9c399c07162a3c35e227e2daccf1668eb1f278cb698631",
+    "canonical_url": "https://files.pythonhosted.org/packages/32/5c/1ee32d1c7956923202f00cf8d2a14a62ed7517bdc0ee1e55301227fc273c/contourpy-1.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+  },
+  {
+    "package": "six",
+    "version": "1.17.0",
+    "filename": "six-1.17.0-py2.py3-none-any.whl",
+    "sha256": "4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274",
+    "canonical_url": "https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl"
+  },
+  {
+    "package": "matplotlib",
+    "version": "3.8.4",
+    "filename": "matplotlib-3.8.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+    "sha256": "ecd79298550cba13a43c340581a3ec9c707bd895a6a061a78fa2524660482fc0",
+    "canonical_url": "https://files.pythonhosted.org/packages/d6/07/061f97211f942101070a46fecd813a6b1bd83590ed7b07c473cabd707fe7/matplotlib-3.8.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+  },
+  {
+    "package": "wheel",
+    "version": "0.45.1",
+    "filename": "wheel-0.45.1-py3-none-any.whl",
+    "sha256": "708e7481cc80179af0e556bbf0cc00b8444c7321e2700b8d8580231d13017248",
+    "canonical_url": "https://files.pythonhosted.org/packages/0b/2c/87f3254fd8ffd29e4c02732eee68a83a1d3c346ae39bc6822dcbcb697f2b/wheel-0.45.1-py3-none-any.whl"
+  },
+  {
+    "package": "packaging",
+    "version": "24.2",
+    "filename": "packaging-24.2-py3-none-any.whl",
+    "sha256": "09abb1bccd265c01f4a3aa3f7a7db064b36514d2cba19a2f694fe6150451a759",
+    "canonical_url": "https://files.pythonhosted.org/packages/88/ef/eb23f262cca3c0c4eb7ab1933c3b1f03d021f2c48f54763065b6f0e321be/packaging-24.2-py3-none-any.whl"
+  },
+  {
+    "package": "numpy",
+    "version": "1.26.4",
+    "filename": "numpy-1.26.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+    "sha256": "ffa75af20b44f8dba823498024771d5ac50620e6915abac414251bd971b4529f",
+    "canonical_url": "https://files.pythonhosted.org/packages/4b/d7/ecf66c1cd12dc28b4040b15ab4d17b773b87fa9d29ca16125de01adb36cd/numpy-1.26.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+  },
+  {
+    "package": "importlib_resources",
+    "version": "6.5.2",
+    "filename": "importlib_resources-6.5.2-py3-none-any.whl",
+    "sha256": "789cfdc3ed28c78b67a06acb8126751ced69a3d5f79c095a98298cd8a760ccec",
+    "canonical_url": "https://files.pythonhosted.org/packages/a4/ed/1f1afb2e9e7f38a545d628f864d562a5ae64fe6f7a10e28ffb9b185b4e89/importlib_resources-6.5.2-py3-none-any.whl"
+  },
+  {
+    "package": "tomli",
+    "version": "2.2.1",
+    "filename": "tomli-2.2.1-py3-none-any.whl",
+    "sha256": "cb55c73c5f4408779d0cf3eef9f762b9c9f147a77de7b258bef0a5628adc85cc",
+    "canonical_url": "https://files.pythonhosted.org/packages/6e/c2/61d3e0f47e2b74ef40a68b9e6ad5984f6241a942f7cd3bbfbdbd03861ea9/tomli-2.2.1-py3-none-any.whl"
+  },
+  {
+    "package": "pluggy",
+    "version": "1.6.0",
+    "filename": "pluggy-1.6.0-py3-none-any.whl",
+    "sha256": "e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746",
+    "canonical_url": "https://files.pythonhosted.org/packages/54/20/4d324d65cc6d9205fabedc306948156824eb9f0ee1633355a8f7ec5c66bf/pluggy-1.6.0-py3-none-any.whl"
+  },
+  {
+    "package": "kiwisolver",
+    "version": "1.4.8",
+    "filename": "kiwisolver-1.4.8-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl",
+    "sha256": "034d2c891f76bd3edbdb3ea11140d8510dca675443da7304205a2eaa45d8334c",
+    "canonical_url": "https://files.pythonhosted.org/packages/de/c6/7b9bb8044e150d4d1558423a1568e4f227193662a02231064e3824f37e0a/kiwisolver-1.4.8-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl"
+  },
+  {
+    "package": "python_dateutil",
+    "version": "2.9.0.post0",
+    "filename": "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+    "sha256": "a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427",
+    "canonical_url": "https://files.pythonhosted.org/packages/ec/57/56b9bcc3c9c6a792fcbaf139543cee77261f3651ca9da0c93f5c1221264b/python_dateutil-2.9.0.post0-py2.py3-none-any.whl"
+  },
+  {
+    "package": "pillow",
+    "version": "10.4.0",
+    "filename": "pillow-10.4.0-cp310-cp310-manylinux_2_28_x86_64.whl",
+    "sha256": "a985e028fc183bf12a77a8bbf36318db4238a3ded7fa9df1b9a133f1cb79f8fc",
+    "canonical_url": "https://files.pythonhosted.org/packages/b5/5b/6651c288b08df3b8c1e2f8c1152201e0b25d240e22ddade0f1e242fc9fa0/pillow-10.4.0-cp310-cp310-manylinux_2_28_x86_64.whl"
+  },
+  {
+    "package": "pyparsing",
+    "version": "3.2.5",
+    "filename": "pyparsing-3.2.5-py3-none-any.whl",
+    "sha256": "e38a4f02064cf41fe6593d328d0512495ad1f3d8a91c4f73fc401b3079a59a5e",
+    "canonical_url": "https://files.pythonhosted.org/packages/10/5e/1aa9a93198c6b64513c9d7752de7422c06402de6600a8767da1524f9570b/pyparsing-3.2.5-py3-none-any.whl"
+  },
+  {
+    "package": "absl_py",
+    "version": "2.3.1",
+    "filename": "absl_py-2.3.1-py3-none-any.whl",
+    "sha256": "eeecf07f0c2a93ace0772c92e596ace6d3d3996c042b2128459aaae2a76de11d",
+    "canonical_url": "https://files.pythonhosted.org/packages/8f/aa/ba0014cc4659328dc818a28827be78e6d97312ab0cb98105a770924dc11e/absl_py-2.3.1-py3-none-any.whl"
+  },
+  {
+    "package": "casadi",
+    "version": "3.8.1",
+    "filename": "casadi-3.8.1-cp310-none-manylinux_2_28_x86_64.whl",
+    "sha256": "d61686b0a3e1902811a461f14d8f9a1ae072899fc7ce59be10633f02b590b7fb",
+    "canonical_url": "https://files.pythonhosted.org/packages/3f/a4/d1a802ba457a0a49b2eb0c3d47b0edc2e3e7b0a9dc8551a23edf7a41e364/casadi-3.8.1-cp310-none-manylinux_2_28_x86_64.whl"
+  },
+  {
+    "package": "osqp",
+    "version": "1.1.3",
+    "filename": "osqp-1.1.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+    "sha256": "98e606622d677221d4c31f71804546a5ed561192e60753b434caa6c6a8828f56",
+    "canonical_url": "https://files.pythonhosted.org/packages/77/e3/87b7ee18d834267729a245519c80fbc31c7bc74e43ef8f6075669155004c/osqp-1.1.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl"
+  },
+  {
+    "package": "glfw",
+    "version": "2.9.0",
+    "filename": "glfw-2.9.0-py2.py27.py3.py30.py31.py32.py33.py34.py35.py36.py37.py38.p39.p310.p311.p312.p313-none-manylinux2014_x86_64.whl",
+    "sha256": "7f85b58546880466ac445fc564c5c831ca93c8a99795ab8eaf0a2d521af293d7",
+    "canonical_url": "https://files.pythonhosted.org/packages/45/d6/7f95786332e8b798569b8e60db2ee081874cec2a62572b8ec55c309d85b7/glfw-2.9.0-py2.py27.py3.py30.py31.py32.py33.py34.py35.py36.py37.py38.p39.p310.p311.p312.p313-none-manylinux2014_x86_64.whl"
+  },
+  {
+    "package": "mujoco",
+    "version": "3.12.0",
+    "filename": "mujoco-3.12.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+    "sha256": "0791712f4c599d692cb7377f11d52ca66b88630ee936ee9183ad9391ee121ee3",
+    "canonical_url": "https://files.pythonhosted.org/packages/28/85/1766726b94e3288be486d13bb5a3cfb8bf523b8c9663ce2d06a5d8eabc31/mujoco-3.12.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl"
+  },
+  {
+    "package": "iniconfig",
+    "version": "2.1.0",
+    "filename": "iniconfig-2.1.0-py3-none-any.whl",
+    "sha256": "9deba5723312380e77435581c6bf4935c94cbfab9b1ed33ef8d238ea168eb760",
+    "canonical_url": "https://files.pythonhosted.org/packages/2c/e1/e6716421ea10d38022b952c159d5161ca1193197fb744506875fbb87ea7b/iniconfig-2.1.0-py3-none-any.whl"
+  },
+  {
+    "package": "jinja2",
+    "version": "3.1.6",
+    "filename": "jinja2-3.1.6-py3-none-any.whl",
+    "sha256": "85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67",
+    "canonical_url": "https://files.pythonhosted.org/packages/62/a1/3d680cbfd5f4b8f15abc1d571870c5fc3e594bb582bc3b64ea099db13e56/jinja2-3.1.6-py3-none-any.whl"
+  },
+  {
+    "package": "setuptools",
+    "version": "75.8.2",
+    "filename": "setuptools-75.8.2-py3-none-any.whl",
+    "sha256": "558e47c15f1811c1fa7adbd0096669bf76c1d3f433f58324df69f3f5ecac4e8f",
+    "canonical_url": "https://files.pythonhosted.org/packages/a9/38/7d7362e031bd6dc121e5081d8cb6aa6f6fedf2b67bf889962134c6da4705/setuptools-75.8.2-py3-none-any.whl"
+  },
+  {
+    "package": "zipp",
+    "version": "3.21.0",
+    "filename": "zipp-3.21.0-py3-none-any.whl",
+    "sha256": "ac1bbe05fd2991f160ebce24ffbac5f6d11d83dc90891255885223d42b3cd931",
+    "canonical_url": "https://files.pythonhosted.org/packages/b7/1a/7e4798e9339adc931158c9d69ecc34f5e6791489d469f5e50ec15e35f458/zipp-3.21.0-py3-none-any.whl"
+  },
+  {
+    "package": "etils",
+    "version": "1.12.2",
+    "filename": "etils-1.12.2-py3-none-any.whl",
+    "sha256": "4600bec9de6cf5cb043a171e1856e38b5f273719cf3ecef90199f7091a6b3912",
+    "canonical_url": "https://files.pythonhosted.org/packages/dd/71/40ee142e564b8a34a7ae9546e99e665e0001011a3254d5bbbe113d72ccba/etils-1.12.2-py3-none-any.whl"
+  },
+  {
+    "package": "scipy",
+    "version": "1.11.4",
+    "filename": "scipy-1.11.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+    "sha256": "933baf588daa8dc9a92c20a0be32f56d43faf3d1a60ab11b3f08c356430f6e56",
+    "canonical_url": "https://files.pythonhosted.org/packages/e0/9e/80e2205d138960a49caea391f3710600895dd8292b6868dc9aff7aa593f9/scipy-1.11.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+  },
+  {
+    "package": "fsspec",
+    "version": "2025.5.1",
+    "filename": "fsspec-2025.5.1-py3-none-any.whl",
+    "sha256": "24d3a2e663d5fc735ab256263c4075f374a174c3410c0b25e5bd1970bceaa462",
+    "canonical_url": "https://files.pythonhosted.org/packages/bb/61/78c7b3851add1481b048b5fdc29067397a1784e2910592bc81bb3f608635/fsspec-2025.5.1-py3-none-any.whl"
+  },
+  {
+    "package": "exceptiongroup",
+    "version": "1.3.0",
+    "filename": "exceptiongroup-1.3.0-py3-none-any.whl",
+    "sha256": "4d111e6e0c13d0644cad6ddaa7ed0261a0b36971f6d23e7ec9b4b9097da78a10",
+    "canonical_url": "https://files.pythonhosted.org/packages/36/f4/c6e662dade71f56cd2f3735141b265c3c79293c109549c1e6933b0651ffc/exceptiongroup-1.3.0-py3-none-any.whl"
+  },
+  {
+    "package": "typing_extensions",
+    "version": "4.14.1",
+    "filename": "typing_extensions-4.14.1-py3-none-any.whl",
+    "sha256": "d1e1e3b58374dc93031d6eda2420a48ea44a36c2b4766a4fdeb3710755731d76",
+    "canonical_url": "https://files.pythonhosted.org/packages/b5/00/d631e67a838026495268c2f6884f3711a15a9a2a96cd244fdaea53b823fb/typing_extensions-4.14.1-py3-none-any.whl"
+  },
+  {
+    "package": "PyOpenGL",
+    "version": "3.1.9",
+    "filename": "PyOpenGL-3.1.9-py3-none-any.whl",
+    "sha256": "15995fd3b0deb991376805da36137a4ae5aba6ddbb5e29ac1f35462d130a3f77",
+    "canonical_url": "https://files.pythonhosted.org/packages/92/44/8634af40b0db528b5b37e901c0dc67321354880d251bf8965901d57693a5/PyOpenGL-3.1.9-py3-none-any.whl"
+  },
+  {
+    "package": "cycler",
+    "version": "0.12.1",
+    "filename": "cycler-0.12.1-py3-none-any.whl",
+    "sha256": "85cef7cff222d8644161529808465972e51340599459b8ac3ccbac5a854e0d30",
+    "canonical_url": "https://files.pythonhosted.org/packages/e7/05/c19819d5e3d95294a6f5947fb9b9629efb316b96de511b418c53d245aae6/cycler-0.12.1-py3-none-any.whl"
+  }
+]
