@@ -1,0 +1,20 @@
+name: ROS2 MoveIt MuJoCo regression
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  ros2:
+    runs-on: ubuntu-22.04
+    container: ros:humble-ros-base
+    env:
+      MUJOCO_GL: egl
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - run: apt-get update && apt-get install -y python3-pip python3-colcon-common-extensions ros-humble-moveit ros-humble-ros2-control ros-humble-ros2-controllers ros-humble-moveit-resources-panda-moveit-config ros-humble-moveit-resources-panda-description ros-humble-xacro ros-humble-ament-cmake-gtest
+      - run: python3 -m pip install -e ".[dev,demo]"
+      - run: bash ros2/verify.sh
+      - uses: actions/upload-artifact@v7.0.2
+        if: always()
+        with:
+          name: ros2-moveit-mujoco
+          path: ros2/evidence
