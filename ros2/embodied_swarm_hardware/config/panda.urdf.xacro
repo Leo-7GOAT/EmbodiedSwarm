@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panda">
+  <xacro:arg name="backend" default="mock"/>
+  <xacro:include filename="$(find moveit_resources_panda_description)/urdf/panda.urdf"/>
+  <xacro:include filename="$(find moveit_resources_panda_moveit_config)/config/panda_hand.ros2_control.xacro"/>
+  <ros2_control name="EmbodiedArm" type="system">
+    <hardware><plugin>embodied_swarm_hardware/EmbodiedSwarmSystem</plugin><param name="backend">$(arg backend)</param></hardware>
+    <xacro:macro name="control_joint" params="index initial lower upper">
+      <joint name="panda_joint${index}">
+        <param name="initial">${initial}</param><param name="min">${lower}</param><param name="max">${upper}</param>
+        <command_interface name="position"/><state_interface name="position"/><state_interface name="velocity"/>
+      </joint>
+    </xacro:macro>
+    <xacro:control_joint index="1" initial="0" lower="-2.8973" upper="2.8973"/>
+    <xacro:control_joint index="2" initial="-0.785398" lower="-1.7628" upper="1.7628"/>
+    <xacro:control_joint index="3" initial="0" lower="-2.8973" upper="2.8973"/>
+    <xacro:control_joint index="4" initial="-2.356194" lower="-3.0718" upper="-0.0698"/>
+    <xacro:control_joint index="5" initial="0" lower="-2.8973" upper="2.8973"/>
+    <xacro:control_joint index="6" initial="1.570796" lower="-0.0175" upper="3.7525"/>
+    <xacro:control_joint index="7" initial="0.785398" lower="-2.8973" upper="2.8973"/>
+  </ros2_control>
+  <!-- Hand remains explicitly mock; this acceptance tests arm trajectory physics. -->
+  <xacro:panda_hand_ros2_control name="MockHand" ros2_control_hardware_type="mock_components"/>
+</robot>

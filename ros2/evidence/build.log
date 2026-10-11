@@ -1,0 +1,6 @@
+Starting >>> embodied_swarm_hardware
+[Processing: embodied_swarm_hardware]
+Finished <<< embodied_swarm_hardware [34.2s]
+
+Summary: 1 package finished [34.4s]
+source /home/leo/embodied_acceptance_ws/install/setup.bash

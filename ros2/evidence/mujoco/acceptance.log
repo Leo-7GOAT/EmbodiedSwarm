@@ -1,0 +1,57 @@
+{
+  "status": "PASS_REAL_SIM_ROS",
+  "backend": "mujoco",
+  "planner": "OMPL geometric::RRTConnect",
+  "plan_error_code": 1,
+  "execute_error_code": 1,
+  "trajectory_points": 12,
+  "plan_wall_ms": 51.51066200005516,
+  "execution_wall_s": 1.1260316880000119,
+  "final_joint_error_rad": [
+    7.826042175257397e-05,
+    0.0007698920328130798,
+    0.000950414184059417,
+    0.0006135650005778537,
+    0.0006224733186919334,
+    0.00032800842870428504,
+    -0.0003635116589916221
+  ],
+  "max_joint_error_rad": 0.000950414184059417,
+  "tf2_pass": true,
+  "invalid_action_rejected": true,
+  "software_estop_reset_pass": true,
+  "estop_trajectory_failure_code": -4,
+  "state_timeout_reset_rejection_recovery": true,
+  "ros_vs_physics_joint_max_error_rad": 7.872587130808295e-14,
+  "latency_ms": {
+    "p50": 0.756059,
+    "p95": 1.2375509499999997,
+    "p99": 12.308181280000149
+  },
+  "sample_count": 642,
+  "nominal_latency_ms": {
+    "p50": 0.6937665,
+    "p95": 1.0541915,
+    "p99": 3.2674415
+  },
+  "nominal_sample_count": 476,
+  "nominal_interval_ms": {
+    "p50": 9.987249999994674,
+    "p95": 10.534334000021772,
+    "p99": 11.193961080066398
+  },
+  "nominal_jitter_std_ms": 1.883987494928571,
+  "joint_state_interval_ms": {
+    "p50": 9.980751000057353,
+    "p95": 10.608217000026343,
+    "p99": 12.150515599887514
+  },
+  "interval_jitter_std_ms": 2.473675928903102,
+  "controller_manager_period_ms": {
+    "p50": 10.027659,
+    "p95": 10.428622299999999,
+    "p99": 10.52478968
+  },
+  "control_period_jitter_std_ms": 0.25776105912317054,
+  "measurement": "Same WSL host wall clock ROS stamp-to-callback; interarrival includes DDS/executor scheduling. Not RT/HIL."
+}

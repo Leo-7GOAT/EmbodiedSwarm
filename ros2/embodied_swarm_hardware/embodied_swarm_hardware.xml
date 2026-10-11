@@ -4,7 +4,7 @@
     type="embodied_swarm_hardware::EmbodiedSwarmSystem"
     base_class_type="hardware_interface::SystemInterface">
     <description>
-      W02 skeleton. Requires a real transport implementation before use.
+      Seven-axis joint position system; explicit mock or real MuJoCo topic transport. Physical hardware remains pending.
     </description>
   </class>
 </library>

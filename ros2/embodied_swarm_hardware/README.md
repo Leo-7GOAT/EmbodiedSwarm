@@ -1,50 +1,36 @@
-# embodied_swarm_hardware (skeleton only)
+# embodied_swarm_hardware
 
-This directory is a truthful W02 ros2_control design skeleton. It was not built
-or run on the current Windows environment and does not claim a connected robot.
-The C++ transport hooks deliberately return failure until a real backend is
-wired on Linux with ROS2 and ros2_control.
+This ROS2 Humble package was built and executed in Ubuntu 22.04 on WSL2.
+The seven-joint C++17 SystemInterface supports two explicitly named backends:
+`mock` (rate-limited software hardware) and `mujoco` (real ROS topic transport
+into the MuJoCo Panda physics bridge). Physical deployment is PENDING_HARDWARE.
 
-## Interface mapping
+See [actual commands, measurements and limitations](../../docs/ROS2_ACCEPTANCE.md).
+The MoveIt model is the official moveit_resources Panda URDF/SRDF and OMPL uses
+RRTConnect; no handwritten planner is presented as MoveIt.
 
-The planned `SystemInterface` exports:
+From the repository root in WSL:
 
-- seven arm joint position command interfaces;
-- seven arm joint position and velocity state interfaces;
-- `base_vx/velocity` and `base_wz/velocity` command/state interfaces.
-
-The base is differential drive, so no `base_vy` command interface is exported.
-A controller writes body-frame `vx` and `wz`; the hardware plugin maps them to
-`RobotCommand.base_twist = [vx, 0, wz]`.
-
-`read()` maps a transport snapshot as follows:
-
-```text
-backend RobotStateBuffer.base_pose       -> diagnostic/odometry owner
-backend RobotStateBuffer.base_twist[0,2] -> base_vx/base_wz state
-backend RobotStateBuffer.q[0..6]         -> joint position state
-backend RobotStateBuffer.dq[0..6]        -> joint velocity state
+```bash
+bash ros2/verify.sh
 ```
 
-`write()` maps ros2_control command storage as follows:
+The script builds the C++ plugin, runs two GoogleTest cases, then exercises real
+MoveGroup/ExecuteTrajectory/FollowJointTrajectory actions, JointState, TF2,
+software estop/reset services, stale-state fault/recovery, and rosbag replay.
+`ros2/evidence` contains raw launch logs, bags, environment and measured JSON.
 
-```text
-base_vx/base_wz command -> RobotCommandBuffer.base_twist [vx, 0, wz]
-joint position command  -> RobotCommandBuffer.joint_position_targets
-```
+Interface units are radians and radians/second, `panda_joint1` through
+`panda_joint7`. `/mujoco/joint_commands` and `/mujoco/joint_states` use
+sensor_msgs/JointState, with wall-clock ROS stamps. The bridge maps these
+names to Menagerie `joint1` through `joint7`; commands only write actuator
+`ctrl`, states come from `mj_step`. Arm gravity/Coriolis feed-forward uses
+MuJoCo bias forces. It never rewrites moving qpos.
 
-## Real-hardware integration path
-
-1. Add a transport implementation behind `read_backend()`/`write_backend()`.
-2. For a real base, convert body twist to the vendor motor/CAN protocol and
-   return timestamped odometry/encoder state.
-3. For Franka, connect the supported driver/controller path and preserve the
-   seven joint position/state interface contract.
-4. Declare matching joints/interfaces in URDF, load the plugin, then validate
-   limits, timeouts, E-stop/manual mode, and read/write failure propagation.
-5. Build and test on the target Ubuntu/ROS2 environment before changing this
-   document from skeleton status.
-
-No socket, CAN ID, vendor SDK, safety behavior, or successful build is invented
-here. Those require the selected physical platform and are later acceptance
-gates.
+The ROS arm acceptance uses a mock hand; physical grasp/place is separately
+accepted by the project MuJoCo pick-place suite. The base is also accepted
+separately by the project's physics navigation suite. This plugin exports
+seven arm position command interfaces and fourteen position/velocity state
+interfaces; it does not export fictitious base channels or claim a vendor
+motor/CAN driver. A physical vendor transport, encoder/IMU synchronization,
+independent hardware emergency stop and target-platform timing remain pending.

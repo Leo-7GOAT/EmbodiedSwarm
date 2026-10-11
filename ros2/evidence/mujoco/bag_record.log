@@ -1,0 +1,16 @@
+stdin is not a terminal device. Keyboard handling disabled.[INFO] [1791726617.642188363] [rosbag2_recorder]: Press SPACE for pausing/resuming
+[INFO] [1791726617.705691127] [rosbag2_storage]: Opened database '/mnt/c/Users/Leo/Desktop/project/EmbodiedSwarm/ros2/evidence/mujoco/bag_1791726617387135836/bag_1791726617387135836_0.db3' for READ_WRITE.
+[INFO] [1791726617.707711927] [rosbag2_recorder]: Listening for topics...
+[INFO] [1791726617.707740136] [rosbag2_recorder]: Event publisher thread: Starting
+[INFO] [1791726617.714929936] [rosbag2_recorder]: Subscribed to topic '/tf_static'
+[INFO] [1791726617.725858708] [rosbag2_recorder]: Subscribed to topic '/mujoco/joint_states'
+[INFO] [1791726617.733830910] [rosbag2_recorder]: Subscribed to topic '/tf'
+[INFO] [1791726617.740231282] [rosbag2_recorder]: Subscribed to topic '/mujoco/joint_commands'
+[INFO] [1791726617.746109512] [rosbag2_recorder]: Subscribed to topic '/joint_states'
+[INFO] [1791726617.751043975] [rosbag2_recorder]: Subscribed to topic '/hardware/safety_status'
+[INFO] [1791726617.756307005] [rosbag2_recorder]: Subscribed to topic '/hardware/control_period'
+[INFO] [1791726617.756957980] [rosbag2_recorder]: Recording...
+[INFO] [1791726617.757463369] [rosbag2_recorder]: All requested topics are subscribed. Stopping discovery...
+[INFO] [1791726624.772508959] [rosbag2_cpp]: Writing remaining messages from cache to the bag. It may take a while
+[INFO] [1791726624.778358417] [rosbag2_recorder]: Event publisher thread: Exiting
+[INFO] [1791726624.778937026] [rosbag2_recorder]: Recording stopped

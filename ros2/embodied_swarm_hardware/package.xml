@@ -2,7 +2,7 @@
 <package format="3">
   <name>embodied_swarm_hardware</name>
   <version>0.0.1</version>
-  <description>W02 ros2_control hardware interface skeleton for EmbodiedSwarm.</description>
+  <description>ROS2 control mock and MuJoCo topic hardware transport, MoveIt acceptance.</description>
   <maintainer email="leo-7goat@users.noreply.github.com">Leo-7GOAT</maintainer>
   <license>Apache-2.0</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
@@ -10,6 +10,14 @@
   <depend>pluginlib</depend>
   <depend>rclcpp</depend>
   <depend>rclcpp_lifecycle</depend>
+  <depend>sensor_msgs</depend><depend>std_msgs</depend><depend>std_srvs</depend>
+  <exec_depend>rclpy</exec_depend><exec_depend>moveit_msgs</exec_depend>
+  <exec_depend>moveit_ros_move_group</exec_depend><exec_depend>moveit_planners_ompl</exec_depend>
+  <exec_depend>controller_manager</exec_depend><exec_depend>joint_state_broadcaster</exec_depend>
+  <exec_depend>joint_trajectory_controller</exec_depend><exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>xacro</exec_depend><exec_depend>moveit_configs_utils</exec_depend>
+  <exec_depend>moveit_resources_panda_description</exec_depend><exec_depend>moveit_resources_panda_moveit_config</exec_depend>
+  <test_depend>ament_cmake_gtest</test_depend>
   <export>
     <build_type>ament_cmake</build_type>
   </export>

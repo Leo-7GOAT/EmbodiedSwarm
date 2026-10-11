@@ -1,0 +1,50 @@
+Starting >>> embodied_swarm_hardware
+UpdateCTestConfiguration  from :/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/CTestConfiguration.ini
+Parse Config file:/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/CTestConfiguration.ini
+   Site: DESKTOP-RHN5IE9
+   Build name: (empty)
+ Add coverage exclude regular expressions.
+Create new tag: 20261011-1349 - Experimental
+UpdateCTestConfiguration  from :/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/CTestConfiguration.ini
+Parse Config file:/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/CTestConfiguration.ini
+Test project /home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+    Start 1: test_system
+
+1: Test command: /usr/bin/python3 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/test_results/embodied_swarm_hardware/test_system.gtest.xml" "--package-name" "embodied_swarm_hardware" "--output-file" "/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/ament_cmake_gtest/test_system.txt" "--command" "/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/test_system" "--gtest_output=xml:/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/test_results/embodied_swarm_hardware/test_system.gtest.xml"
+1: Test timeout computed to be: 60
+1: -- run_test.py: invoking following command in '/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware':
+1:  - /home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/test_system --gtest_output=xml:/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/test_results/embodied_swarm_hardware/test_system.gtest.xml
+1: Running main() from /opt/ros/humble/src/gtest_vendor/src/gtest_main.cc
+1: [==========] Running 2 tests from 1 test suite.
+1: [----------] Global test environment set-up.
+1: [----------] 2 tests from Hardware
+1: [ RUN      ] Hardware.RejectsMalformedConfig
+1: [       OK ] Hardware.RejectsMalformedConfig (1 ms)
+1: [ RUN      ] Hardware.MockRateAndInvalidCommandLatch
+1: [       OK ] Hardware.MockRateAndInvalidCommandLatch (22 ms)
+1: [----------] 2 tests from Hardware (23 ms total)
+1: 
+1: [----------] Global test environment tear-down
+1: [==========] 2 tests from 1 test suite ran. (23 ms total)
+1: [  PASSED  ] 2 tests.
+1: -- run_test.py: return code 0
+1: -- run_test.py: inject classname prefix into gtest result file '/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/test_results/embodied_swarm_hardware/test_system.gtest.xml'
+1: -- run_test.py: verify result file '/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/test_results/embodied_swarm_hardware/test_system.gtest.xml'
+1/1 Test #1: test_system ......................   Passed    0.19 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Label Time Summary:
+gtest    =   0.19 sec*proc (1 test)
+
+Total Test time (real) =   0.19 sec
+Finished <<< embodied_swarm_hardware [0.47s]
+
+Summary: 1 package finished [0.64s]

@@ -1,0 +1,57 @@
+{
+  "status": "PASS_REAL_ROS_MOCK_HARDWARE",
+  "backend": "mock",
+  "planner": "OMPL geometric::RRTConnect",
+  "plan_error_code": 1,
+  "execute_error_code": 1,
+  "trajectory_points": 12,
+  "plan_wall_ms": 52.214287000197146,
+  "execution_wall_s": 1.125510243000008,
+  "final_joint_error_rad": [
+    -0.0004558605584316089,
+    0.0007810155549086151,
+    -0.0009682798027060926,
+    0.0009794594715346605,
+    0.0003919328087940812,
+    0.0003678695703857038,
+    -0.00043376841861753057
+  ],
+  "max_joint_error_rad": 0.0009794594715346605,
+  "tf2_pass": true,
+  "invalid_action_rejected": true,
+  "software_estop_reset_pass": true,
+  "estop_trajectory_failure_code": -4,
+  "state_timeout_reset_rejection_recovery": null,
+  "ros_vs_physics_joint_max_error_rad": null,
+  "latency_ms": {
+    "p50": 0.6622414999999999,
+    "p95": 0.9480472999999989,
+    "p99": 6.994207249999688
+  },
+  "sample_count": 582,
+  "nominal_latency_ms": {
+    "p50": 0.658613,
+    "p95": 0.9163977499999999,
+    "p99": 2.2071440699999876
+  },
+  "nominal_sample_count": 480,
+  "nominal_interval_ms": {
+    "p50": 9.982916999888403,
+    "p95": 10.585305099812103,
+    "p99": 10.86295251984211
+  },
+  "nominal_jitter_std_ms": 1.564732258267328,
+  "joint_state_interval_ms": {
+    "p50": 9.967966999965938,
+    "p95": 10.582975999795963,
+    "p99": 11.079813600053981
+  },
+  "interval_jitter_std_ms": 1.9730958580556703,
+  "controller_manager_period_ms": {
+    "p50": 9.980859,
+    "p95": 10.499093199999999,
+    "p99": 10.533612559999998
+  },
+  "control_period_jitter_std_ms": 0.24840238222983288,
+  "measurement": "Same WSL host wall clock ROS stamp-to-callback; interarrival includes DDS/executor scheduling. Not RT/HIL."
+}
