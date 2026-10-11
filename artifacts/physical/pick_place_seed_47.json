@@ -17,25 +17,28 @@
     ],
     "failures": [],
     "recoveries": 0,
-    "elapsed_s": 0.397400492000088
+    "elapsed_s": 1.1914636020001126
   },
   "object_final": [
-    0.45213690470320894,
-    0.21778799349413946,
-    0.024848262917576976
+    0.45181677030530387,
+    0.22002792516063835,
+    0.024848262917577
   ],
   "target": [
     0.45,
     0.22,
     0.025
   ],
-  "max_object_height_m": 0.20921866271792902,
-  "max_finger_contact_force_N": 2.9405409022021725,
-  "joint_tracking_rmse_rad": 0.021591942906069504,
+  "max_object_height_m": 0.2035589539598679,
+  "max_finger_contact_force_N": 3.0608174962718944,
+  "joint_tracking_rmse_rad": 0.021408746979697933,
   "control_runtime_us": {
-    "p50": 29.359,
-    "p95": 87.96605000000001,
-    "p99": 177.88409000000001
+    "p50": 120.036,
+    "p95": 289.73244999999986,
+    "p99": 532.5700600000034
   },
-  "simulation_time_s": 14.000000000001345
+  "simulation_time_s": 14.000000000001345,
+  "grasp_fault_injected": false,
+  "safety_interventions": 362,
+  "safety_latched_reason": null
 }

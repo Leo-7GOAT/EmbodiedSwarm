@@ -13,6 +13,7 @@ from embodied_swarm.core.task import TaskExecutor
 
 def run(seed=7, render=False, output=None, simulation=None, navigation=None, target_position=None, grasp_fault=False):
     sim = simulation or PandaSimulation()
+    sim.deadline_sim = sim.data.time+80.
     rng = np.random.default_rng(seed)
     obj_addr = sim.model.jnt_qposadr[sim.model.joint("object_free").id]
     sim.data.qpos[obj_addr:obj_addr+2] += rng.uniform(-.015, .015, 2)  # reset-only object randomization
@@ -68,7 +69,7 @@ def run(seed=7, render=False, output=None, simulation=None, navigation=None, tar
         else:
             sim.move(sim.joint_positions(), .08, .5, "ABORT_HOLD", capture)
     def abort(reason):
-        sim.move(sim.joint_positions(), .08, .5, "ABORT_HOLD", capture)
+        sim.halt(reason)
     result = TaskExecutor(stages, recovery, timeout_s=100., abort=abort).run()
     report = {"status": "PASS_REAL_SIM" if result.success else "FAIL", "seed": seed,
               "mujoco": mujoco.__version__, "task": asdict(result),
@@ -79,6 +80,8 @@ def run(seed=7, render=False, output=None, simulation=None, navigation=None, tar
               "control_runtime_us": dict(zip(["p50", "p95", "p99"], np.percentile(sim.control_ns, [50, 95, 99])/1000)),
               "simulation_time_s": sim.data.time}
     report["grasp_fault_injected"] = grasp_fault
+    report["safety_interventions"] = sim.safety.interventions
+    report["safety_latched_reason"] = sim.safety.latched_reason
     if hasattr(sim,"base_qpos"):
         report["base_final"] = sim.read_state().base_pose.tolist()
     output = Path(output or f"artifacts/physical/pick_place_seed_{seed}")

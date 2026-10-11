@@ -202,3 +202,25 @@ def test_physical_grasp_failure_recovery_same_world():
     assert report["status"] == "PASS_REAL_SIM"
     assert report["task"]["recoveries"] == 1
     assert report["task"]["failures"][0]["stage"] == "GRASP"
+
+
+def test_actual_arm_software_stop_and_per_substep_deadline():
+    sim=PandaSimulation()
+    for duration in (0.,-1.,np.inf,.003):
+        with pytest.raises(ValueError):
+            sim.move(sim.HOME,duration=duration)
+    sim.move(sim.cartesian_target([.5,.2,.3]),.08,2.)
+    before=sim.joint_positions()
+    sim.halt("test_estop")
+    target=before.copy();target[0]+=.2
+    sim.move(target,.08,.2,"STOP_TEST")
+    assert sim.safety.latched_reason=="test_estop"
+    assert np.max(np.abs(sim.joint_positions()-before)) < .02
+    assert sim.safety.reset(sim.read_state(),sim.data.time)
+    start=sim.data.time
+    sim.deadline_sim=start+.02
+    with pytest.raises(RuntimeError,match="deadline"):
+        sim.move(target,.08,2.,"DEADLINE_TEST")
+    assert sim.data.time-start <= .024
+    assert sim.safety.latched_reason=="task_timeout"
+    assert np.max(np.abs(sim.data.ctrl[sim.arm_actuators]-sim.joint_positions())) < 1e-12

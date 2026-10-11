@@ -30,15 +30,17 @@ class SafetySupervisor:
         self.latched_reason = None
         self.interventions = 0
         self.manual_override = False
+        self._last_joint_target = None
 
     def emergency_stop(self, reason="software_estop"):
         self.latched_reason = reason
 
     def reset(self, state, now):
         # Recovery requires a fresh stationary state inside the fence.
-        if self._invalid_state(state, now) or np.linalg.norm(state.base_twist) > 0.02:
+        if self._invalid_state(state, now) or np.linalg.norm(state.base_twist) > 0.02 or (self.joint_limits is not None and np.max(np.abs(state.joint_velocities)) > .02):
             return False
         self.latched_reason = None
+        self._last_joint_target = state.joint_positions.copy()
         return True
 
     def _invalid_state(self, state, now):
@@ -62,6 +64,7 @@ class SafetySupervisor:
             self.emergency_stop(reason)
         if self.latched_reason:
             self.interventions += 1
+            self._last_joint_target = state.joint_positions.copy()
             return RobotCommand(timestamp=now, joint_position_targets=state.joint_positions)
         twist = command.base_twist.copy()
         speed = np.linalg.norm(twist[:2])
@@ -77,10 +80,12 @@ class SafetySupervisor:
                 self.interventions += 1
                 return RobotCommand(timestamp=now, joint_position_targets=state.joint_positions)
             delta = self.limits.max_joint_velocity*self.limits.control_period
-            bounded = np.clip(target,state.joint_positions-delta,state.joint_positions+delta)
+            previous = state.joint_positions if self._last_joint_target is None else self._last_joint_target
+            bounded = np.clip(target,previous-delta,previous+delta)
             if not np.array_equal(bounded,target):
                 self.interventions += 1
             target = bounded
+            self._last_joint_target = target.copy()
         return RobotCommand(timestamp=now, base_twist=twist,
                             joint_position_targets=target,
                             gripper_width_target=command.gripper_width_target)

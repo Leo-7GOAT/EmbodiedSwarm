@@ -6,7 +6,7 @@
     "mujoco": "3.12.0",
     "numpy": "1.21.5",
     "cpu": "x86_64",
-    "memory_peak_kib": 408068
+    "memory_peak_kib": 416312
   },
   "seeds": [
     7,
@@ -21,7 +21,7 @@
       "seed": 7,
       "scenario": "straight",
       "mujoco": "3.12.0",
-      "planning_ms": 2.942312,
+      "planning_ms": 2.05205,
       "tracking_rmse_m": 0.010579209145695963,
       "final_error_m": 0.08250749110269215,
       "obstacle_contact_steps": 0,
@@ -31,9 +31,9 @@
       "safety_interventions": 0,
       "fault_injected": false,
       "control_runtime_us": {
-        "p50": 58.937,
-        "p95": 132.94689999999989,
-        "p99": 200.73720000000003
+        "p50": 51.892,
+        "p95": 106.89249999999996,
+        "p99": 141.52604000000005
       }
     },
     {
@@ -41,7 +41,7 @@
       "seed": 17,
       "scenario": "straight",
       "mujoco": "3.12.0",
-      "planning_ms": 2.639255,
+      "planning_ms": 2.692949,
       "tracking_rmse_m": 0.010539451982697986,
       "final_error_m": 0.07938893985814956,
       "obstacle_contact_steps": 0,
@@ -51,9 +51,9 @@
       "safety_interventions": 0,
       "fault_injected": false,
       "control_runtime_us": {
-        "p50": 49.829,
-        "p95": 129.2309,
-        "p99": 308.63996000000003
+        "p50": 52.0,
+        "p95": 123.32679999999996,
+        "p99": 231.34154000000018
       }
     },
     {
@@ -61,7 +61,7 @@
       "seed": 27,
       "scenario": "straight",
       "mujoco": "3.12.0",
-      "planning_ms": 3.064267,
+      "planning_ms": 1.642333,
       "tracking_rmse_m": 0.01057079941285747,
       "final_error_m": 0.08141751412780983,
       "obstacle_contact_steps": 0,
@@ -71,9 +71,9 @@
       "safety_interventions": 0,
       "fault_injected": false,
       "control_runtime_us": {
-        "p50": 49.619,
-        "p95": 127.7123,
-        "p99": 268.2280600000002
+        "p50": 52.217,
+        "p95": 134.91809999999995,
+        "p99": 469.53398
       }
     },
     {
@@ -81,7 +81,7 @@
       "seed": 37,
       "scenario": "straight",
       "mujoco": "3.12.0",
-      "planning_ms": 1.994412,
+      "planning_ms": 1.902983,
       "tracking_rmse_m": 0.010569738913861773,
       "final_error_m": 0.08132457118443175,
       "obstacle_contact_steps": 0,
@@ -91,9 +91,9 @@
       "safety_interventions": 0,
       "fault_injected": false,
       "control_runtime_us": {
-        "p50": 54.435,
-        "p95": 144.7659,
-        "p99": 261.8761200000004
+        "p50": 47.883,
+        "p95": 109.4926999999999,
+        "p99": 182.23552000000012
       }
     },
     {
@@ -101,7 +101,7 @@
       "seed": 47,
       "scenario": "straight",
       "mujoco": "3.12.0",
-      "planning_ms": 2.153006,
+      "planning_ms": 2.445841,
       "tracking_rmse_m": 0.010563699804231115,
       "final_error_m": 0.08078795889636065,
       "obstacle_contact_steps": 0,
@@ -111,9 +111,9 @@
       "safety_interventions": 0,
       "fault_injected": false,
       "control_runtime_us": {
-        "p50": 58.622,
-        "p95": 127.68159999999996,
-        "p99": 245.93854000000027
+        "p50": 58.5,
+        "p95": 129.5987999999999,
+        "p99": 227.89402000000027
       }
     },
     {
@@ -121,7 +121,7 @@
       "seed": 7,
       "scenario": "obstacle",
       "mujoco": "3.12.0",
-      "planning_ms": 75.957643,
+      "planning_ms": 71.228939,
       "tracking_rmse_m": 0.03170637766336563,
       "final_error_m": 0.08380732528120936,
       "obstacle_contact_steps": 0,
@@ -131,9 +131,9 @@
       "safety_interventions": 89,
       "fault_injected": false,
       "control_runtime_us": {
-        "p50": 57.157,
-        "p95": 139.89730000000006,
-        "p99": 208.51320000000004
+        "p50": 55.683,
+        "p95": 118.8636,
+        "p99": 189.66152000000008
       }
     },
     {
@@ -141,7 +141,7 @@
       "seed": 17,
       "scenario": "obstacle",
       "mujoco": "3.12.0",
-      "planning_ms": 79.894035,
+      "planning_ms": 78.789955,
       "tracking_rmse_m": 0.031224710731747804,
       "final_error_m": 0.08441317215805141,
       "obstacle_contact_steps": 0,
@@ -151,9 +151,9 @@
       "safety_interventions": 89,
       "fault_injected": false,
       "control_runtime_us": {
-        "p50": 60.829,
-        "p95": 136.78195,
-        "p99": 282.95225000000016
+        "p50": 56.767,
+        "p95": 131.94504999999998,
+        "p99": 341.61650000000003
       }
     },
     {
@@ -161,7 +161,7 @@
       "seed": 27,
       "scenario": "obstacle",
       "mujoco": "3.12.0",
-      "planning_ms": 99.810864,
+      "planning_ms": 67.492524,
       "tracking_rmse_m": 0.031625785098166076,
       "final_error_m": 0.08212894732954333,
       "obstacle_contact_steps": 0,
@@ -171,9 +171,9 @@
       "safety_interventions": 89,
       "fault_injected": false,
       "control_runtime_us": {
-        "p50": 61.967,
-        "p95": 140.31330000000005,
-        "p99": 288.28524000000044
+        "p50": 55.25,
+        "p95": 116.00280000000002,
+        "p99": 196.44274000000019
       }
     },
     {
@@ -181,7 +181,7 @@
       "seed": 37,
       "scenario": "obstacle",
       "mujoco": "3.12.0",
-      "planning_ms": 81.338297,
+      "planning_ms": 77.65993,
       "tracking_rmse_m": 0.031610075561882126,
       "final_error_m": 0.08198688582436131,
       "obstacle_contact_steps": 0,
@@ -191,9 +191,9 @@
       "safety_interventions": 89,
       "fault_injected": false,
       "control_runtime_us": {
-        "p50": 55.358,
-        "p95": 137.64800000000002,
-        "p99": 250.95002000000042
+        "p50": 51.35,
+        "p95": 134.57160000000002,
+        "p99": 315.1179800000006
       }
     },
     {
@@ -201,7 +201,7 @@
       "seed": 47,
       "scenario": "obstacle",
       "mujoco": "3.12.0",
-      "planning_ms": 96.444623,
+      "planning_ms": 72.470223,
       "tracking_rmse_m": 0.031520689688978414,
       "final_error_m": 0.081177346237964,
       "obstacle_contact_steps": 0,
@@ -211,9 +211,9 @@
       "safety_interventions": 89,
       "fault_injected": false,
       "control_runtime_us": {
-        "p50": 59.475,
-        "p95": 153.17280000000005,
-        "p99": 289.8780000000012
+        "p50": 56.008,
+        "p95": 137.64830000000003,
+        "p99": 361.71226
       }
     },
     {
@@ -221,7 +221,7 @@
       "seed": 7,
       "scenario": "delay",
       "mujoco": "3.12.0",
-      "planning_ms": 77.03313,
+      "planning_ms": 66.680457,
       "tracking_rmse_m": 0.03826325998394579,
       "final_error_m": 0.0835651556202304,
       "obstacle_contact_steps": 0,
@@ -231,9 +231,9 @@
       "safety_interventions": 99,
       "fault_injected": false,
       "control_runtime_us": {
-        "p50": 58.5,
-        "p95": 159.35855000000012,
-        "p99": 370.9351900000005
+        "p50": 50.592,
+        "p95": 105.98815,
+        "p99": 160.81250000000003
       }
     },
     {
@@ -241,7 +241,7 @@
       "seed": 17,
       "scenario": "delay",
       "mujoco": "3.12.0",
-      "planning_ms": 85.839223,
+      "planning_ms": 83.889745,
       "tracking_rmse_m": 0.03808315441796084,
       "final_error_m": 0.07837282033813811,
       "obstacle_contact_steps": 0,
@@ -251,9 +251,9 @@
       "safety_interventions": 99,
       "fault_injected": false,
       "control_runtime_us": {
-        "p50": 65.163,
-        "p95": 151.8127000000001,
-        "p99": 329.0044400000004
+        "p50": 50.592,
+        "p95": 106.80030000000008,
+        "p99": 244.90700000000012
       }
     },
     {
@@ -261,7 +261,7 @@
       "seed": 27,
       "scenario": "delay",
       "mujoco": "3.12.0",
-      "planning_ms": 76.588746,
+      "planning_ms": 70.639931,
       "tracking_rmse_m": 0.038324078485691,
       "final_error_m": 0.08227376856868805,
       "obstacle_contact_steps": 0,
@@ -271,9 +271,9 @@
       "safety_interventions": 98,
       "fault_injected": false,
       "control_runtime_us": {
-        "p50": 58.120999999999995,
-        "p95": 127.81720000000004,
-        "p99": 204.26900000000057
+        "p50": 51.079,
+        "p95": 119.69165000000008,
+        "p99": 198.52669000000006
       }
     },
     {
@@ -281,7 +281,7 @@
       "seed": 37,
       "scenario": "delay",
       "mujoco": "3.12.0",
-      "planning_ms": 125.03715,
+      "planning_ms": 80.452763,
       "tracking_rmse_m": 0.03831231783757705,
       "final_error_m": 0.08214213426241543,
       "obstacle_contact_steps": 0,
@@ -291,9 +291,9 @@
       "safety_interventions": 98,
       "fault_injected": false,
       "control_runtime_us": {
-        "p50": 70.308,
-        "p95": 184.57270000000003,
-        "p99": 1384.1544400000005
+        "p50": 58.771,
+        "p95": 119.50250000000001,
+        "p99": 191.62763000000132
       }
     },
     {
@@ -301,7 +301,7 @@
       "seed": 47,
       "scenario": "delay",
       "mujoco": "3.12.0",
-      "planning_ms": 84.902355,
+      "planning_ms": 69.128139,
       "tracking_rmse_m": 0.038073439426398084,
       "final_error_m": 0.08054903698491109,
       "obstacle_contact_steps": 0,
@@ -311,9 +311,9 @@
       "safety_interventions": 99,
       "fault_injected": false,
       "control_runtime_us": {
-        "p50": 57.091499999999996,
-        "p95": 134.81565000000003,
-        "p99": 234.6113100000003
+        "p50": 68.35849999999999,
+        "p95": 176.36645000000004,
+        "p99": 458.9874400000167
       }
     },
     {
@@ -321,7 +321,7 @@
       "seed": 7,
       "scenario": "fault",
       "mujoco": "3.12.0",
-      "planning_ms": 78.352196,
+      "planning_ms": 76.242389,
       "tracking_rmse_m": 0.031311579357461865,
       "final_error_m": 0.0838144866030932,
       "obstacle_contact_steps": 0,
@@ -331,9 +331,9 @@
       "safety_interventions": 107,
       "fault_injected": true,
       "control_runtime_us": {
-        "p50": 65.216,
-        "p95": 137.77859999999998,
-        "p99": 225.10831999999942
+        "p50": 56.442,
+        "p95": 115.48359999999992,
+        "p99": 206.47067999999982
       }
     },
     {
@@ -341,7 +341,7 @@
       "seed": 17,
       "scenario": "fault",
       "mujoco": "3.12.0",
-      "planning_ms": 77.003229,
+      "planning_ms": 70.511123,
       "tracking_rmse_m": 0.030883510741290313,
       "final_error_m": 0.08441971936312326,
       "obstacle_contact_steps": 0,
@@ -351,9 +351,9 @@
       "safety_interventions": 105,
       "fault_injected": true,
       "control_runtime_us": {
-        "p50": 57.525,
-        "p95": 134.95680000000004,
-        "p99": 259.16318000000143
+        "p50": 48.75,
+        "p95": 97.82985000000005,
+        "p99": 207.41743000000037
       }
     },
     {
@@ -361,7 +361,7 @@
       "seed": 27,
       "scenario": "fault",
       "mujoco": "3.12.0",
-      "planning_ms": 74.714472,
+      "planning_ms": 66.421324,
       "tracking_rmse_m": 0.0312538835244068,
       "final_error_m": 0.08213601869854124,
       "obstacle_contact_steps": 0,
@@ -371,9 +371,9 @@
       "safety_interventions": 106,
       "fault_injected": true,
       "control_runtime_us": {
-        "p50": 60.2335,
-        "p95": 158.627,
-        "p99": 277.7232999999999
+        "p50": 55.900000000000006,
+        "p95": 136.41924999999998,
+        "p99": 266.8842499999997
       }
     },
     {
@@ -381,7 +381,7 @@
       "seed": 37,
       "scenario": "fault",
       "mujoco": "3.12.0",
-      "planning_ms": 72.640863,
+      "planning_ms": 74.706006,
       "tracking_rmse_m": 0.031238483644081078,
       "final_error_m": 0.08199395053428926,
       "obstacle_contact_steps": 0,
@@ -391,9 +391,9 @@
       "safety_interventions": 106,
       "fault_injected": true,
       "control_runtime_us": {
-        "p50": 64.187,
-        "p95": 143.704,
-        "p99": 303.6471999999994
+        "p50": 63.2115,
+        "p95": 138.8835,
+        "p99": 359.8336499999999
       }
     },
     {
@@ -401,7 +401,7 @@
       "seed": 47,
       "scenario": "fault",
       "mujoco": "3.12.0",
-      "planning_ms": 81.529614,
+      "planning_ms": 70.476549,
       "tracking_rmse_m": 0.031150850470905003,
       "final_error_m": 0.08118437025117169,
       "obstacle_contact_steps": 0,
@@ -411,9 +411,9 @@
       "safety_interventions": 106,
       "fault_injected": true,
       "control_runtime_us": {
-        "p50": 60.45,
-        "p95": 174.281,
-        "p99": 268.9808499999995
+        "p50": 56.457,
+        "p95": 126.9235,
+        "p99": 357.41839999999996
       }
     }
   ],
@@ -437,27 +437,30 @@
         ],
         "failures": [],
         "recoveries": 0,
-        "elapsed_s": 0.36038504799989823
+        "elapsed_s": 0.9642073539998819
       },
       "object_final": [
-        0.4513331167752322,
-        0.21794943592004304,
-        0.024848262917577017
+        0.4518395438712313,
+        0.22002776305148042,
+        0.02484826291757702
       ],
       "target": [
         0.45,
         0.22,
         0.025
       ],
-      "max_object_height_m": 0.20911431570084504,
-      "max_finger_contact_force_N": 2.9387907467732606,
-      "joint_tracking_rmse_rad": 0.02170085572841883,
+      "max_object_height_m": 0.20358062643649716,
+      "max_finger_contact_force_N": 3.0608126633213524,
+      "joint_tracking_rmse_rad": 0.021506986067139855,
       "control_runtime_us": {
-        "p50": 29.358,
-        "p95": 81.03939999999992,
-        "p99": 146.57609000000002
+        "p50": 100.659,
+        "p95": 232.11819999999992,
+        "p99": 387.03633000000013
       },
-      "simulation_time_s": 14.000000000001345
+      "simulation_time_s": 14.000000000001345,
+      "grasp_fault_injected": false,
+      "safety_interventions": 369,
+      "safety_latched_reason": null
     },
     {
       "status": "PASS_REAL_SIM",
@@ -478,27 +481,30 @@
         ],
         "failures": [],
         "recoveries": 0,
-        "elapsed_s": 0.3617121310001039
+        "elapsed_s": 1.0143452460001754
       },
       "object_final": [
-        0.452092066561911,
-        0.2177890600766734,
-        0.024848262917576976
+        0.4518643299839272,
+        0.22002803779216212,
+        0.024848262917577017
       ],
       "target": [
         0.45,
         0.22,
         0.025
       ],
-      "max_object_height_m": 0.20926205258665326,
-      "max_finger_contact_force_N": 3.093551648806165,
-      "joint_tracking_rmse_rad": 0.021391495050072398,
+      "max_object_height_m": 0.20354003527225267,
+      "max_finger_contact_force_N": 3.0608199075659406,
+      "joint_tracking_rmse_rad": 0.021251268468427325,
       "control_runtime_us": {
-        "p50": 29.467,
-        "p95": 78.54644999999992,
-        "p99": 137.59157000000016
+        "p50": 110.086,
+        "p95": 237.90014999999963,
+        "p99": 396.77
       },
-      "simulation_time_s": 14.000000000001345
+      "simulation_time_s": 14.000000000001345,
+      "grasp_fault_injected": false,
+      "safety_interventions": 327,
+      "safety_latched_reason": null
     },
     {
       "status": "PASS_REAL_SIM",
@@ -519,27 +525,30 @@
         ],
         "failures": [],
         "recoveries": 0,
-        "elapsed_s": 0.3797975160000533
+        "elapsed_s": 1.0252123260002008
       },
       "object_final": [
-        0.4519596788766391,
-        0.2178183205053523,
-        0.024848262917576962
+        0.45188990806354357,
+        0.2200278950572849,
+        0.024848262917576996
       ],
       "target": [
         0.45,
         0.22,
         0.025
       ],
-      "max_object_height_m": 0.20915132719141274,
-      "max_finger_contact_force_N": 3.0953694766853252,
-      "joint_tracking_rmse_rad": 0.021518447153247883,
+      "max_object_height_m": 0.20356253148460215,
+      "max_finger_contact_force_N": 3.0608199082352914,
+      "joint_tracking_rmse_rad": 0.02137055234410653,
       "control_runtime_us": {
-        "p50": 29.25,
-        "p95": 86.45,
-        "p99": 158.82566000000017
+        "p50": 109.457,
+        "p95": 246.70344999999955,
+        "p99": 422.24605000000054
       },
-      "simulation_time_s": 14.000000000001345
+      "simulation_time_s": 14.000000000001345,
+      "grasp_fault_injected": false,
+      "safety_interventions": 338,
+      "safety_latched_reason": null
     },
     {
       "status": "PASS_REAL_SIM",
@@ -560,27 +569,30 @@
         ],
         "failures": [],
         "recoveries": 0,
-        "elapsed_s": 0.3756630820000737
+        "elapsed_s": 1.0444483439996475
       },
       "object_final": [
-        0.4519367799115255,
-        0.2178234493694471,
-        0.024848262917577003
+        0.4518410849810374,
+        0.22002777075585642,
+        0.02484826291757705
       ],
       "target": [
         0.45,
         0.22,
         0.025
       ],
-      "max_object_height_m": 0.20917623276980216,
-      "max_finger_contact_force_N": 2.9414787718428483,
-      "joint_tracking_rmse_rad": 0.021594701052000485,
+      "max_object_height_m": 0.20356438213803546,
+      "max_finger_contact_force_N": 3.0608180011831045,
+      "joint_tracking_rmse_rad": 0.021419937087451404,
       "control_runtime_us": {
-        "p50": 29.25,
-        "p95": 83.09105000000001,
-        "p99": 146.14751000000015
+        "p50": 109.248,
+        "p95": 244.786,
+        "p99": 453.96314000000007
       },
-      "simulation_time_s": 14.000000000001345
+      "simulation_time_s": 14.000000000001345,
+      "grasp_fault_injected": false,
+      "safety_interventions": 357,
+      "safety_latched_reason": null
     },
     {
       "status": "PASS_REAL_SIM",
@@ -601,27 +613,30 @@
         ],
         "failures": [],
         "recoveries": 0,
-        "elapsed_s": 0.397400492000088
+        "elapsed_s": 1.1914636020001126
       },
       "object_final": [
-        0.45213690470320894,
-        0.21778799349413946,
-        0.024848262917576976
+        0.45181677030530387,
+        0.22002792516063835,
+        0.024848262917577
       ],
       "target": [
         0.45,
         0.22,
         0.025
       ],
-      "max_object_height_m": 0.20921866271792902,
-      "max_finger_contact_force_N": 2.9405409022021725,
-      "joint_tracking_rmse_rad": 0.021591942906069504,
+      "max_object_height_m": 0.2035589539598679,
+      "max_finger_contact_force_N": 3.0608174962718944,
+      "joint_tracking_rmse_rad": 0.021408746979697933,
       "control_runtime_us": {
-        "p50": 29.359,
-        "p95": 87.96605000000001,
-        "p99": 177.88409000000001
+        "p50": 120.036,
+        "p95": 289.73244999999986,
+        "p99": 532.5700600000034
       },
-      "simulation_time_s": 14.000000000001345
+      "simulation_time_s": 14.000000000001345,
+      "grasp_fault_injected": false,
+      "safety_interventions": 362,
+      "safety_latched_reason": null
     }
   ],
   "mobile_tasks": [
@@ -645,31 +660,34 @@
         ],
         "failures": [],
         "recoveries": 0,
-        "elapsed_s": 0.5544860009999866
+        "elapsed_s": 1.6268325910000385
       },
       "object_final": [
-        0.9496337425535013,
-        0.21696678934726232,
-        0.024848262917576976
+        0.9510003899710954,
+        0.2200959404685251,
+        0.024848262917576996
       ],
       "target": [
         0.95,
         0.22,
         0.025
       ],
-      "max_object_height_m": 0.2090304814760105,
-      "max_finger_contact_force_N": 5.0906276027210815,
-      "joint_tracking_rmse_rad": 0.02132439485850442,
+      "max_object_height_m": 0.20364498605424805,
+      "max_finger_contact_force_N": 5.724380343778932,
+      "joint_tracking_rmse_rad": 0.021371599713700146,
       "control_runtime_us": {
-        "p50": 30.225,
-        "p95": 80.44284999999992,
-        "p99": 154.94478999999941
+        "p50": 131.12,
+        "p95": 308.41375,
+        "p99": 553.1342499999989
       },
       "simulation_time_s": 17.260000000001313,
+      "grasp_fault_injected": false,
+      "safety_interventions": 261,
+      "safety_latched_reason": null,
       "base_final": [
-        0.4915838185815544,
-        0.0002962746003198556,
-        0.001511500345245628
+        0.4918412294367225,
+        3.653104882847382e-05,
+        -0.0003323672270819696
       ]
     },
     {
@@ -692,31 +710,34 @@
         ],
         "failures": [],
         "recoveries": 0,
-        "elapsed_s": 0.6230502810001326
+        "elapsed_s": 1.5682416590002504
       },
       "object_final": [
-        0.9498031684191391,
-        0.21694599045719903,
-        0.024848262917576983
+        0.9510444281428256,
+        0.22010029642901782,
+        0.024848262917577014
       ],
       "target": [
         0.95,
         0.22,
         0.025
       ],
-      "max_object_height_m": 0.2089229634780936,
-      "max_finger_contact_force_N": 5.182546290756325,
-      "joint_tracking_rmse_rad": 0.02110217996012565,
+      "max_object_height_m": 0.20364166079238064,
+      "max_finger_contact_force_N": 5.724381046220726,
+      "joint_tracking_rmse_rad": 0.021155162999757032,
       "control_runtime_us": {
-        "p50": 31.525,
-        "p95": 91.49339999999992,
-        "p99": 194.9370699999998
+        "p50": 127.4,
+        "p95": 296.3023499999999,
+        "p99": 506.0218899999993
       },
       "simulation_time_s": 17.260000000001313,
+      "grasp_fault_injected": false,
+      "safety_interventions": 168,
+      "safety_latched_reason": null,
       "base_final": [
-        0.49157659680992083,
-        0.00020945094985226357,
-        0.0015097134052587246
+        0.4918424671540125,
+        3.730953889072892e-05,
+        -0.00031976862655637813
       ]
     },
     {
@@ -739,31 +760,34 @@
         ],
         "failures": [],
         "recoveries": 0,
-        "elapsed_s": 0.6083305970000765
+        "elapsed_s": 1.5727145249998102
       },
       "object_final": [
-        0.9496980414606189,
-        0.21695083951137997,
-        0.02484826291757702
+        0.9510331758487123,
+        0.22009894418430354,
+        0.024848262917576993
       ],
       "target": [
         0.95,
         0.22,
         0.025
       ],
-      "max_object_height_m": 0.2089813683022547,
-      "max_finger_contact_force_N": 5.164101986047973,
-      "joint_tracking_rmse_rad": 0.021191783515319345,
+      "max_object_height_m": 0.2036436559342951,
+      "max_finger_contact_force_N": 5.7243812625873005,
+      "joint_tracking_rmse_rad": 0.021247502048725636,
       "control_runtime_us": {
-        "p50": 30.983,
-        "p95": 89.158,
-        "p99": 189.8773899999999
+        "p50": 127.4,
+        "p95": 297.4943499999999,
+        "p99": 508.51671000000005
       },
       "simulation_time_s": 17.260000000001313,
+      "grasp_fault_injected": false,
+      "safety_interventions": 192,
+      "safety_latched_reason": null,
       "base_final": [
-        0.49154690777912047,
-        0.00022790061701646617,
-        0.00150116928982275
+        0.491844403687694,
+        3.729858411130474e-05,
+        -0.00032393626279600375
       ]
     },
     {
@@ -786,31 +810,34 @@
         ],
         "failures": [],
         "recoveries": 0,
-        "elapsed_s": 0.6773452170000382
+        "elapsed_s": 1.5479757460002475
       },
       "object_final": [
-        0.9497674696416252,
-        0.2169589509664369,
-        0.02484826291757696
+        0.9510066101922287,
+        0.22009813064147832,
+        0.02484826291757701
       ],
       "target": [
         0.95,
         0.22,
         0.025
       ],
-      "max_object_height_m": 0.20897060657329203,
-      "max_finger_contact_force_N": 5.675829325108884,
-      "joint_tracking_rmse_rad": 0.021247990837935743,
+      "max_object_height_m": 0.20364383735060454,
+      "max_finger_contact_force_N": 5.724380688954831,
+      "joint_tracking_rmse_rad": 0.021299141184045783,
       "control_runtime_us": {
-        "p50": 32.716,
-        "p95": 97.77639999999992,
-        "p99": 227.58449999999831
+        "p50": 124.908,
+        "p95": 294.46079999999984,
+        "p99": 494.89167999999876
       },
       "simulation_time_s": 17.260000000001313,
+      "grasp_fault_injected": false,
+      "safety_interventions": 236,
+      "safety_latched_reason": null,
       "base_final": [
-        0.4915259624704271,
-        0.0002778093817938923,
-        0.0015822631268180897
+        0.49184066834037043,
+        3.7078281802071105e-05,
+        -0.0003264513958020604
       ]
     },
     {
@@ -833,31 +860,34 @@
         ],
         "failures": [],
         "recoveries": 0,
-        "elapsed_s": 0.5881749620000392
+        "elapsed_s": 1.5757326909997573
       },
       "object_final": [
-        0.9496120458584283,
-        0.21696180528289732,
-        0.024848262917576955
+        0.9510009418699721,
+        0.22009669586667174,
+        0.024848262917577045
       ],
       "target": [
         0.95,
         0.22,
         0.025
       ],
-      "max_object_height_m": 0.20894979963838736,
-      "max_finger_contact_force_N": 5.132725890778315,
-      "joint_tracking_rmse_rad": 0.02124656502295857,
+      "max_object_height_m": 0.20364337920002096,
+      "max_finger_contact_force_N": 5.724380752967038,
+      "joint_tracking_rmse_rad": 0.02129483716691916,
       "control_runtime_us": {
-        "p50": 31.308,
-        "p95": 81.575,
-        "p99": 147.88592999999906
+        "p50": 129.783,
+        "p95": 285.56655,
+        "p99": 460.05063999999794
       },
       "simulation_time_s": 17.260000000001313,
+      "grasp_fault_injected": false,
+      "safety_interventions": 246,
+      "safety_latched_reason": null,
       "base_final": [
-        0.4915598799722165,
-        0.00028260371851728536,
-        0.0015574027800546327
+        0.49184229378061356,
+        3.6882290080395567e-05,
+        -0.0003301629057853235
       ]
     }
   ],
@@ -868,11 +898,11 @@
       "seed": 7,
       "stiffness": 300.0,
       "admittance": false,
-      "steady_contact_force_mean_N": 8.524945715979014,
-      "steady_contact_force_std_N": 3.9258241945217424e-05,
+      "steady_contact_force_mean_N": 8.524948112701495,
+      "steady_contact_force_std_N": 3.999850471917764e-05,
       "force_target_N": null,
-      "force_rmse_N": 6.524945716097116,
-      "steady_position_error_m": 0.028416350755710786,
+      "force_rmse_N": 6.524948112824091,
+      "steady_position_error_m": 0.02841635854676881,
       "disturbance_joint2_torque_Nm": 2.0,
       "samples": 300,
       "simulation_time_s": 7.999999999999341
@@ -883,11 +913,11 @@
       "seed": 17,
       "stiffness": 300.0,
       "admittance": false,
-      "steady_contact_force_mean_N": 8.524944750954287,
-      "steady_contact_force_std_N": 3.8641825549990956e-05,
+      "steady_contact_force_mean_N": 8.524947597267039,
+      "steady_contact_force_std_N": 3.951904046105677e-05,
       "force_target_N": null,
-      "force_rmse_N": 6.524944751068706,
-      "steady_position_error_m": 0.028416295343275874,
+      "force_rmse_N": 6.524947597386715,
+      "steady_position_error_m": 0.028416301499617783,
       "disturbance_joint2_torque_Nm": 2.0,
       "samples": 300,
       "simulation_time_s": 7.999999999999341
@@ -898,11 +928,11 @@
       "seed": 27,
       "stiffness": 300.0,
       "admittance": false,
-      "steady_contact_force_mean_N": 8.52494966099758,
-      "steady_contact_force_std_N": 4.036208600646131e-05,
+      "steady_contact_force_mean_N": 8.524948042164706,
+      "steady_contact_force_std_N": 3.9868143579762966e-05,
       "force_target_N": null,
-      "force_rmse_N": 6.524949661122414,
-      "steady_position_error_m": 0.028416342691243567,
+      "force_rmse_N": 6.524948042286506,
+      "steady_position_error_m": 0.028416334727632508,
       "disturbance_joint2_torque_Nm": 2.0,
       "samples": 300,
       "simulation_time_s": 7.999999999999341
@@ -913,11 +943,11 @@
       "seed": 37,
       "stiffness": 300.0,
       "admittance": false,
-      "steady_contact_force_mean_N": 8.524949787667278,
-      "steady_contact_force_std_N": 4.039151901285591e-05,
+      "steady_contact_force_mean_N": 8.524948169959462,
+      "steady_contact_force_std_N": 3.989802791283331e-05,
       "force_target_N": null,
-      "force_rmse_N": 6.524949787792296,
-      "steady_position_error_m": 0.02841634129571317,
+      "force_rmse_N": 6.524948170081444,
+      "steady_position_error_m": 0.028416333369288563,
       "disturbance_joint2_torque_Nm": 2.0,
       "samples": 300,
       "simulation_time_s": 7.999999999999341
@@ -928,11 +958,11 @@
       "seed": 47,
       "stiffness": 300.0,
       "admittance": false,
-      "steady_contact_force_mean_N": 8.52494647870172,
-      "steady_contact_force_std_N": 3.9317066854656674e-05,
+      "steady_contact_force_mean_N": 8.52494387704914,
+      "steady_contact_force_std_N": 3.8520682597149476e-05,
       "force_target_N": null,
-      "force_rmse_N": 6.524946478820175,
-      "steady_position_error_m": 0.0284163216085364,
+      "force_rmse_N": 6.524943877162845,
+      "steady_position_error_m": 0.028416311509592864,
       "disturbance_joint2_torque_Nm": 2.0,
       "samples": 300,
       "simulation_time_s": 7.999999999999341
@@ -943,11 +973,11 @@
       "seed": 7,
       "stiffness": 300.0,
       "admittance": true,
-      "steady_contact_force_mean_N": 1.9748572500291366,
-      "steady_contact_force_std_N": 0.016420976926159066,
+      "steady_contact_force_mean_N": 1.9748632747179642,
+      "steady_contact_force_std_N": 0.016416522987691386,
       "force_target_N": 2.0,
-      "force_rmse_N": 0.03003009089741155,
-      "steady_position_error_m": 0.006584536849297478,
+      "force_rmse_N": 0.030022611227372143,
+      "steady_position_error_m": 0.006584578452994876,
       "disturbance_joint2_torque_Nm": 2.0,
       "samples": 300,
       "simulation_time_s": 7.999999999999341
@@ -958,11 +988,11 @@
       "seed": 17,
       "stiffness": 300.0,
       "admittance": true,
-      "steady_contact_force_mean_N": 1.9749003531886402,
-      "steady_contact_force_std_N": 0.016387049069522652,
+      "steady_contact_force_mean_N": 1.9749064891621622,
+      "steady_contact_force_std_N": 0.016382390335297554,
       "force_target_N": 2.0,
-      "force_rmse_N": 0.02997545074326581,
-      "steady_position_error_m": 0.006584416833415885,
+      "force_rmse_N": 0.029967766003937447,
+      "steady_position_error_m": 0.006584453967687934,
       "disturbance_joint2_torque_Nm": 2.0,
       "samples": 300,
       "simulation_time_s": 7.999999999999341
@@ -973,11 +1003,11 @@
       "seed": 27,
       "stiffness": 300.0,
       "admittance": true,
-      "steady_contact_force_mean_N": 1.974869849245006,
-      "steady_contact_force_std_N": 0.016409874074246995,
+      "steady_contact_force_mean_N": 1.9748766256876642,
+      "steady_contact_force_std_N": 0.01640574449476676,
       "force_target_N": 2.0,
-      "force_rmse_N": 0.030013471043872277,
-      "steady_position_error_m": 0.006584519239066197,
+      "force_rmse_N": 0.030005539309689442,
+      "steady_position_error_m": 0.006584518904388885,
       "disturbance_joint2_torque_Nm": 2.0,
       "samples": 300,
       "simulation_time_s": 7.999999999999341
@@ -988,11 +1018,11 @@
       "seed": 37,
       "stiffness": 300.0,
       "admittance": true,
-      "steady_contact_force_mean_N": 1.974871054013083,
-      "steady_contact_force_std_N": 0.016408881608117817,
+      "steady_contact_force_mean_N": 1.9748778197909864,
+      "steady_contact_force_std_N": 0.016404759147423422,
       "force_target_N": 2.0,
-      "force_rmse_N": 0.03001191966606978,
-      "steady_position_error_m": 0.006584516118714813,
+      "force_rmse_N": 0.030004000752218266,
+      "steady_position_error_m": 0.006584515853353318,
       "disturbance_joint2_torque_Nm": 2.0,
       "samples": 300,
       "simulation_time_s": 7.999999999999341
@@ -1003,11 +1033,11 @@
       "seed": 47,
       "stiffness": 300.0,
       "admittance": true,
-      "steady_contact_force_mean_N": 1.9748790621922676,
-      "steady_contact_force_std_N": 0.016403325919398158,
+      "steady_contact_force_mean_N": 1.9748862413131931,
+      "steady_contact_force_std_N": 0.01639915177418137,
       "force_target_N": 2.0,
-      "force_rmse_N": 0.03000217688031934,
-      "steady_position_error_m": 0.006584469164322493,
+      "force_rmse_N": 0.02999388361469406,
+      "steady_position_error_m": 0.006584464095120419,
       "disturbance_joint2_torque_Nm": 2.0,
       "samples": 300,
       "simulation_time_s": 7.999999999999341
@@ -1018,9 +1048,9 @@
     "success_rate": 1.0,
     "error_max_m": 0.00019888938345446455,
     "runtime_ms": {
-      "p50": 5.5483465,
-      "p95": 14.692752350000001,
-      "p99": 15.565255910000001
+      "p50": 4.2923285,
+      "p95": 6.786897849999999,
+      "p99": 7.635047410000001
     }
   }
 }
