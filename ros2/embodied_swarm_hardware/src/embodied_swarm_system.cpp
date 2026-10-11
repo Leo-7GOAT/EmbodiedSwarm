@@ -52,7 +52,13 @@ std::vector<hardware_interface::StateInterface> EmbodiedSwarmSystem::export_stat
 std::vector<hardware_interface::CommandInterface> EmbodiedSwarmSystem::export_command_interfaces() {
   std::vector<hardware_interface::CommandInterface> out; for(size_t i=0;i<7;++i) out.emplace_back(info_.joints[i].name,"position",&commands_[i]); return out;
 }
-EmbodiedSwarmSystem::CallbackReturn EmbodiedSwarmSystem::on_activate(const rclcpp_lifecycle::State &) {commands_=positions_; last_state_=std::chrono::steady_clock::now(); return CallbackReturn::SUCCESS;}
+EmbodiedSwarmSystem::CallbackReturn EmbodiedSwarmSystem::on_activate(const rclcpp_lifecycle::State &) {
+  commands_=positions_; last_state_=std::chrono::steady_clock::now();
+  // The initialized pose is not feedback. Require an explicit reset after a
+  // fresh physics packet, even when DDS discovery outlasts controller startup.
+  if (backend_=="mujoco") { received_=false; stopped_=true; }
+  return CallbackReturn::SUCCESS;
+}
 EmbodiedSwarmSystem::CallbackReturn EmbodiedSwarmSystem::on_deactivate(const rclcpp_lifecycle::State &) {commands_=positions_; stopped_=true; return CallbackReturn::SUCCESS;}
 hardware_interface::return_type EmbodiedSwarmSystem::read(const rclcpp::Time &, const rclcpp::Duration & period) {
   rclcpp::spin_some(node_);

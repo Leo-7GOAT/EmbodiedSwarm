@@ -87,6 +87,23 @@ class Acceptance(Node):
         assert client.wait_for_service(timeout_sec=10), name
         return self.wait(client.call_async(request))
 
+    def wait_startup_reset(self, timeout=10):
+        # JointStateBroadcaster can publish the initialized pose before the
+        # hardware's separate physics subscription receives its first packet.
+        # Only the hardware service can confirm its own accepted fresh state.
+        client = self.create_client(Trigger, '/hardware/reset_safety')
+        deadline = time.monotonic() + timeout
+        assert client.wait_for_service(timeout_sec=timeout), 'Hardware reset service required'
+        attempts, rejected = 0, []
+        while time.monotonic() < deadline:
+            result = self.wait(client.call_async(Trigger.Request()), timeout=max(.01, deadline-time.monotonic()))
+            attempts += 1
+            if result.success:
+                return {'attempts': attempts, 'rejected_responses': rejected}
+            rejected.append(result.message)
+            self.pump(min(.02, max(0, deadline-time.monotonic())))
+        raise TimeoutError(f'Hardware startup reset never accepted fresh physics state: {rejected}')
+
     def action(self, typ, name, goal, timeout=30):
         client = ActionClient(self, typ, name)
         assert client.wait_for_server(timeout_sec=20), name
@@ -99,7 +116,7 @@ class Acceptance(Node):
         full_names = names + ['panda_finger_joint1', 'panda_finger_joint2']
         self.wait_until(lambda: self.fresh_complete_state(full_names), 'fresh complete Panda JointState')
         self.wait_active_controllers(('joint_state_broadcaster', 'panda_arm_controller'))
-        assert self.service(Trigger, '/hardware/reset_safety', Trigger.Request()).success
+        startup_reset = self.wait_startup_reset()
         self.wait_until(lambda: self.status == f'ACTIVE_{self.backend}' and self.fresh_complete_state(full_names), 'fresh active startup hold')
         self.wait_until(lambda: self.tf.can_transform('panda_link0', 'panda_link8', rclpy.time.Time()), 'Panda TF chain')
         transform = self.tf.lookup_transform('panda_link0', 'panda_link8', rclpy.time.Time())
@@ -193,6 +210,7 @@ class Acceptance(Node):
                 'final_joint_error_rad': error, 'max_joint_error_rad': max(abs(e) for e in error),
                 'tf2_pass': True, 'invalid_action_rejected': True, 'software_estop_reset_pass': True,
                 'startup_state_validity_pass': validity.valid, 'startup_home_max_error_rad': startup_error,
+                'startup_hardware_reset': startup_reset,
                 'estop_trajectory_failure_code': failed.result.error_code, 'state_timeout_reset_rejection_recovery': stale_state_pass,
                 'ros_vs_physics_joint_max_error_rad': physics_match,
                 'latency_ms': stats(self.latencies), 'sample_count': len(self.latencies),
