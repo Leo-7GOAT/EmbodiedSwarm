@@ -1,0 +1,8 @@
+{
+  "status": "PASS_STRICT_EVIDENCE",
+  "json_files": 129,
+  "records": 74648,
+  "navigation_successes": 20,
+  "deliberate_safe_aborts": 5,
+  "restorable_nan_packets": 5
+}

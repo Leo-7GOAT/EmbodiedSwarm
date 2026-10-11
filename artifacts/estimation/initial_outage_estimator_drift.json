@@ -1,0 +1,42 @@
+{
+  "status": "PASS_REAL_SIM",
+  "navigation_status": "ABORTED",
+  "seed": 7,
+  "scenario": "outage",
+  "mujoco": "3.12.0",
+  "controller_feedback": "EncoderImuEKF only; truth offline evaluation",
+  "sensor_provenance": "MuJoCo gyro/accelerometer/velocimeter with simulated noise, virtual encoder count quantization",
+  "steps": 277,
+  "position_estimation_rmse_m": 0.039111161806002166,
+  "yaw_estimation_rmse_rad": 0.009192523244863105,
+  "path_tracking_rmse_m": 0.03697347088637265,
+  "final_goal_error_m": 2.202523900981135,
+  "final_speed_m_s": 0.0007378453992126991,
+  "obstacle_contact_steps": 0,
+  "packets_accepted": 228,
+  "packets_rejected": {},
+  "dropped_packets": 50,
+  "safety_latched_reason": "estimator_sensor_timeout",
+  "gyro_bias_final_rad_s": 0.02476338051476014,
+  "calibration": {
+    "status": "PASS_SIMULATED_CALIBRATION",
+    "gyro_z_bias_rad_s": 0.024657158988428688,
+    "gyro_z_noise_std_rad_s": 0.0036217970236741615,
+    "standard_error_rad_s": 0.0002560997235521254,
+    "samples": 200,
+    "inliers": 200,
+    "provenance": "MuJoCo IMU plus injected simulated noise; not a hardware calibration"
+  },
+  "simulation_time_s": 2.7699999999996954,
+  "estimator_runtime_us": {
+    "p50": 201.825,
+    "p95": 297.3536,
+    "p99": 395.90200000000056
+  },
+  "acceptance": {
+    "navigation_goal_m": 0.085,
+    "tracking_rmse_m": 0.08,
+    "estimation_position_rmse_m": 0.06,
+    "outage_stop_speed_m_s": 0.01
+  }
+}
