@@ -1,5 +1,7 @@
 # Milestones
 
+> Historical roadmap and foundation checkpoint. See [FINAL_DELIVERY_REPORT](FINAL_DELIVERY_REPORT.md) for the current sixteen-milestone acceptance matrix and remaining work.
+
 ## Completed foundation
 
 - **W01:** validated robot state/command models and deterministic mock hardware.

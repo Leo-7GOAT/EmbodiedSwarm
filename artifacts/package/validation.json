@@ -1,0 +1,16 @@
+{
+  "status": "PASS_REAL_SIM",
+  "wheel_sha256": "44aed2d782dc23ebc7863fba4410a1c157fb4e2bf4349bfefc0b567466e4d313",
+  "wheel_size_bytes": 5134270,
+  "installed_asset": "/tmp/embodied-wheel-check/share/embodied_swarm/assets/mjcf/mobile_panda.xml",
+  "model_nq": [
+    16,
+    19
+  ],
+  "stepped_time_s": [
+    0.020000000000000004,
+    0.020000000000000004
+  ],
+  "source_checkout_imported": false,
+  "dependencies": "isolated venv reuses installed system simulation packages; no dependency resolver test"
+}

@@ -1,5 +1,7 @@
 # EmbodiedSwarm architecture and interface contracts
 
+> Historical W01–W04 baseline description. Current implementation and acceptance boundaries are documented in [README](../README.md) and [FINAL_DELIVERY_REPORT](FINAL_DELIVERY_REPORT.md); later ROS2, safety and manipulation work is not reflected in the original sections below.
+
 ## Layer boundary
 
 ```text
