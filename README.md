@@ -11,9 +11,21 @@ The stack turns a task into a navigation path, bounded arm motion, actuator comm
 
 [Baseline audit](docs/BASELINE_AUDIT.md) · [Benchmark](docs/SIMULATION_BENCHMARK.md) · [Sensor estimation](docs/STATE_ESTIMATION_ACCEPTANCE.md) · [Behavior tree](docs/BT_ACCEPTANCE.md) · [Hardware guide](docs/HARDWARE_READINESS.md) · [Delivery matrix](docs/FINAL_DELIVERY_REPORT.md) · [Interview guide](docs/INTERVIEW_TECHNICAL_GUIDE.md) · [ROS2 evidence](docs/ROS2_ACCEPTANCE.md)
 
-![Actual MuJoCo mobile Panda contact grasp](artifacts/physical/mobile_task_visual_seed_7.png)
+## Watch the real MuJoCo tests
 
-[Actual NAV → GRASP → PLACE GIF](artifacts/physical/mobile_task_visual_seed_7.gif) · [Navigation GIF](artifacts/physical/navigation_obstacle_seed_7.gif) · [Fixed-base grasp GIF](artifacts/physical/pick_place_seed_7.gif)
+Actual engine-rendered recordings, shown inline as looping GIFs. Motion uses force/position actuators and physical contacts; objects are not welded to the fingers or teleported during execution. These are separate experiments with the boundaries stated below.
+
+| **Navigate → grasp → place · seed 7** | **Navigation around an obstacle · seed 7** |
+|---|---|
+| ![Real MuJoCo mobile Panda navigation and contact grasp-place](artifacts/physical/mobile_task_visual_seed_7.gif) | ![Real MuJoCo force-driven navigation around an obstacle](artifacts/physical/navigation_obstacle_seed_7.gif) |
+| The base approaches, the Panda physically grips/lifts the free object, then releases at the goal. **5/5** mobile tasks pass; fixed straight approach, truth object localization. [Task metrics](artifacts/physical/mobile_task_visual_seed_7.json). | A* and pure pursuit drive the force-actuated base around an inflated static obstacle. **5/5** obstacle runs pass with zero obstacle-contact steps. [Run metrics](artifacts/physical/navigation_obstacle_seed_7.json). |
+
+| **Fixed-base contact grasp/place · seed 7** | **Failed grasp → fresh localization → retry · seed 7** |
+|---|---|
+| ![Real MuJoCo Panda finger-contact lift and place](artifacts/physical/pick_place_seed_7.gif) | ![Real MuJoCo behavior-tree failed-grasp recovery](artifacts/bt/recover_seed_7.gif) |
+| Seven arm joints and two fingers grip, lift, move and release the object. **5/5** fixed-arm tasks pass actual contact/lift/place gates. [Run metrics](artifacts/physical/pick_place_seed_7.json). | First attempt deliberately keeps the fingers open: **zero contacts**. The BT re-queries the object, retreats, re-localizes and physically regrips. **5/5** recovery cases pass. [Recovery metrics](artifacts/bt/recover_seed_7.json) · [Tree events](artifacts/bt/recover_seed_7_tree.json). |
+
+The mobile scene, navigation benchmark, fixed-arm task and BT recovery run do not imply one combined ROS-controlled mobile task. Full integration remains a separate acceptance item.
 
 ## Architecture
 

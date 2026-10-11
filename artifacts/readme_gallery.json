@@ -1,0 +1,45 @@
+{
+  "status": "PASS_ANIMATED_GALLERY",
+  "project": "EmbodiedSwarm",
+  "source_checkpoint": "93276d6bd9bf306be472ba2bc5f0d7c530eedce3",
+  "inline_gif_count": 4,
+  "assets": [
+    {
+      "path": "artifacts/physical/mobile_task_visual_seed_7.gif",
+      "sha256": "a527887c211801954d412a1f6cd6c398340fa023b93344d6217516154f6d3005",
+      "bytes": 6856515,
+      "frames": 173,
+      "display_duration_ms": 17300,
+      "distinct_sampled_frames": 3,
+      "source": "Actual simulator recording decoded for gallery QA; target asset pixels were not edited during QA"
+    },
+    {
+      "path": "artifacts/physical/navigation_obstacle_seed_7.gif",
+      "sha256": "64b00ff081adef2e85fe586379fd690a9911aeadc126533e9b1881b3f467d1e2",
+      "bytes": 3808024,
+      "frames": 116,
+      "display_duration_ms": 11600,
+      "distinct_sampled_frames": 3,
+      "source": "Actual simulator recording decoded for gallery QA; target asset pixels were not edited during QA"
+    },
+    {
+      "path": "artifacts/physical/pick_place_seed_7.gif",
+      "sha256": "d23661981c182105c549f5465dbc3bca0d9639051b261aa8fe9725610d84b297",
+      "bytes": 5474982,
+      "frames": 140,
+      "display_duration_ms": 14000,
+      "distinct_sampled_frames": 3,
+      "source": "Actual simulator recording decoded for gallery QA; target asset pixels were not edited during QA"
+    },
+    {
+      "path": "artifacts/bt/recover_seed_7.gif",
+      "sha256": "87faafdf53054e6986444f9387414dd14f2a5f396acb8e84c4a0d9792b1a8f3d",
+      "bytes": 6955640,
+      "frames": 182,
+      "display_duration_ms": 19000,
+      "distinct_sampled_frames": 3,
+      "source": "Actual simulator recording decoded for gallery QA; target asset pixels were not edited during QA"
+    }
+  ],
+  "scope": "Frame decoding/motion/hash verification plus contact-sheet visual inspection; existing experiment acceptance gates unchanged"
+}

@@ -1,9 +1,9 @@
 {
   "status": "PASS_PUBLICATION_AUDIT",
-  "source_checkpoint": "e2fb53399092f6a42df4346ef0ba2f1e3073505c",
-  "evaluated_files": 671,
-  "credential_pattern_scan_files": 541,
-  "local_markdown_links": 59,
+  "source_checkpoint": "93276d6bd9bf306be472ba2bc5f0d7c530eedce3",
+  "evaluated_files": 672,
+  "credential_pattern_scan_files": 542,
+  "local_markdown_links": 64,
   "readme_language": "ENGLISH",
   "detailed_ledger_counts": {
     "PASS_UNIT": 63,
