@@ -35,6 +35,10 @@ if(BUILD_TESTING)
   find_package(ament_cmake_gtest REQUIRED)
   find_package(ament_cmake_pytest REQUIRED)
   ament_add_pytest_test(test_bridge_initialization test/test_bridge_initialization.py TIMEOUT 60)
+  # This test uses plain pytest and actual MuJoCo, not launch_testing. Humble's
+  # globally installed launch_testing plugin has an incompatible pytest 9 hook;
+  # isolate optional entry-point plugins instead of skipping any test cases.
+  set_tests_properties(test_bridge_initialization PROPERTIES ENVIRONMENT "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1")
   ament_add_gtest(test_system test/test_system.cpp)
   set_tests_properties(test_system PROPERTIES ENVIRONMENT "ROS_DOMAIN_ID=75;ROS_LOCALHOST_ONLY=1")
   target_link_libraries(test_system ${PROJECT_NAME})
