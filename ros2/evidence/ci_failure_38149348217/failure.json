@@ -1,0 +1,7 @@
+{
+  "status": "FAIL",
+  "backend": "mujoco",
+  "started_unix_ns": 1791730847296468703,
+  "error": "RuntimeError: Acceptance exited 1",
+  "finished_unix_ns": 1791730849026221434
+}

@@ -1,0 +1,16 @@
+
+Files:             bag_1791731390116227699_0.db3
+Bag size:          572.1 KiB
+Storage id:        sqlite3
+Duration:          4.126197801s
+Start:             Oct 11 2026 23:09:50.802606587 (1791731390.802606587)
+End:               Oct 11 2026 23:09:54.928804388 (1791731394.928804388)
+Messages:          2008
+Topic information: Topic: /mujoco/joint_states | Type: sensor_msgs/msg/JointState | Count: 325 | Serialization Format: cdr
+                   Topic: /joint_states | Type: sensor_msgs/msg/JointState | Count: 377 | Serialization Format: cdr
+                   Topic: /tf_static | Type: tf2_msgs/msg/TFMessage | Count: 2 | Serialization Format: cdr
+                   Topic: /tf | Type: tf2_msgs/msg/TFMessage | Count: 66 | Serialization Format: cdr
+                   Topic: /mujoco/joint_commands | Type: sensor_msgs/msg/JointState | Count: 412 | Serialization Format: cdr
+                   Topic: /hardware/safety_status | Type: std_msgs/msg/String | Count: 413 | Serialization Format: cdr
+                   Topic: /hardware/control_period | Type: std_msgs/msg/Float64 | Count: 413 | Serialization Format: cdr
+

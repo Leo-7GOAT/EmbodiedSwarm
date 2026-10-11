@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/github/home/embodied_acceptance_ws/install/embodied_swarm_hardware/lib/embodied_swarm_hardware/acceptance.py", line 225, in <module>
+    main()
+  File "/github/home/embodied_acceptance_ws/install/embodied_swarm_hardware/lib/embodied_swarm_hardware/acceptance.py", line 216, in main
+    result = node.run()
+  File "/github/home/embodied_acceptance_ws/install/embodied_swarm_hardware/lib/embodied_swarm_hardware/acceptance.py", line 102, in run
+    assert self.service(Trigger, '/hardware/reset_safety', Trigger.Request()).success
+AssertionError
+[ros2run]: Process exited with failure 1

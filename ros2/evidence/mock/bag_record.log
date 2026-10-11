@@ -1,14 +1,14 @@
-stdin is not a terminal device. Keyboard handling disabled.[INFO] [1791730209.743828357] [rosbag2_recorder]: Press SPACE for pausing/resuming
-[INFO] [1791730209.765751057] [rosbag2_storage]: Opened database '/mnt/c/Users/Leo/Desktop/project/EmbodiedSwarm/ros2/evidence/mock/bag_1791730209573752855/bag_1791730209573752855_0.db3' for READ_WRITE.
-[INFO] [1791730209.767829357] [rosbag2_recorder]: Listening for topics...
-[INFO] [1791730209.767867457] [rosbag2_recorder]: Event publisher thread: Starting
-[INFO] [1791730209.768343757] [rosbag2_recorder]: Recording...
-[INFO] [1791730209.973046961] [rosbag2_recorder]: Subscribed to topic '/hardware/control_period'
-[INFO] [1791730209.976468061] [rosbag2_recorder]: Subscribed to topic '/hardware/safety_status'
-[INFO] [1791730209.986624861] [rosbag2_recorder]: Subscribed to topic '/mujoco/joint_commands'
-[INFO] [1791730209.996182161] [rosbag2_recorder]: Subscribed to topic '/tf'
-[INFO] [1791730210.008366061] [rosbag2_recorder]: Subscribed to topic '/tf_static'
-[INFO] [1791730210.314919066] [rosbag2_recorder]: Subscribed to topic '/joint_states'
-[INFO] [1791730214.234016366] [rosbag2_cpp]: Writing remaining messages from cache to the bag. It may take a while
-[INFO] [1791730214.238361723] [rosbag2_recorder]: Event publisher thread: Exiting
-[INFO] [1791730214.238838065] [rosbag2_recorder]: Recording stopped
+stdin is not a terminal device. Keyboard handling disabled.[INFO] [1791731260.744787500] [rosbag2_recorder]: Press SPACE for pausing/resuming
+[INFO] [1791731260.772094379] [rosbag2_storage]: Opened database '/mnt/c/Users/Leo/Desktop/project/EmbodiedSwarm/ros2/evidence/mock/bag_1791731260574675388/bag_1791731260574675388_0.db3' for READ_WRITE.
+[INFO] [1791731260.774372701] [rosbag2_recorder]: Listening for topics...
+[INFO] [1791731260.774386507] [rosbag2_recorder]: Event publisher thread: Starting
+[INFO] [1791731260.774962001] [rosbag2_recorder]: Recording...
+[INFO] [1791731261.080489088] [rosbag2_recorder]: Subscribed to topic '/hardware/control_period'
+[INFO] [1791731261.085659499] [rosbag2_recorder]: Subscribed to topic '/hardware/safety_status'
+[INFO] [1791731261.090806053] [rosbag2_recorder]: Subscribed to topic '/mujoco/joint_commands'
+[INFO] [1791731261.100584476] [rosbag2_recorder]: Subscribed to topic '/tf'
+[INFO] [1791731261.105942082] [rosbag2_recorder]: Subscribed to topic '/tf_static'
+[INFO] [1791731261.311012939] [rosbag2_recorder]: Subscribed to topic '/joint_states'
+[INFO] [1791731264.427824403] [rosbag2_cpp]: Writing remaining messages from cache to the bag. It may take a while
+[INFO] [1791731264.431913973] [rosbag2_recorder]: Event publisher thread: Exiting
+[INFO] [1791731264.432354755] [rosbag2_recorder]: Recording stopped

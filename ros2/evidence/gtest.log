@@ -4,7 +4,7 @@ Parse Config file:/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware
    Site: DESKTOP-RHN5IE9
    Build name: (empty)
  Add coverage exclude regular expressions.
-Create new tag: 20261011-1450 - Experimental
+Create new tag: 20261011-1507 - Experimental
 UpdateCTestConfiguration  from :/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/CTestConfiguration.ini
 Parse Config file:/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/CTestConfiguration.ini
 Test project /home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware
@@ -18,6 +18,8 @@ test 1
     Start 1: test_bridge_initialization
 
 1: Test command: /usr/bin/python3 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/test_results/embodied_swarm_hardware/test_bridge_initialization.xunit.xml" "--package-name" "embodied_swarm_hardware" "--output-file" "/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/ament_cmake_pytest/test_bridge_initialization.txt" "--command" "/usr/bin/python3" "-u" "-m" "pytest" "/home/leo/embodied_acceptance_ws/src/embodied_swarm_hardware/test/test_bridge_initialization.py" "-o" "cache_dir=/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/ament_cmake_pytest/test_bridge_initialization/.cache" "--junit-xml=/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/test_results/embodied_swarm_hardware/test_bridge_initialization.xunit.xml" "--junit-prefix=embodied_swarm_hardware"
+1: Environment variables: 
+1:  PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 1: Test timeout computed to be: 60
 1: -- run_test.py: invoking following command in '/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware':
 1:  - /usr/bin/python3 -u -m pytest /home/leo/embodied_acceptance_ws/src/embodied_swarm_hardware/test/test_bridge_initialization.py -o cache_dir=/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/ament_cmake_pytest/test_bridge_initialization/.cache --junit-xml=/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/test_results/embodied_swarm_hardware/test_bridge_initialization.xunit.xml --junit-prefix=embodied_swarm_hardware
@@ -25,7 +27,6 @@ test 1
 1: platform linux -- Python 3.10.12, pytest-6.2.5, py-1.10.0, pluggy-0.13.0
 1: cachedir: build/embodied_swarm_hardware/ament_cmake_pytest/test_bridge_initialization/.cache
 1: rootdir: /home/leo/embodied_acceptance_ws
-1: plugins: ament-flake8-0.12.15, ament-lint-0.12.15, launch-testing-ros-0.19.13, launch-testing-1.0.14, ament-pep257-0.12.15, ament-xmllint-0.12.15, ament-copyright-0.12.15, cov-3.0.0, colcon-core-0.20.1
 1: collected 4 items
 1: 
 1: ../../src/embodied_swarm_hardware/test/test_bridge_initialization.py ... [ 75%]
@@ -33,14 +34,15 @@ test 1
 1: 
 1: =============================== warnings summary ===============================
 1: ../../../../../opt/ros/humble/local/lib/python3.10/dist-packages/xacro/__init__.py:115
-1:   Warning: private variables, such as '_ConstructUnits__ConstructUnitsValue', will be normal attributes in 3.11
+1:   /opt/ros/humble/local/lib/python3.10/dist-packages/xacro/__init__.py:115: DeprecationWarning: private variables, such as '_ConstructUnits__ConstructUnitsValue', will be normal attributes in 3.11
+1:     __ConstructUnitsValue = collections.namedtuple('__ConstructUnitsValue', ['tag', 'conversion_constant'])
 1: 
 1: -- Docs: https://docs.pytest.org/en/stable/warnings.html
 1: - generated xml file: /home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/test_results/embodied_swarm_hardware/test_bridge_initialization.xunit.xml -
 1: ========================= 4 passed, 1 warning in 1.43s =========================
 1: -- run_test.py: return code 0
 1: -- run_test.py: verify result file '/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/test_results/embodied_swarm_hardware/test_bridge_initialization.xunit.xml'
-1/2 Test #1: test_bridge_initialization .......   Passed    1.85 sec
+1/2 Test #1: test_bridge_initialization .......   Passed    1.63 sec
 test 2
     Start 2: test_system
 
@@ -52,30 +54,32 @@ test 2
 2: -- run_test.py: invoking following command in '/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware':
 2:  - /home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/test_system --gtest_output=xml:/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/test_results/embodied_swarm_hardware/test_system.gtest.xml
 2: Running main() from /opt/ros/humble/src/gtest_vendor/src/gtest_main.cc
-2: [==========] Running 2 tests from 1 test suite.
+2: [==========] Running 3 tests from 1 test suite.
 2: [----------] Global test environment set-up.
-2: [----------] 2 tests from Hardware
+2: [----------] 3 tests from Hardware
 2: [ RUN      ] Hardware.RejectsMalformedConfig
-2: [       OK ] Hardware.RejectsMalformedConfig (1 ms)
+2: [       OK ] Hardware.RejectsMalformedConfig (0 ms)
 2: [ RUN      ] Hardware.MockRateAndInvalidCommandLatch
-2: [       OK ] Hardware.MockRateAndInvalidCommandLatch (42 ms)
-2: [----------] 2 tests from Hardware (43 ms total)
+2: [       OK ] Hardware.MockRateAndInvalidCommandLatch (38 ms)
+2: [ RUN      ] Hardware.PhysicsResetRequiresAcceptedFreshFeedback
+2: [       OK ] Hardware.PhysicsResetRequiresAcceptedFreshFeedback (371 ms)
+2: [----------] 3 tests from Hardware (409 ms total)
 2: 
 2: [----------] Global test environment tear-down
-2: [==========] 2 tests from 1 test suite ran. (43 ms total)
-2: [  PASSED  ] 2 tests.
+2: [==========] 3 tests from 1 test suite ran. (409 ms total)
+2: [  PASSED  ] 3 tests.
 2: -- run_test.py: return code 0
 2: -- run_test.py: inject classname prefix into gtest result file '/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/test_results/embodied_swarm_hardware/test_system.gtest.xml'
 2: -- run_test.py: verify result file '/home/leo/embodied_acceptance_ws/build/embodied_swarm_hardware/test_results/embodied_swarm_hardware/test_system.gtest.xml'
-2/2 Test #2: test_system ......................   Passed    0.21 sec
+2/2 Test #2: test_system ......................   Passed    0.58 sec
 
 100% tests passed, 0 tests failed out of 2
 
 Label Time Summary:
-gtest     =   0.21 sec*proc (1 test)
-pytest    =   1.85 sec*proc (1 test)
+gtest     =   0.58 sec*proc (1 test)
+pytest    =   1.63 sec*proc (1 test)
 
-Total Test time (real) =   2.06 sec
-Finished <<< embodied_swarm_hardware [2.26s]
+Total Test time (real) =   2.21 sec
+Finished <<< embodied_swarm_hardware [2.41s]
 
-Summary: 1 package finished [2.40s]
+Summary: 1 package finished [2.55s]

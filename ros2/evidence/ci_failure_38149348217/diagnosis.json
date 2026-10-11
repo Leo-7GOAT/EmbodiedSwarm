@@ -1,0 +1,19 @@
+{
+  "status": "PRESERVED_REAL_CI_FAILURE",
+  "run_id": 38149348217,
+  "source_commit": "af0a4db8529bb141e50292f0e32b9d2594a75dc1",
+  "source_blobs": {
+    "acceptance.py": "2843603401dd946f10065c1c1809bf08848e49e4",
+    "embodied_swarm_system.cpp": "8dd45419543e60328f97d9f44585f4c2e559b38d"
+  },
+  "failure": "Initial /hardware/reset_safety returned success=false before planning; acceptance.py line 102",
+  "root_cause": "The joint state broadcaster published its initialized URDF pose before the hardware transport accepted the first MuJoCo feedback packet. Observer freshness and active controllers do not prove hardware-subscriber feedback readiness. The reset service correctly refused the premature reset, but the acceptance client treated this expected startup condition as a final failure.",
+  "bag": "bag_1791730847297859438",
+  "first_joint_state_header_ns": 1791730848765856751,
+  "first_physics_state_header_ns": 1791730848873659291,
+  "physics_publication_delay_ms": 107.80254,
+  "fix": "Physical hardware starts in latched hold with feedback invalidated. Initial acceptance reset uses the authoritative real hardware service with a 10-second deadline, recording each rejection. Physical stale reset refusal, explicit reset recovery, bounds, freshness, collision and trajectory assertions are unchanged.",
+  "regression": "Actual C++ DDS verifies initialized pose alone cannot reset, stale feedback cannot reset, an accepted fresh packet can reset, and timeout rejects reset again. Complete real ROS mock and MuJoCo acceptance passed; MuJoCo startup reproduced five Fresh state required refusals before the sixth request succeeded.",
+  "artifact_archive": "C:/Users/Leo/.codex/backups/ros_ci_38149348217",
+  "reproduce_bag_extraction": "source /opt/ros/humble/setup.bash && python3 ros2/evidence/ci_failure_38149348217/analyze_startup.py /path/to/downloaded/ros2-moveit-mujoco"
+}

@@ -1,0 +1,145 @@
+{
+  "/joint_states": {
+    "count": 27,
+    "samples": [
+      {
+        "record_stamp_ns": 1791730848766180661,
+        "header_stamp_ns": 1791730848765856751,
+        "state": {
+          "panda_finger_joint1": 0.0,
+          "panda_joint1": 0.0,
+          "panda_joint2": -0.785398,
+          "panda_finger_joint2": 0.0,
+          "panda_joint3": 0.0,
+          "panda_joint4": -2.356194,
+          "panda_joint5": 0.0,
+          "panda_joint6": 1.570796,
+          "panda_joint7": 0.785398
+        }
+      },
+      {
+        "record_stamp_ns": 1791730848776654510,
+        "header_stamp_ns": 1791730848776146512,
+        "state": {
+          "panda_finger_joint1": 0.0,
+          "panda_joint1": 0.0,
+          "panda_joint2": -0.785398,
+          "panda_finger_joint2": 0.0,
+          "panda_joint3": 0.0,
+          "panda_joint4": -2.356194,
+          "panda_joint5": 0.0,
+          "panda_joint6": 1.570796,
+          "panda_joint7": 0.785398
+        }
+      },
+      {
+        "record_stamp_ns": 1791730849015977782,
+        "header_stamp_ns": 1791730849015805241,
+        "state": {
+          "panda_finger_joint1": 0.0,
+          "panda_joint1": 1.3746239239223366e-15,
+          "panda_joint2": -0.7853980000000003,
+          "panda_finger_joint2": 0.0,
+          "panda_joint3": 1.936895942031053e-15,
+          "panda_joint4": -2.356194,
+          "panda_joint5": 1.800168859489202e-15,
+          "panda_joint6": 1.570796,
+          "panda_joint7": 0.7853980000000002
+        }
+      },
+      {
+        "record_stamp_ns": 1791730849025973177,
+        "header_stamp_ns": 1791730849025797912,
+        "state": {
+          "panda_finger_joint1": 0.0,
+          "panda_joint1": -5.111728155870323e-16,
+          "panda_joint2": -0.7853980000000003,
+          "panda_finger_joint2": 0.0,
+          "panda_joint3": -3.353957519997888e-16,
+          "panda_joint4": -2.356194,
+          "panda_joint5": -1.2238055723414051e-15,
+          "panda_joint6": 1.570796,
+          "panda_joint7": 0.7853980000000002
+        }
+      }
+    ]
+  },
+  "/mujoco/joint_states": {
+    "count": 16,
+    "samples": [
+      {
+        "record_stamp_ns": 1791730848873858633,
+        "header_stamp_ns": 1791730848873659291,
+        "state": {
+          "panda_joint1": -2.739838476944454e-16,
+          "panda_joint2": -0.7853980000000003,
+          "panda_joint3": -2.697863792710915e-16,
+          "panda_joint4": -2.356194,
+          "panda_joint5": -6.371078787928641e-16,
+          "panda_joint6": 1.570796,
+          "panda_joint7": 0.7853980000000002
+        }
+      },
+      {
+        "record_stamp_ns": 1791730848883865345,
+        "header_stamp_ns": 1791730848883673465,
+        "state": {
+          "panda_joint1": -2.5241540443907938e-16,
+          "panda_joint2": -0.7853980000000003,
+          "panda_joint3": -4.013110634264921e-16,
+          "panda_joint4": -2.356194,
+          "panda_joint5": -1.681288545581066e-16,
+          "panda_joint6": 1.570796,
+          "panda_joint7": 0.7853980000000002
+        }
+      },
+      {
+        "record_stamp_ns": 1791730849013865215,
+        "header_stamp_ns": 1791730849013674867,
+        "state": {
+          "panda_joint1": 1.3746239239223366e-15,
+          "panda_joint2": -0.7853980000000003,
+          "panda_joint3": 1.936895942031053e-15,
+          "panda_joint4": -2.356194,
+          "panda_joint5": 1.800168859489202e-15,
+          "panda_joint6": 1.570796,
+          "panda_joint7": 0.7853980000000002
+        }
+      },
+      {
+        "record_stamp_ns": 1791730849023822903,
+        "header_stamp_ns": 1791730849023634209,
+        "state": {
+          "panda_joint1": -5.111728155870323e-16,
+          "panda_joint2": -0.7853980000000003,
+          "panda_joint3": -3.353957519997888e-16,
+          "panda_joint4": -2.356194,
+          "panda_joint5": -1.2238055723414051e-15,
+          "panda_joint6": 1.570796,
+          "panda_joint7": 0.7853980000000002
+        }
+      }
+    ]
+  },
+  "/hardware/safety_status": {
+    "count": 96,
+    "samples": [
+      {
+        "record_stamp_ns": 1791730848076074068,
+        "data": "ACTIVE_mujoco"
+      },
+      {
+        "record_stamp_ns": 1791730848086337519,
+        "data": "ACTIVE_mujoco"
+      },
+      {
+        "record_stamp_ns": 1791730849015973055,
+        "data": "SOFTWARE_ESTOP_HOLD"
+      },
+      {
+        "record_stamp_ns": 1791730849025964985,
+        "data": "SOFTWARE_ESTOP_HOLD"
+      }
+    ]
+  }
+}

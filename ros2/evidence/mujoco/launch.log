@@ -1,82 +1,83 @@
-[INFO] [launch]: All log files can be found below /home/leo/.ros/log/2026-10-11-22-50-17-839148-DESKTOP-RHN5IE9-773
+[INFO] [launch]: All log files can be found below /home/leo/.ros/log/2026-10-11-23-07-47-522891-DESKTOP-RHN5IE9-779
 [INFO] [launch]: Default logging verbosity is set to INFO
-[INFO] [static_transform_publisher-1]: process started with pid [794]
-[INFO] [robot_state_publisher-2]: process started with pid [796]
-[INFO] [ros2_control_node-3]: process started with pid [798]
-[INFO] [spawner-4]: process started with pid [800]
-[INFO] [spawner-5]: process started with pid [802]
-[INFO] [move_group-6]: process started with pid [804]
-[static_transform_publisher-1] [WARN] [1791730217.987410419] []: Old-style arguments are deprecated; see --help for new-style arguments
-[ros2_control_node-3] [WARN] [1791730218.004857635] [controller_manager]: [Deprecated] Passing the robot description parameter directly to the control_manager node is deprecated. Use '~/robot_description' topic from 'robot_state_publisher' instead.
-[ros2_control_node-3] [INFO] [1791730218.005223228] [resource_manager]: Loading hardware 'EmbodiedArm' 
-[robot_state_publisher-2] [INFO] [1791730218.005469861] [robot_state_publisher]: got segment panda_hand
-[robot_state_publisher-2] [INFO] [1791730218.005558780] [robot_state_publisher]: got segment panda_leftfinger
-[robot_state_publisher-2] [INFO] [1791730218.005573300] [robot_state_publisher]: got segment panda_link0
-[robot_state_publisher-2] [INFO] [1791730218.005577305] [robot_state_publisher]: got segment panda_link1
-[robot_state_publisher-2] [INFO] [1791730218.005580810] [robot_state_publisher]: got segment panda_link2
-[robot_state_publisher-2] [INFO] [1791730218.005584315] [robot_state_publisher]: got segment panda_link3
-[robot_state_publisher-2] [INFO] [1791730218.005587820] [robot_state_publisher]: got segment panda_link4
-[robot_state_publisher-2] [INFO] [1791730218.005593227] [robot_state_publisher]: got segment panda_link5
-[robot_state_publisher-2] [INFO] [1791730218.005596732] [robot_state_publisher]: got segment panda_link6
-[robot_state_publisher-2] [INFO] [1791730218.005600036] [robot_state_publisher]: got segment panda_link7
-[robot_state_publisher-2] [INFO] [1791730218.005603541] [robot_state_publisher]: got segment panda_link8
-[robot_state_publisher-2] [INFO] [1791730218.005606845] [robot_state_publisher]: got segment panda_rightfinger
-[ros2_control_node-3] [INFO] [1791730218.007022854] [resource_manager]: Initialize hardware 'EmbodiedArm' 
-[static_transform_publisher-1] [INFO] [1791730218.008846912] [static_transform_publisher_I0Tnz6rXLbmuTrex]: Spinning until stopped - publishing transform
+[INFO] [static_transform_publisher-1]: process started with pid [800]
+[INFO] [robot_state_publisher-2]: process started with pid [802]
+[INFO] [ros2_control_node-3]: process started with pid [804]
+[INFO] [spawner-4]: process started with pid [806]
+[INFO] [spawner-5]: process started with pid [808]
+[INFO] [move_group-6]: process started with pid [810]
+[static_transform_publisher-1] [WARN] [1791731267.649306820] []: Old-style arguments are deprecated; see --help for new-style arguments
+[static_transform_publisher-1] [INFO] [1791731267.665400711] [static_transform_publisher_k26zMpLbDDpL2xOs]: Spinning until stopped - publishing transform
 [static_transform_publisher-1] translation: ('0.000000', '0.000000', '0.000000')
 [static_transform_publisher-1] rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
 [static_transform_publisher-1] from 'world' to 'panda_link0'
-[move_group-6] [INFO] [1791730218.015525514] [moveit_rdf_loader.rdf_loader]: Loaded robot model in 0.00135803 seconds
-[move_group-6] [INFO] [1791730218.015580889] [moveit_robot_model.robot_model]: Loading robot model 'panda'...
-[ros2_control_node-3] [INFO] [1791730218.020601255] [resource_manager]: Successful initialization of hardware 'EmbodiedArm'
-[ros2_control_node-3] [INFO] [1791730218.020649220] [resource_manager]: Loading hardware 'MockHand' 
-[ros2_control_node-3] [INFO] [1791730218.020956935] [resource_manager]: Initialize hardware 'MockHand' 
-[ros2_control_node-3] [INFO] [1791730218.021005400] [resource_manager]: Successful initialization of hardware 'MockHand'
-[ros2_control_node-3] [INFO] [1791730218.021087110] [resource_manager]: 'configure' hardware 'MockHand' 
-[ros2_control_node-3] [INFO] [1791730218.021101529] [resource_manager]: Successful 'configure' of hardware 'MockHand'
-[ros2_control_node-3] [INFO] [1791730218.021106436] [resource_manager]: 'activate' hardware 'MockHand' 
-[ros2_control_node-3] [INFO] [1791730218.021110241] [resource_manager]: Successful 'activate' of hardware 'MockHand'
-[ros2_control_node-3] [INFO] [1791730218.021113846] [resource_manager]: 'configure' hardware 'EmbodiedArm' 
-[ros2_control_node-3] [INFO] [1791730218.021116850] [resource_manager]: Successful 'configure' of hardware 'EmbodiedArm'
-[ros2_control_node-3] [INFO] [1791730218.021128366] [resource_manager]: 'activate' hardware 'EmbodiedArm' 
-[ros2_control_node-3] [INFO] [1791730218.021135275] [resource_manager]: Successful 'activate' of hardware 'EmbodiedArm'
-[ros2_control_node-3] [INFO] [1791730218.030866992] [controller_manager]: update rate is 100 Hz
-[ros2_control_node-3] [INFO] [1791730218.030919462] [controller_manager]: Spawning controller_manager RT thread with scheduler priority: 50
-[ros2_control_node-3] [WARN] [1791730218.031074672] [controller_manager]: Could not enable FIFO RT scheduling policy: with error number <1>(Operation not permitted). See [https://control.ros.org/master/doc/ros2_control/controller_manager/doc/userdoc.html] for details on how to enable realtime scheduling.
-[move_group-6] [INFO] [1791730218.049604347] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
-[move_group-6] [INFO] [1791730218.049778782] [moveit.ros_planning_interface.moveit_cpp]: Listening to 'joint_states' for joint states
-[move_group-6] [INFO] [1791730218.051877210] [moveit_ros.current_state_monitor]: Listening to joint states on topic 'joint_states'
-[move_group-6] [INFO] [1791730218.052610198] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to '/attached_collision_object' for attached collision objects
-[move_group-6] [INFO] [1791730218.052639738] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Starting planning scene monitor
-[move_group-6] [INFO] [1791730218.053225527] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to '/planning_scene'
-[move_group-6] [INFO] [1791730218.053238445] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
-[move_group-6] [INFO] [1791730218.053823734] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to 'collision_object'
-[move_group-6] [INFO] [1791730218.054348441] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to 'planning_scene_world' for planning scene world geometry
-[move_group-6] [WARN] [1791730218.054453883] [moveit.ros.occupancy_map_monitor.middleware_handle]: Resolution not specified for Octomap. Assuming resolution = 0.1 instead
-[move_group-6] [ERROR] [1791730218.054467101] [moveit.ros.occupancy_map_monitor.middleware_handle]: No 3D sensor plugin(s) defined for octomap updates
-[move_group-6] [INFO] [1791730218.056339825] [moveit.ros_planning_interface.moveit_cpp]: Loading planning pipeline 'ompl'
-[move_group-6] [INFO] [1791730218.065276470] [moveit.ros_planning.planning_pipeline]: Using planning interface 'OMPL'
-[move_group-6] [INFO] [1791730218.066784603] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.path_tolerance' was not set. Using default value: 0.100000
-[move_group-6] [INFO] [1791730218.066820651] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.resample_dt' was not set. Using default value: 0.100000
-[move_group-6] [INFO] [1791730218.066828862] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.min_angle_change' was not set. Using default value: 0.001000
-[move_group-6] [INFO] [1791730218.066848789] [moveit_ros.fix_workspace_bounds]: Param 'ompl.default_workspace_bounds' was not set. Using default value: 10.000000
-[move_group-6] [INFO] [1791730218.066861707] [moveit_ros.fix_start_state_bounds]: Param 'ompl.start_state_max_bounds_error' was set to 0.100000
-[move_group-6] [INFO] [1791730218.066866313] [moveit_ros.fix_start_state_bounds]: Param 'ompl.start_state_max_dt' was not set. Using default value: 0.500000
-[move_group-6] [INFO] [1791730218.066881633] [moveit_ros.fix_start_state_collision]: Param 'ompl.start_state_max_dt' was not set. Using default value: 0.500000
-[move_group-6] [INFO] [1791730218.066886340] [moveit_ros.fix_start_state_collision]: Param 'ompl.jiggle_fraction' was not set. Using default value: 0.020000
-[move_group-6] [INFO] [1791730218.066889945] [moveit_ros.fix_start_state_collision]: Param 'ompl.max_sampling_attempts' was not set. Using default value: 100
-[move_group-6] [INFO] [1791730218.066897255] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Add Time Optimal Parameterization'
-[move_group-6] [INFO] [1791730218.066900158] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Resolve constraint frames to robot links'
-[move_group-6] [INFO] [1791730218.066902762] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Workspace Bounds'
-[move_group-6] [INFO] [1791730218.066905466] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State Bounds'
-[move_group-6] [INFO] [1791730218.066908269] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State In Collision'
-[move_group-6] [INFO] [1791730218.066910773] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State Path Constraints'
-[move_group-6] [INFO] [1791730218.112113298] [moveit.plugins.moveit_simple_controller_manager]: Added FollowJointTrajectory controller for panda_arm_controller
-[move_group-6] [INFO] [1791730218.112316372] [moveit.plugins.moveit_simple_controller_manager]: Returned 1 controllers in list
-[move_group-6] [INFO] [1791730218.112341706] [moveit.plugins.moveit_simple_controller_manager]: Returned 1 controllers in list
-[move_group-6] [INFO] [1791730218.112890946] [moveit_ros.trajectory_execution_manager]: Trajectory execution is managing controllers
-[move_group-6] [INFO] [1791730218.112908971] [move_group.move_group]: MoveGroup debug mode is ON
-[move_group-6] [INFO] [1791730218.136670297] [move_group.move_group]: 
+[ros2_control_node-3] [WARN] [1791731267.667525561] [controller_manager]: [Deprecated] Passing the robot description parameter directly to the control_manager node is deprecated. Use '~/robot_description' topic from 'robot_state_publisher' instead.
+[ros2_control_node-3] [INFO] [1791731267.667757395] [resource_manager]: Loading hardware 'EmbodiedArm' 
+[ros2_control_node-3] [INFO] [1791731267.669345453] [resource_manager]: Initialize hardware 'EmbodiedArm' 
+[robot_state_publisher-2] [INFO] [1791731267.674110061] [robot_state_publisher]: got segment panda_hand
+[robot_state_publisher-2] [INFO] [1791731267.674211245] [robot_state_publisher]: got segment panda_leftfinger
+[robot_state_publisher-2] [INFO] [1791731267.674219370] [robot_state_publisher]: got segment panda_link0
+[robot_state_publisher-2] [INFO] [1791731267.674223703] [robot_state_publisher]: got segment panda_link1
+[robot_state_publisher-2] [INFO] [1791731267.674227170] [robot_state_publisher]: got segment panda_link2
+[robot_state_publisher-2] [INFO] [1791731267.674230636] [robot_state_publisher]: got segment panda_link3
+[robot_state_publisher-2] [INFO] [1791731267.674234211] [robot_state_publisher]: got segment panda_link4
+[robot_state_publisher-2] [INFO] [1791731267.674242553] [robot_state_publisher]: got segment panda_link5
+[robot_state_publisher-2] [INFO] [1791731267.674246020] [robot_state_publisher]: got segment panda_link6
+[robot_state_publisher-2] [INFO] [1791731267.674249486] [robot_state_publisher]: got segment panda_link7
+[robot_state_publisher-2] [INFO] [1791731267.674253061] [robot_state_publisher]: got segment panda_link8
+[robot_state_publisher-2] [INFO] [1791731267.674256528] [robot_state_publisher]: got segment panda_rightfinger
+[ros2_control_node-3] [INFO] [1791731267.679059703] [resource_manager]: Successful initialization of hardware 'EmbodiedArm'
+[ros2_control_node-3] [INFO] [1791731267.679111053] [resource_manager]: Loading hardware 'MockHand' 
+[ros2_control_node-3] [INFO] [1791731267.679331836] [resource_manager]: Initialize hardware 'MockHand' 
+[ros2_control_node-3] [INFO] [1791731267.679364445] [resource_manager]: Successful initialization of hardware 'MockHand'
+[ros2_control_node-3] [INFO] [1791731267.679404095] [resource_manager]: 'configure' hardware 'MockHand' 
+[ros2_control_node-3] [INFO] [1791731267.679407886] [resource_manager]: Successful 'configure' of hardware 'MockHand'
+[ros2_control_node-3] [INFO] [1791731267.679411136] [resource_manager]: 'activate' hardware 'MockHand' 
+[ros2_control_node-3] [INFO] [1791731267.679414170] [resource_manager]: Successful 'activate' of hardware 'MockHand'
+[ros2_control_node-3] [INFO] [1791731267.679416661] [resource_manager]: 'configure' hardware 'EmbodiedArm' 
+[ros2_control_node-3] [INFO] [1791731267.679419261] [resource_manager]: Successful 'configure' of hardware 'EmbodiedArm'
+[ros2_control_node-3] [INFO] [1791731267.679422728] [resource_manager]: 'activate' hardware 'EmbodiedArm' 
+[ros2_control_node-3] [INFO] [1791731267.679426520] [resource_manager]: Successful 'activate' of hardware 'EmbodiedArm'
+[move_group-6] [INFO] [1791731267.686408711] [moveit_rdf_loader.rdf_loader]: Loaded robot model in 0.00145037 seconds
+[move_group-6] [INFO] [1791731267.686465586] [moveit_robot_model.robot_model]: Loading robot model 'panda'...
+[ros2_control_node-3] [INFO] [1791731267.686928386] [controller_manager]: update rate is 100 Hz
+[ros2_control_node-3] [INFO] [1791731267.686957095] [controller_manager]: Spawning controller_manager RT thread with scheduler priority: 50
+[ros2_control_node-3] [WARN] [1791731267.687056545] [controller_manager]: Could not enable FIFO RT scheduling policy: with error number <1>(Operation not permitted). See [https://control.ros.org/master/doc/ros2_control/controller_manager/doc/userdoc.html] for details on how to enable realtime scheduling.
+[move_group-6] [INFO] [1791731267.715477795] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[move_group-6] [INFO] [1791731267.715640945] [moveit.ros_planning_interface.moveit_cpp]: Listening to 'joint_states' for joint states
+[move_group-6] [INFO] [1791731267.717078311] [moveit_ros.current_state_monitor]: Listening to joint states on topic 'joint_states'
+[move_group-6] [INFO] [1791731267.717487811] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to '/attached_collision_object' for attached collision objects
+[move_group-6] [INFO] [1791731267.717502545] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Starting planning scene monitor
+[move_group-6] [INFO] [1791731267.717881928] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to '/planning_scene'
+[move_group-6] [INFO] [1791731267.717894711] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
+[move_group-6] [INFO] [1791731267.718231411] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to 'collision_object'
+[move_group-6] [INFO] [1791731267.719063845] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to 'planning_scene_world' for planning scene world geometry
+[move_group-6] [WARN] [1791731267.719178028] [moveit.ros.occupancy_map_monitor.middleware_handle]: Resolution not specified for Octomap. Assuming resolution = 0.1 instead
+[move_group-6] [ERROR] [1791731267.719192003] [moveit.ros.occupancy_map_monitor.middleware_handle]: No 3D sensor plugin(s) defined for octomap updates
+[move_group-6] [INFO] [1791731267.720774211] [moveit.ros_planning_interface.moveit_cpp]: Loading planning pipeline 'ompl'
+[move_group-6] [WARN] [1791731267.727955086] [moveit_ros.current_state_monitor]: Unable to update multi-DOF joint 'virtual_joint':Failure to lookup transform between 'world'and 'panda_link0' with TF exception: "world" passed to lookupTransform argument target_frame does not exist. 
+[move_group-6] [INFO] [1791731267.729937911] [moveit.ros_planning.planning_pipeline]: Using planning interface 'OMPL'
+[move_group-6] [INFO] [1791731267.731902211] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.path_tolerance' was not set. Using default value: 0.100000
+[move_group-6] [INFO] [1791731267.731941320] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.resample_dt' was not set. Using default value: 0.100000
+[move_group-6] [INFO] [1791731267.731948036] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.min_angle_change' was not set. Using default value: 0.001000
+[move_group-6] [INFO] [1791731267.731968403] [moveit_ros.fix_workspace_bounds]: Param 'ompl.default_workspace_bounds' was not set. Using default value: 10.000000
+[move_group-6] [INFO] [1791731267.731980645] [moveit_ros.fix_start_state_bounds]: Param 'ompl.start_state_max_bounds_error' was set to 0.100000
+[move_group-6] [INFO] [1791731267.731985195] [moveit_ros.fix_start_state_bounds]: Param 'ompl.start_state_max_dt' was not set. Using default value: 0.500000
+[move_group-6] [INFO] [1791731267.731993645] [moveit_ros.fix_start_state_collision]: Param 'ompl.start_state_max_dt' was not set. Using default value: 0.500000
+[move_group-6] [INFO] [1791731267.731998086] [moveit_ros.fix_start_state_collision]: Param 'ompl.jiggle_fraction' was not set. Using default value: 0.020000
+[move_group-6] [INFO] [1791731267.732002636] [moveit_ros.fix_start_state_collision]: Param 'ompl.max_sampling_attempts' was not set. Using default value: 100
+[move_group-6] [INFO] [1791731267.732010436] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Add Time Optimal Parameterization'
+[move_group-6] [INFO] [1791731267.732014228] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Resolve constraint frames to robot links'
+[move_group-6] [INFO] [1791731267.732017153] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Workspace Bounds'
+[move_group-6] [INFO] [1791731267.732019861] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State Bounds'
+[move_group-6] [INFO] [1791731267.732022570] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State In Collision'
+[move_group-6] [INFO] [1791731267.732025495] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State Path Constraints'
+[move_group-6] [INFO] [1791731267.775711561] [moveit.plugins.moveit_simple_controller_manager]: Added FollowJointTrajectory controller for panda_arm_controller
+[move_group-6] [INFO] [1791731267.775932236] [moveit.plugins.moveit_simple_controller_manager]: Returned 1 controllers in list
+[move_group-6] [INFO] [1791731267.775955528] [moveit.plugins.moveit_simple_controller_manager]: Returned 1 controllers in list
+[move_group-6] [INFO] [1791731267.776607478] [moveit_ros.trajectory_execution_manager]: Trajectory execution is managing controllers
+[move_group-6] [INFO] [1791731267.776625028] [move_group.move_group]: MoveGroup debug mode is ON
+[move_group-6] [INFO] [1791731267.798317153] [move_group.move_group]: 
 [move_group-6] 
 [move_group-6] ********************************************************
 [move_group-6] * MoveGroup using: 
@@ -92,81 +93,80 @@
 [move_group-6] *     - StateValidationService
 [move_group-6] ********************************************************
 [move_group-6] 
-[move_group-6] [INFO] [1791730218.136739991] [moveit_move_group_capabilities_base.move_group_context]: MoveGroup context using planning plugin ompl_interface/OMPLPlanner
-[move_group-6] [INFO] [1791730218.136750205] [moveit_move_group_capabilities_base.move_group_context]: MoveGroup context initialization complete
-[spawner-4] [INFO] [1791730218.292101993] [spawner_joint_state_broadcaster]: waiting for service /controller_manager/list_controllers to become available...
-[ros2_control_node-3] [INFO] [1791730218.298211328] [controller_manager]: Loading controller 'panda_arm_controller'
-[ros2_control_node-3] [WARN] [1791730218.321806129] [panda_arm_controller]: [Deprecated]: "allow_nonzero_velocity_at_trajectory_end" is set to true. The default behavior will change to false.
-[spawner-5] [INFO] [1791730218.345373598] [spawner_panda_arm_controller]: [94mLoaded [1mpanda_arm_controller[0m
-[ros2_control_node-3] [INFO] [1791730218.347260873] [controller_manager]: Configuring controller 'panda_arm_controller'
-[ros2_control_node-3] [INFO] [1791730218.347476673] [panda_arm_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
-[ros2_control_node-3] [INFO] [1791730218.347504298] [panda_arm_controller]: Command interfaces are [position] and state interfaces are [position velocity].
-[ros2_control_node-3] [INFO] [1791730218.347524231] [panda_arm_controller]: Using 'splines' interpolation method.
-[ros2_control_node-3] [INFO] [1791730218.348962465] [panda_arm_controller]: Controller state will be published at 100.00 Hz.
-[ros2_control_node-3] [INFO] [1791730218.352327731] [panda_arm_controller]: Action status changes will be monitored at 20.00 Hz.
-[spawner-5] [INFO] [1791730218.463270383] [spawner_panda_arm_controller]: [92mConfigured and activated [1mpanda_arm_controller[0m
-[ros2_control_node-3] [INFO] [1791730218.545730034] [controller_manager]: Loading controller 'joint_state_broadcaster'
-[spawner-4] [INFO] [1791730218.562771735] [spawner_joint_state_broadcaster]: [94mLoaded [1mjoint_state_broadcaster[0m
-[ros2_control_node-3] [INFO] [1791730218.564645685] [controller_manager]: Configuring controller 'joint_state_broadcaster'
-[ros2_control_node-3] [INFO] [1791730218.564737443] [joint_state_broadcaster]: 'joints' or 'interfaces' parameter is empty. All available state interfaces will be published
-[spawner-4] [INFO] [1791730218.592528410] [spawner_joint_state_broadcaster]: [92mConfigured and activated [1mjoint_state_broadcaster[0m
-[INFO] [spawner-5]: process has finished cleanly [pid 802]
-[INFO] [spawner-4]: process has finished cleanly [pid 800]
-[move_group-6] [INFO] [1791730218.751720996] [moveit_move_group_default_capabilities.move_action_capability]: Received request
-[move_group-6] [INFO] [1791730218.751977854] [moveit_move_group_default_capabilities.move_action_capability]: executing..
-[move_group-6] [INFO] [1791730218.762384679] [moveit_move_group_default_capabilities.move_action_capability]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
-[move_group-6] [INFO] [1791730218.762423896] [moveit_move_group_capabilities_base.move_group_capability]: Using planning pipeline 'ompl'
-[move_group-6] [INFO] [1791730218.763341263] [moveit.ompl_planning.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
-[move_group-6] [INFO] [1791730218.775455746] [moveit_move_group_default_capabilities.move_action_capability]: Motion plan was computed successfully.
-[move_group-6] [INFO] [1791730218.781494030] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Received goal request
-[move_group-6] [INFO] [1791730218.781683830] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution request received
-[move_group-6] [INFO] [1791730218.781718063] [moveit.plugins.moveit_simple_controller_manager]: Returned 1 controllers in list
-[move_group-6] [INFO] [1791730218.781737021] [moveit.plugins.moveit_simple_controller_manager]: Returned 1 controllers in list
-[move_group-6] [INFO] [1791730218.781816213] [moveit_ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.05
-[move_group-6] [INFO] [1791730218.791734780] [moveit_ros.trajectory_execution_manager]: Starting trajectory execution ...
-[move_group-6] [INFO] [1791730218.791779413] [moveit.plugins.moveit_simple_controller_manager]: Returned 1 controllers in list
-[move_group-6] [INFO] [1791730218.791791980] [moveit.plugins.moveit_simple_controller_manager]: Returned 1 controllers in list
-[move_group-6] [INFO] [1791730218.791873121] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to panda_arm_controller
-[ros2_control_node-3] [INFO] [1791730218.792156305] [panda_arm_controller]: Received new action goal
-[ros2_control_node-3] [INFO] [1791730218.792200505] [panda_arm_controller]: Accepted new action goal
-[move_group-6] [INFO] [1791730218.792370696] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: panda_arm_controller started execution
-[move_group-6] [INFO] [1791730218.792386730] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
-[ros2_control_node-3] [INFO] [1791730219.841603096] [panda_arm_controller]: Goal reached, success!
-[move_group-6] [INFO] [1791730219.876095346] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'panda_arm_controller' successfully finished
-[move_group-6] [INFO] [1791730219.902236505] [moveit_ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
-[move_group-6] [INFO] [1791730219.902389905] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution completed: SUCCEEDED
-[ros2_control_node-3] [INFO] [1791730220.430963630] [panda_arm_controller]: Received new action goal
-[ros2_control_node-3] [ERROR] [1791730220.431039463] [panda_arm_controller]: Joints on incoming trajectory don't match the controller joints.
-[ros2_control_node-3] [INFO] [1791730220.604926707] [panda_arm_controller]: Received new action goal
-[ros2_control_node-3] [INFO] [1791730220.604989324] [panda_arm_controller]: Accepted new action goal
-[ros2_control_node-3] [ERROR] [1791730221.211442800] [tolerances]: State tolerances failed for joint 0:
-[ros2_control_node-3] [ERROR] [1791730221.211510291] [tolerances]: Position Error: 0.300002, Position Tolerance: 0.300000
-[ros2_control_node-3] [WARN] [1791730221.211522858] [panda_arm_controller]: Aborted due to state tolerance violation
+[move_group-6] [INFO] [1791731267.798386920] [moveit_move_group_capabilities_base.move_group_context]: MoveGroup context using planning plugin ompl_interface/OMPLPlanner
+[move_group-6] [INFO] [1791731267.798398295] [moveit_move_group_capabilities_base.move_group_context]: MoveGroup context initialization complete
+[ros2_control_node-3] [INFO] [1791731267.892313761] [controller_manager]: Loading controller 'panda_arm_controller'
+[ros2_control_node-3] [WARN] [1791731267.911622770] [panda_arm_controller]: [Deprecated]: "allow_nonzero_velocity_at_trajectory_end" is set to true. The default behavior will change to false.
+[spawner-5] [INFO] [1791731267.940083886] [spawner_panda_arm_controller]: [94mLoaded [1mpanda_arm_controller[0m
+[ros2_control_node-3] [INFO] [1791731267.942683561] [controller_manager]: Configuring controller 'panda_arm_controller'
+[ros2_control_node-3] [INFO] [1791731267.943086453] [panda_arm_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+[ros2_control_node-3] [INFO] [1791731267.943140728] [panda_arm_controller]: Command interfaces are [position] and state interfaces are [position velocity].
+[ros2_control_node-3] [INFO] [1791731267.943202478] [panda_arm_controller]: Using 'splines' interpolation method.
+[ros2_control_node-3] [INFO] [1791731267.944904286] [panda_arm_controller]: Controller state will be published at 100.00 Hz.
+[ros2_control_node-3] [INFO] [1791731267.950236995] [panda_arm_controller]: Action status changes will be monitored at 20.00 Hz.
+[spawner-5] [INFO] [1791731267.989300045] [spawner_panda_arm_controller]: [92mConfigured and activated [1mpanda_arm_controller[0m
+[ros2_control_node-3] [INFO] [1791731268.003719536] [controller_manager]: Loading controller 'joint_state_broadcaster'
+[spawner-4] [INFO] [1791731268.046762103] [spawner_joint_state_broadcaster]: [94mLoaded [1mjoint_state_broadcaster[0m
+[ros2_control_node-3] [INFO] [1791731268.049633478] [controller_manager]: Configuring controller 'joint_state_broadcaster'
+[ros2_control_node-3] [INFO] [1791731268.049748203] [joint_state_broadcaster]: 'joints' or 'interfaces' parameter is empty. All available state interfaces will be published
+[spawner-4] [INFO] [1791731268.079415720] [spawner_joint_state_broadcaster]: [92mConfigured and activated [1mjoint_state_broadcaster[0m
+[INFO] [spawner-5]: process has finished cleanly [pid 808]
+[INFO] [spawner-4]: process has finished cleanly [pid 806]
+[move_group-6] [INFO] [1791731269.108496911] [moveit_move_group_default_capabilities.move_action_capability]: Received request
+[move_group-6] [INFO] [1791731269.108757128] [moveit_move_group_default_capabilities.move_action_capability]: executing..
+[move_group-6] [INFO] [1791731269.118702778] [moveit_move_group_default_capabilities.move_action_capability]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[move_group-6] [INFO] [1791731269.118758678] [moveit_move_group_capabilities_base.move_group_capability]: Using planning pipeline 'ompl'
+[move_group-6] [INFO] [1791731269.119480395] [moveit.ompl_planning.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[move_group-6] [INFO] [1791731269.121687686] [moveit_move_group_default_capabilities.move_action_capability]: Motion plan was computed successfully.
+[move_group-6] [INFO] [1791731269.127800720] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Received goal request
+[move_group-6] [INFO] [1791731269.127919670] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution request received
+[move_group-6] [INFO] [1791731269.127950870] [moveit.plugins.moveit_simple_controller_manager]: Returned 1 controllers in list
+[move_group-6] [INFO] [1791731269.127974053] [moveit.plugins.moveit_simple_controller_manager]: Returned 1 controllers in list
+[move_group-6] [INFO] [1791731269.128054111] [moveit_ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.05
+[move_group-6] [INFO] [1791731269.137798586] [moveit_ros.trajectory_execution_manager]: Starting trajectory execution ...
+[move_group-6] [INFO] [1791731269.137853403] [moveit.plugins.moveit_simple_controller_manager]: Returned 1 controllers in list
+[move_group-6] [INFO] [1791731269.137869978] [moveit.plugins.moveit_simple_controller_manager]: Returned 1 controllers in list
+[move_group-6] [INFO] [1791731269.137978853] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to panda_arm_controller
+[ros2_control_node-3] [INFO] [1791731269.138277203] [panda_arm_controller]: Received new action goal
+[ros2_control_node-3] [INFO] [1791731269.138338736] [panda_arm_controller]: Accepted new action goal
+[move_group-6] [INFO] [1791731269.138527778] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: panda_arm_controller started execution
+[move_group-6] [INFO] [1791731269.138547170] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[ros2_control_node-3] [INFO] [1791731270.187952886] [panda_arm_controller]: Goal reached, success!
+[move_group-6] [INFO] [1791731270.222246236] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'panda_arm_controller' successfully finished
+[move_group-6] [INFO] [1791731270.248442320] [moveit_ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[move_group-6] [INFO] [1791731270.248691595] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution completed: SUCCEEDED
+[ros2_control_node-3] [INFO] [1791731270.785458453] [panda_arm_controller]: Received new action goal
+[ros2_control_node-3] [ERROR] [1791731270.785521503] [panda_arm_controller]: Joints on incoming trajectory don't match the controller joints.
+[ros2_control_node-3] [INFO] [1791731270.952847211] [panda_arm_controller]: Received new action goal
+[ros2_control_node-3] [INFO] [1791731270.952927161] [panda_arm_controller]: Accepted new action goal
+[ros2_control_node-3] [ERROR] [1791731271.557961028] [tolerances]: State tolerances failed for joint 0:
+[ros2_control_node-3] [ERROR] [1791731271.558051270] [tolerances]: Position Error: 0.300217, Position Tolerance: 0.300000
+[ros2_control_node-3] [WARN] [1791731271.558065461] [panda_arm_controller]: Aborted due to state tolerance violation
 [WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
-[move_group-6] [INFO] [1791730222.592156246] [rclcpp]: signal_handler(SIGINT/SIGTERM)
-[ros2_control_node-3] [INFO] [1791730222.592165129] [rclcpp]: signal_handler(SIGINT/SIGTERM)
-[ros2_control_node-3] [INFO] [1791730222.592249737] [controller_manager]: Shutdown request received....
-[ros2_control_node-3] [INFO] [1791730222.592318096] [controller_manager]: Shutting down all controllers in the controller manager.
-[ros2_control_node-3] [INFO] [1791730222.592356121] [controller_manager]: Deactivating controller 'panda_arm_controller'
-[ros2_control_node-3] [INFO] [1791730222.592412671] [controller_manager]: Shutting down controller 'panda_arm_controller'
-[ros2_control_node-3] [INFO] [1791730222.592449937] [controller_manager]: Deactivating controller 'joint_state_broadcaster'
-[ros2_control_node-3] [INFO] [1791730222.592486771] [controller_manager]: Shutting down controller 'joint_state_broadcaster'
-[ros2_control_node-3] [INFO] [1791730222.592511037] [resource_manager]: 'deactivate' hardware 'MockHand' 
-[ros2_control_node-3] [INFO] [1791730222.592522737] [resource_manager]: Successful 'deactivate' of hardware 'MockHand'
-[ros2_control_node-3] [INFO] [1791730222.592526529] [resource_manager]: 'shutdown' hardware 'MockHand' 
-[ros2_control_node-3] [INFO] [1791730222.592532704] [resource_manager]: Successful 'shutdown' of hardware 'MockHand'
-[ros2_control_node-3] [INFO] [1791730222.592537146] [resource_manager]: 'deactivate' hardware 'EmbodiedArm' 
-[ros2_control_node-3] [INFO] [1791730222.592541154] [resource_manager]: Successful 'deactivate' of hardware 'EmbodiedArm'
-[ros2_control_node-3] [INFO] [1791730222.592543862] [resource_manager]: 'shutdown' hardware 'EmbodiedArm' 
-[ros2_control_node-3] [INFO] [1791730222.592547329] [resource_manager]: Successful 'shutdown' of hardware 'EmbodiedArm'
-[ros2_control_node-3] [INFO] [1791730222.592550362] [controller_manager]: Shutting down the controller manager.
-[static_transform_publisher-1] [INFO] [1791730222.592214637] [rclcpp]: signal_handler(SIGINT/SIGTERM)
-[robot_state_publisher-2] [INFO] [1791730222.592215179] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[move_group-6] [INFO] [1791731272.973463103] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[ros2_control_node-3] [INFO] [1791731272.973464944] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[ros2_control_node-3] [INFO] [1791731272.973542944] [controller_manager]: Shutdown request received....
+[ros2_control_node-3] [INFO] [1791731272.973594619] [controller_manager]: Shutting down all controllers in the controller manager.
+[ros2_control_node-3] [INFO] [1791731272.973627228] [controller_manager]: Deactivating controller 'panda_arm_controller'
 [INFO] [move_group-6]: sending signal 'SIGINT' to process[move_group-6]
 [INFO] [ros2_control_node-3]: sending signal 'SIGINT' to process[ros2_control_node-3]
 [INFO] [robot_state_publisher-2]: sending signal 'SIGINT' to process[robot_state_publisher-2]
 [INFO] [static_transform_publisher-1]: sending signal 'SIGINT' to process[static_transform_publisher-1]
-[ERROR] [ros2_control_node-3]: process has died [pid 798, exit code -2, cmd '/opt/ros/humble/lib/controller_manager/ros2_control_node --ros-args --params-file /tmp/launch_params_mbktrg1_ --params-file /home/leo/embodied_acceptance_ws/install/embodied_swarm_hardware/share/embodied_swarm_hardware/config/controllers.yaml'].
-[ERROR] [move_group-6]: process has died [pid 804, exit code -2, cmd '/opt/ros/humble/lib/moveit_ros_move_group/move_group --ros-args --params-file /tmp/launch_params_1rxrziou --params-file /tmp/launch_params_4s250tc1'].
-[ERROR] [robot_state_publisher-2]: process has died [pid 796, exit code -2, cmd '/opt/ros/humble/lib/robot_state_publisher/robot_state_publisher --ros-args --params-file /tmp/launch_params_16d7md2e'].
-[ERROR] [static_transform_publisher-1]: process has died [pid 794, exit code -2, cmd '/opt/ros/humble/lib/tf2_ros/static_transform_publisher 0 0 0 0 0 0 world panda_link0 --ros-args'].
+[static_transform_publisher-1] [INFO] [1791731272.973482819] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[robot_state_publisher-2] [INFO] [1791731272.973485961] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[ERROR] [ros2_control_node-3]: process has died [pid 804, exit code -2, cmd '/opt/ros/humble/lib/controller_manager/ros2_control_node --ros-args --params-file /tmp/launch_params_gdokeqqs --params-file /home/leo/embodied_acceptance_ws/install/embodied_swarm_hardware/share/embodied_swarm_hardware/config/controllers.yaml'].
+[ERROR] [robot_state_publisher-2]: process has died [pid 802, exit code -2, cmd '/opt/ros/humble/lib/robot_state_publisher/robot_state_publisher --ros-args --params-file /tmp/launch_params_6z5imoiv'].
+[ERROR] [static_transform_publisher-1]: process has died [pid 800, exit code -2, cmd '/opt/ros/humble/lib/tf2_ros/static_transform_publisher 0 0 0 0 0 0 world panda_link0 --ros-args'].
+[ros2_control_node-3] [INFO] [1791731272.973667203] [controller_manager]: Shutting down controller 'panda_arm_controller'
+[ros2_control_node-3] [INFO] [1791731272.973690603] [controller_manager]: Deactivating controller 'joint_state_broadcaster'
+[ros2_control_node-3] [INFO] [1791731272.973724186] [controller_manager]: Shutting down controller 'joint_state_broadcaster'
+[ros2_control_node-3] [INFO] [1791731272.973742603] [resource_manager]: 'deactivate' hardware 'MockHand' 
+[ros2_control_node-3] [INFO] [1791731272.973756578] [resource_manager]: Successful 'deactivate' of hardware 'MockHand'
+[ros2_control_node-3] [INFO] [1791731272.973764919] [resource_manager]: 'shutdown' hardware 'MockHand' 
+[ros2_control_node-3] [INFO] [1791731272.973771853] [resource_manager]: Successful 'shutdown' of hardware 'MockHand'
+[ros2_control_node-3] [INFO] [1791731272.973776944] [resource_manager]: 'deactivate' hardware 'EmbodiedArm' 
+[ros2_control_node-3] [INFO] [1791731272.973783336] [resource_manager]: Successful 'deactivate' of hardware 'EmbodiedArm'
+[ros2_control_node-3] [INFO] [1791731272.973786478] [resource_manager]: 'shutdown' hardware 'EmbodiedArm' 
+[ros2_control_node-3] [INFO] [1791731272.973789836] [resource_manager]: Successful 'shutdown' of hardware 'EmbodiedArm'
+[ros2_control_node-3] [INFO] [1791731272.973792761] [controller_manager]: Shutting down the controller manager.
+[ERROR] [move_group-6]: process has died [pid 810, exit code -2, cmd '/opt/ros/humble/lib/moveit_ros_move_group/move_group --ros-args --params-file /tmp/launch_params_zhqza3yu --params-file /tmp/launch_params_5qajcmnt'].

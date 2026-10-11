@@ -58,8 +58,8 @@ Five fixed seeds: `7, 17, 27, 37, 47`; no rendering during performance collectio
 | Reachable IK pose experiments | 100/100; max position error 0.000199 m |
 | Contact force RMSE vs 2 N: fixed impedance → admittance | 6.525 → 0.0300 N |
 | FK + Jacobian runtime P50: Python → C++ release | 363.675 → 0.758 μs, 10,000 calls each |
-| ROS2/MoveIt physical trajectory max joint error | 0.000904 rad |
-| Nominal ROS same-host stamp-to-callback P50 / P95 / P99 | 0.421 / 0.652 / 0.976 ms, 167 samples; repeat P99 11.225 ms |
+| ROS2/MoveIt physical trajectory max joint error | 0.000892 rad |
+| Nominal ROS same-host stamp-to-callback P50 / P95 / P99 | 0.515 / 0.850 / 1.581 ms, 166 samples; repeat P99 5.959 ms |
 
 ![Physical trajectories and object lift](artifacts/physical/trajectories.png)
 ![Real simulation benchmark](artifacts/physical/benchmark.png)

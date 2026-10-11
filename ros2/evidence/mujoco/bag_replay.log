@@ -1,8 +1,8 @@
-stdin is not a terminal device. Keyboard handling disabled.[INFO] [1791730223.221477372] [rosbag2_storage]: Opened database '/mnt/c/Users/Leo/Desktop/project/EmbodiedSwarm/ros2/evidence/mujoco/bag_1791730217687972927/bag_1791730217687972927_0.db3' for READ_ONLY.
-[INFO] [1791730223.221932372] [rosbag2_player]: Set rate to 2
-[INFO] [1791730223.229602589] [rosbag2_player]: Adding keyboard callbacks.
-[INFO] [1791730223.229998872] [rosbag2_player]: Press SPACE for Pause/Resume
-[INFO] [1791730223.230433939] [rosbag2_player]: Press CURSOR_RIGHT for Play Next Message
-[INFO] [1791730223.230811805] [rosbag2_player]: Press CURSOR_UP for Increase Rate 10%
-[INFO] [1791730223.231182955] [rosbag2_player]: Press CURSOR_DOWN for Decrease Rate 10%
-[INFO] [1791730223.239358114] [rosbag2_storage]: Opened database '/mnt/c/Users/Leo/Desktop/project/EmbodiedSwarm/ros2/evidence/mujoco/bag_1791730217687972927/bag_1791730217687972927_0.db3' for READ_ONLY.
+stdin is not a terminal device. Keyboard handling disabled.[INFO] [1791731273.602927753] [rosbag2_storage]: Opened database '/mnt/c/Users/Leo/Desktop/project/EmbodiedSwarm/ros2/evidence/mujoco/bag_1791731267369790245/bag_1791731267369790245_0.db3' for READ_ONLY.
+[INFO] [1791731273.603357512] [rosbag2_player]: Set rate to 2
+[INFO] [1791731273.610815178] [rosbag2_player]: Adding keyboard callbacks.
+[INFO] [1791731273.611213737] [rosbag2_player]: Press SPACE for Pause/Resume
+[INFO] [1791731273.611589112] [rosbag2_player]: Press CURSOR_RIGHT for Play Next Message
+[INFO] [1791731273.612097737] [rosbag2_player]: Press CURSOR_UP for Increase Rate 10%
+[INFO] [1791731273.612645578] [rosbag2_player]: Press CURSOR_DOWN for Decrease Rate 10%
+[INFO] [1791731273.620524445] [rosbag2_storage]: Opened database '/mnt/c/Users/Leo/Desktop/project/EmbodiedSwarm/ros2/evidence/mujoco/bag_1791731267369790245/bag_1791731267369790245_0.db3' for READ_ONLY.
