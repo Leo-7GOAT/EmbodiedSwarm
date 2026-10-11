@@ -13,10 +13,20 @@ from pathlib import Path
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--backend', choices=['mock', 'mujoco'], default='mock')
+    parser.add_argument('--evidence-dir', type=Path, help='Optional separate directory for a regression repeat')
     args = parser.parse_args()
     root = Path(__file__).resolve().parent
-    output = root / 'evidence' / args.backend
+    output = args.evidence_dir or root / 'evidence' / args.backend
     output.mkdir(parents=True, exist_ok=True)
+    # A failed CI job must not publish an old passing JSON checked out with the
+    # repository. Logs/bags remain available, but result files belong to this run.
+    for filename in ('acceptance.json', 'replay.json', 'failure.json'):
+        (output / filename).unlink(missing_ok=True)
+    run_status = {'status': 'RUNNING', 'backend': args.backend, 'started_unix_ns': time.time_ns()}
+    def status(value, **details):
+        run_status.update(status=value, **details)
+        (output / 'run_status.json').write_text(json.dumps(run_status, indent=2))
+    status('RUNNING')
     env = os.environ.copy()
     env['ROS_DOMAIN_ID'] = '73'
     env['ROS_LOCALHOST_ONLY'] = '1'
@@ -38,22 +48,26 @@ def main():
                 process.wait(timeout=10)
             except subprocess.TimeoutExpired:
                 os.killpg(process.pid, signal.SIGTERM)
-                process.wait(timeout=5)
+                try:
+                    process.wait(timeout=5)
+                except subprocess.TimeoutExpired:
+                    os.killpg(process.pid, signal.SIGKILL)
+                    process.wait(timeout=5)
 
     try:
         if args.backend == 'mujoco':
             start(['ros2', 'run', 'embodied_swarm_hardware', 'mujoco_bridge.py', '--model', str(root.parent / 'assets/mjcf/panda_pick_place.xml')], 'bridge.log')
-            time.sleep(2)
         launch = start(['ros2', 'launch', 'embodied_swarm_hardware', 'bringup.launch.py', f'backend:={args.backend}'], 'launch.log')
-        time.sleep(8)
+        # Native acceptance waits on complete fresh state, active controllers,
+        # TF and MoveIt's state validity instead of assuming a fixed sleep.
         bag_path = output / ('bag_' + str(time.time_ns()))
         bag = start(['ros2', 'bag', 'record', '-o', str(bag_path), '/joint_states', '/tf', '/tf_static', '/mujoco/joint_states', '/mujoco/joint_commands', '/hardware/safety_status', '/hardware/control_period'], 'bag_record.log')
         command = ['ros2', 'run', 'embodied_swarm_hardware', 'acceptance.py', '--backend', args.backend, '--output', str(output / 'acceptance.json')]
-        result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, env=env, timeout=80)
-        (output / 'acceptance.log').write_text(result.stdout)
-        if result.returncode:
-            print(result.stdout)
-            raise RuntimeError(f'Acceptance exited {result.returncode}')
+        acceptance = start(command, 'acceptance.log')
+        acceptance.wait(timeout=80)
+        if acceptance.returncode:
+            print((output / 'acceptance.log').read_text())
+            raise RuntimeError(f'Acceptance exited {acceptance.returncode}')
         stop(bag)
         info = subprocess.run(['ros2', 'bag', 'info', str(bag_path)], capture_output=True, text=True, env=env, check=True)
         (output / 'bag_info.txt').write_text(info.stdout)
@@ -77,6 +91,11 @@ def main():
         (output / 'replay.json').write_text(json.dumps({'status': 'PASS_REAL_ROSBAG', 'joint_state_messages_received': count[0], 'bag_path': bag_path.name}, indent=2))
         print((output / 'acceptance.json').read_text())
         print(f'rosbag replay JointState messages: {count[0]}')
+        status('PASS', finished_unix_ns=time.time_ns())
+    except Exception as exc:
+        status('FAIL', error=f'{type(exc).__name__}: {exc}', finished_unix_ns=time.time_ns())
+        (output / 'failure.json').write_text(json.dumps(run_status, indent=2))
+        raise
     finally:
         for process in reversed(processes):
             stop(process)

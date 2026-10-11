@@ -69,6 +69,19 @@ class Acceptance(Node):
         age = (self.get_clock().now().nanoseconds - rclpy.time.Time.from_msg(msg.header.stamp).nanoseconds) / 1e9
         return 0 <= age <= 0.25 and np.isfinite(msg.position).all()
 
+    def wait_active_controllers(self, names, timeout=30):
+        client = self.create_client(ListControllers, '/controller_manager/list_controllers')
+        assert client.wait_for_service(timeout_sec=timeout), 'Controller manager required'
+        deadline = time.monotonic() + timeout
+        states = {}
+        while time.monotonic() < deadline:
+            result = self.wait(client.call_async(ListControllers.Request()), timeout=max(.1, deadline-time.monotonic()))
+            states = {controller.name: controller.state for controller in result.controller}
+            if all(states.get(name) == 'active' for name in names):
+                return
+            self.pump(.05)
+        raise TimeoutError(f'Controllers not active: {states}')
+
     def service(self, typ, name, request):
         client = self.create_client(typ, name)
         assert client.wait_for_service(timeout_sec=10), name
@@ -85,9 +98,7 @@ class Acceptance(Node):
         names = [f'panda_joint{i}' for i in range(1, 8)]
         full_names = names + ['panda_finger_joint1', 'panda_finger_joint2']
         self.wait_until(lambda: self.fresh_complete_state(full_names), 'fresh complete Panda JointState')
-        controllers = self.service(ListControllers, '/controller_manager/list_controllers', ListControllers.Request())
-        assert all(any(c.name == n and c.state == 'active' for c in controllers.controller)
-                   for n in ('joint_state_broadcaster', 'panda_arm_controller')), 'Controllers must be active'
+        self.wait_active_controllers(('joint_state_broadcaster', 'panda_arm_controller'))
         assert self.service(Trigger, '/hardware/reset_safety', Trigger.Request()).success
         self.wait_until(lambda: self.status == f'ACTIVE_{self.backend}' and self.fresh_complete_state(full_names), 'fresh active startup hold')
         self.wait_until(lambda: self.tf.can_transform('panda_link0', 'panda_link8', rclpy.time.Time()), 'Panda TF chain')
