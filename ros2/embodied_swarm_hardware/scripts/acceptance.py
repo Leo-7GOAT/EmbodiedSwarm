@@ -13,6 +13,9 @@ from std_msgs.msg import String, Float64
 from std_srvs.srv import SetBool, Trigger
 from moveit_msgs.action import MoveGroup, ExecuteTrajectory
 from moveit_msgs.msg import Constraints, JointConstraint
+from moveit_msgs.srv import GetStateValidity
+from controller_manager_msgs.srv import ListControllers
+from mujoco_bridge import arm_initial_positions
 from control_msgs.action import FollowJointTrajectory
 from trajectory_msgs.msg import JointTrajectoryPoint
 from builtin_interfaces.msg import Duration
@@ -23,6 +26,7 @@ class Acceptance(Node):
     def __init__(self, backend='mock'):
         super().__init__('embodied_ros_acceptance')
         self.state = {}
+        self.last_joint_message = None
         self.backend = backend
         self.physics_state = {}
         self.latencies, self.arrivals, self.status = [], [], ''
@@ -36,6 +40,7 @@ class Acceptance(Node):
 
     def joints(self, msg):
         self.state.update(dict(zip(msg.name, msg.position)))
+        self.last_joint_message = msg
         self.arrivals.append(time.monotonic())
         self.latencies.append((self.get_clock().now().nanoseconds - rclpy.time.Time.from_msg(msg.header.stamp).nanoseconds) / 1e6)
 
@@ -50,6 +55,20 @@ class Acceptance(Node):
         while time.monotonic() < end:
             rclpy.spin_once(self, timeout_sec=0.02)
 
+    def wait_until(self, condition, description, timeout=30):
+        deadline = time.monotonic() + timeout
+        while not condition():
+            if time.monotonic() >= deadline:
+                raise TimeoutError(f'Not ready: {description}')
+            rclpy.spin_once(self, timeout_sec=0.02)
+
+    def fresh_complete_state(self, names):
+        msg = self.last_joint_message
+        if msg is None or len(msg.name) != len(msg.position) or not all(n in msg.name for n in names):
+            return False
+        age = (self.get_clock().now().nanoseconds - rclpy.time.Time.from_msg(msg.header.stamp).nanoseconds) / 1e9
+        return 0 <= age <= 0.25 and np.isfinite(msg.position).all()
+
     def service(self, typ, name, request):
         client = self.create_client(typ, name)
         assert client.wait_for_service(timeout_sec=10), name
@@ -63,13 +82,32 @@ class Acceptance(Node):
         return self.wait(handle.get_result_async(), timeout)
 
     def run(self):
-        self.pump(3)
         names = [f'panda_joint{i}' for i in range(1, 8)]
-        assert all(n in self.state for n in names), 'Seven real JointState interfaces required'
+        full_names = names + ['panda_finger_joint1', 'panda_finger_joint2']
+        self.wait_until(lambda: self.fresh_complete_state(full_names), 'fresh complete Panda JointState')
+        controllers = self.service(ListControllers, '/controller_manager/list_controllers', ListControllers.Request())
+        assert all(any(c.name == n and c.state == 'active' for c in controllers.controller)
+                   for n in ('joint_state_broadcaster', 'panda_arm_controller')), 'Controllers must be active'
         assert self.service(Trigger, '/hardware/reset_safety', Trigger.Request()).success
-        self.pump(0.1)
+        self.wait_until(lambda: self.status == f'ACTIVE_{self.backend}' and self.fresh_complete_state(full_names), 'fresh active startup hold')
+        self.wait_until(lambda: self.tf.can_transform('panda_link0', 'panda_link8', rclpy.time.Time()), 'Panda TF chain')
         transform = self.tf.lookup_transform('panda_link0', 'panda_link8', rclpy.time.Time())
         assert transform.child_frame_id == 'panda_link8'
+        initial = arm_initial_positions()
+        startup_error = max(abs(self.state[n] - q) for n, q in zip(names, initial))
+        assert startup_error < 0.01, f'Startup must match the shared initial pose: {startup_error}'
+        valid_request = GetStateValidity.Request(group_name='panda_arm')
+        valid_request.robot_state.joint_state = JointState(
+            header=self.last_joint_message.header, name=full_names,
+            position=[self.state[n] for n in full_names])
+        validity = self.service(GetStateValidity, '/check_state_validity', valid_request)
+        assert validity.valid, f'Measured startup state invalid: {validity.contacts}'
+        # Shared Xacro loading and readiness service work are startup work,
+        # not the planning/execution measurement window. Keep them in the
+        # whole-run distribution but identify nominal samples separately.
+        self.pump(0.1)
+        nominal_start = len(self.latencies)
+        nominal_arrival_start = len(self.arrivals)
         goal = MoveGroup.Goal()
         goal.request.group_name = 'panda_arm'
         goal.request.pipeline_id = 'ompl'
@@ -78,7 +116,8 @@ class Acceptance(Node):
         goal.request.num_planning_attempts = 1
         goal.request.max_velocity_scaling_factor = 0.25
         goal.request.max_acceleration_scaling_factor = 0.25
-        goal.request.start_state.is_diff = True
+        goal.request.start_state = valid_request.robot_state
+        goal.request.start_state.is_diff = False
         target = [self.state[n] for n in names]
         target[0] += 0.25
         constraints = Constraints()
@@ -97,8 +136,8 @@ class Acceptance(Node):
         self.pump(0.5)
         error = [self.state[n] - q for n, q in zip(names, target)]
         assert max(abs(e) for e in error) < 0.05, error
-        nominal_latencies = self.latencies.copy()
-        nominal_intervals = np.diff(self.arrivals) * 1000
+        nominal_latencies = self.latencies[nominal_start:].copy()
+        nominal_intervals = np.diff(self.arrivals[nominal_arrival_start:]) * 1000
         # Controller rejects a malformed joint set instead of accepting unsafe I/O.
         bad = FollowJointTrajectory.Goal()
         bad.trajectory.joint_names = ['nonexistent_joint']
@@ -142,10 +181,13 @@ class Acceptance(Node):
                 'plan_wall_ms': plan_wall_ms, 'execution_wall_s': execution_wall_s,
                 'final_joint_error_rad': error, 'max_joint_error_rad': max(abs(e) for e in error),
                 'tf2_pass': True, 'invalid_action_rejected': True, 'software_estop_reset_pass': True,
+                'startup_state_validity_pass': validity.valid, 'startup_home_max_error_rad': startup_error,
                 'estop_trajectory_failure_code': failed.result.error_code, 'state_timeout_reset_rejection_recovery': stale_state_pass,
                 'ros_vs_physics_joint_max_error_rad': physics_match,
                 'latency_ms': stats(self.latencies), 'sample_count': len(self.latencies),
                 'nominal_latency_ms': stats(nominal_latencies), 'nominal_sample_count': len(nominal_latencies),
+                'startup_sample_count': nominal_start,
+                'nominal_measurement_window': 'After complete fresh state/controller/TF/home/state-validity readiness, through planning, execution and 0.5 s settled state; before fault injection',
                 'nominal_interval_ms': stats(nominal_intervals), 'nominal_jitter_std_ms': float(np.std(nominal_intervals)),
                 'joint_state_interval_ms': stats(intervals), 'interval_jitter_std_ms': float(np.std(intervals)),
                 'controller_manager_period_ms': stats(self.periods), 'control_period_jitter_std_ms': float(np.std(self.periods)),

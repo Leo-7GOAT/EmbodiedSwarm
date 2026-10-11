@@ -8,12 +8,42 @@ Gripper/pick-place physics is accepted separately by the project demo.
 import argparse
 import math
 import time
+from pathlib import Path
+import xml.etree.ElementTree as ET
+from ament_index_python.packages import get_package_share_directory
+import xacro
 import mujoco
 import numpy as np
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import JointState
 from std_srvs.srv import SetBool
+
+
+def arm_initial_positions(config_path=None):
+    """Read the same ros2_control initial pose used by the hardware plugin."""
+    config_path = config_path or Path(get_package_share_directory('embodied_swarm_hardware')) / 'config/panda.urdf.xacro'
+    robot = ET.fromstring(xacro.process_file(str(config_path), mappings={'backend': 'mujoco'}).toxml())
+    joints = robot.find("ros2_control[@name='EmbodiedArm']").findall('joint')
+    initial = {joint.attrib['name']: float(joint.find("param[@name='initial']").text) for joint in joints}
+    return np.array([initial[f'panda_joint{i}'] for i in range(1, 8)])
+
+
+def initialize_arm(model, data, jids, aids, initial):
+    """Set the documented initial condition once, before the first physics step.
+
+    Project scenes may have no keyframe. Never let their zero default pose or
+    a different model keyframe become a controller's measured startup hold.
+    All later state changes remain exclusively actuator-driven mj_step.
+    """
+    initial = np.asarray(initial, dtype=float)
+    bounds = model.jnt_range[jids]
+    if initial.shape != (7,) or not np.isfinite(initial).all() or np.any(initial < bounds[:, 0]) or np.any(initial > bounds[:, 1]):
+        raise ValueError('Invalid ros2_control initial arm configuration')
+    data.qpos[model.jnt_qposadr[jids]] = initial
+    data.qvel[model.jnt_dofadr[jids]] = 0
+    data.ctrl[aids] = initial
+    mujoco.mj_forward(model, data)
 
 
 class Bridge(Node):
@@ -38,6 +68,7 @@ class Bridge(Node):
             if len(candidates) != 1:
                 raise ValueError('Exactly one position actuator per arm joint required')
             self.aids.append(int(candidates[0]))
+        initialize_arm(self.model, self.data, self.jids, self.aids, arm_initial_positions())
         self.target = self.data.qpos[self.qa].copy()
         self.last = time.monotonic()
         self.paused = False
