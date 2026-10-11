@@ -1,0 +1,38 @@
+{
+  "observed_local": "2026-10-11T23:59:20.6680479+08:00",
+  "scope": "Actual core source checkpoint CI; later portfolio commit requires its own CI",
+  "ros": {
+    "jobs": [
+      {
+        "name": "ros2",
+        "conclusion": "success"
+      }
+    ],
+    "url": "https://github.com/Leo-7GOAT/EmbodiedSwarm/actions/runs/38152756884",
+    "sha": "3d61ea4bdf1aeccbc3afd83b21cb4f3b6bcca6a4",
+    "conclusion": "success"
+  },
+  "software": {
+    "jobs": [
+      {
+        "name": "cpp (OFF)",
+        "conclusion": "success"
+      },
+      {
+        "name": "python (3.10)",
+        "conclusion": "success"
+      },
+      {
+        "name": "python (3.11)",
+        "conclusion": "success"
+      },
+      {
+        "name": "cpp (ON)",
+        "conclusion": "success"
+      }
+    ],
+    "url": "https://github.com/Leo-7GOAT/EmbodiedSwarm/actions/runs/38152756887",
+    "sha": "3d61ea4bdf1aeccbc3afd83b21cb4f3b6bcca6a4",
+    "conclusion": "success"
+  }
+}

@@ -152,6 +152,22 @@ Actual MuJoCo training ran 7,680 control steps, seed 7; damping is randomized ±
 
 **Understand personally:** PPO ratio/advantage, reward units, data sample count, train versus evaluation seed, OOD scope and the stronger classical baseline.
 
+## Independent encoder/IMU EKF and measured simulation parameters
+
+**Code:** `estimation/ekf.py`, `estimation/simulation_sensors.py`, `estimation/identification.py`, `demos/estimation_closed_loop.py`. See [measured evidence](STATE_ESTIMATION_ACCEPTANCE.md).
+
+The six-state filter estimates world position/yaw, body forward/lateral velocity and gyro bias. Virtual encoder count differences observe speed and yaw rate; IMU increments predict dynamics. Joseph covariance updates and finite-difference transition Jacobians have numerical tests. Cumulative IMU increments preserve measurements during transport loss; missing physical samples cannot be reconstructed this way. Reject future/stale/reordered/duplicate and nonfinite packets without advancing the accepted timestamp. Extrapolate a copy to control time and retain the original measurement age for Safety.
+
+An independently measured force-actuator step fits gain and time constant; a stationary median/MAD estimate calibrates simulated gyro bias. The force-driven base can move laterally, so the fitted time constant supports the stated prior `vy ≈ -tau*omega*vx`. This is a model assumption. There are no physical wheels in this experiment. Known initial pose, short dead reckoning and absence of an absolute pose anchor limit the result. The full mobile Panda and ROS task have not inherited this standalone estimator.
+
+**Likely questions:** Does 20/20 navigation plus five safe aborts mean 25 goal successes? No: outage intentionally prevents reaching the goal. Are simulated bias and actuator fits hardware calibration? No: physical wheel geometry, six-axis IMU alignment and payload/friction must be measured after hardware arrives. Why did earlier delay/dropout runs fail? Instantaneous samples lost intervening IMU increments and allowed lateral drift; retained failures show the correction with the original goal and tracking gates.
+
+## Tickable memory behavior tree
+
+**Code:** `task/bt.py`, `demos/bt_pick_place.py`; [actual cases](BT_ACCEPTANCE.md). Sequence advances on success, Fallback on failure; RUNNING actions preserve local interpolation progress and a shared blackboard. Deadline/abort guards run before and after each node, while the physics backend independently checks every 2 ms substep. This is cooperative execution: an arbitrary blocking callback cannot be forcibly preempted.
+
+The contact condition observes zero contacts after the deliberately open first grasp. A Fallback branch obtains a fresh object pose, retreats, re-localizes and closes actual fingers before checking lift/place gates. Across 30 cases, 15 complete place tasks and 15 deliberately stop or fail safely. JSON restores cursors and action progress against the same live world; it does not restore physical state after a crash. A memory tree does not continually re-evaluate successful conditions as a reactive tree would. Symbolic task planning can be added separately; the requested behavior-tree framework is implemented.
+
 ## Safety, performance and sim-to-real
 
 **Code:** `core/safety.py`, ROS watchdog/plugin, `tools/hardware/`, `demos/benchmark.py`, `demos/core_benchmark.py`.

@@ -1,10 +1,10 @@
 # Delivery report — measured software stage, 2026-10-11
 
-Repository: [Leo-7GOAT/EmbodiedSwarm](https://github.com/Leo-7GOAT/EmbodiedSwarm). Sensor-estimation source/evidence checkpoint: `65fa747808e5398b6131cf73f7eec90f4ce9686e`; subsequent source and report commits are recorded in Git history. Use `git rev-parse HEAD` for the checked-out release SHA; the final delivery message gives the exact published SHA. Never interpret this report as physical robot or target-platform HIL validation.
+Repository: [Leo-7GOAT/EmbodiedSwarm](https://github.com/Leo-7GOAT/EmbodiedSwarm). Behavior-tree source/evidence checkpoint: `3d61ea4bdf1aeccbc3afd83b21cb4f3b6bcca6a4`; estimator checkpoint: `65fa747808e5398b6131cf73f7eec90f4ce9686e`. Subsequent report commits are recorded in Git history. Use `git rev-parse HEAD` for the checked-out release SHA; the final delivery message gives the exact published SHA. Never interpret this report as physical robot or target-platform HIL validation.
 
 ## Stage gates and completion denominator
 
-The current **component software stage** defines twelve gates: (1) protected baseline, (2) validated state/HAL contracts, (3) navigation algorithms, (4) independent FK/Jacobian/IK, (5) physical base loop, (6) contact grasp/place, (7) C++ build/numerical tests, (8) actual ROS2/ros2_control execution, (9) actual MoveIt2/OMPL execution, (10) safety/fault response, (11) same-world fixed-approach task with retry/abort, (12) physical impedance/force feedback. **12 component gates have passing local evidence**, including actual per-step arm safety/stop/deadline checks. These component checks do not complete the original roadmap. The full sixteen requested milestone groups (W01–W12, W16–W19), judged by their broader subrequirements, contain **12 PASS and 4 PARTIAL** (W09, W11, W12, W19); **12/16 = 75% fully accepted milestone groups**, using equal milestone counts rather than estimated effort. Hardware, target HIL and physical E-stop remain PENDING_HARDWARE, outside this software count.
+The current component stage has passing evidence for baseline/contracts, navigation, independent kinematics, force-driven physics/contact grasp, C++, actual ROS2/MoveIt, safety/recovery, impedance, independent base estimation and a tickable memory behavior tree. These component checks do not complete the original roadmap. The full sixteen requested milestone groups (W01–W12, W16–W19) contain **13 PASS and 3 PARTIAL** (W09, W12, W19); **13/16 = 81.25% accepted milestone groups**, using equal milestone counts rather than estimated effort. W11 accepts the requested behavior-tree framework option; symbolic search is not an additional mandatory condition. Full integrated mobile/ROS task execution remains under W12. Hardware, target HIL and physical E-stop remain PENDING_HARDWARE, outside this software count.
 
 P1 is a bounded actual residual PPO contact experiment with weights and OOD results. Its presence does not change P0 or hardware claims.
 
@@ -22,7 +22,7 @@ P1 is a bounded actual residual PPO contact experiment with weights and OOD resu
 | W08 C++17 | CMake/Eigen FK/Jacobian/controllers, GoogleTest, warnings, ASan/UBSan, parity/performance | PASS_UNIT |
 | W09 MuJoCo | True base dynamics, mature Panda actuator/contact model, same-world mobile manipulation, independent base encoder/IMU EKF, simulated bias calibration and actuator step identification | PARTIAL: bounded sensor-feedback base PASS_REAL_SIM; full robot estimation/calibration/integration pending |
 | W10 safety | Limits, stale state/command, geofence, software stop, reset, action failure, fault injection | PASS_UNIT / PASS_REAL_SIM; physical E-stop pending |
-| W11 task framework | Sequential stage task execution, deadline/retry/recovery/abort and physical success criteria | PARTIAL: bounded framework PASS_REAL_SIM; general BT/symbolic TAMP not implemented |
+| W11 task framework | Tickable memory BT, Sequence/Fallback, node/blackboard state, bounded actions, persistence, deadline/abort, real failed-grasp recovery | PASS_REAL_SIM for the requested minimum BT framework; same-live-world task-state restore; full mobile/ROS integration remains W12 |
 | W12 NAV → GRASP → PLACE | One engine world, five seeds, open-finger failed-grasp recovery | PARTIAL: fixed straight approach PASS_REAL_SIM; flexible obstacle tasks/distributed ROS chain pending |
 
 ## W16–W19 and remaining software scope
@@ -34,17 +34,18 @@ P1 is a bounded actual residual PPO contact experiment with weights and OOD resu
 | W18 OOD/domain randomization | Held-out seeds; 150/450 N/m OOD vs trained 300; damping variation | PASS_REAL_SIM within specified minimal envelope |
 | W19 engineering | Local regression, CI source, profiling, JSONL replay, ROS bag replay, wheel assets, release staging/selection/rollback | PARTIAL: local software checks pass; target deployment/performance pending; remote CI status in parent final report |
 
-No fake hardware frames, camera perception, target HIL or multi-robot result is included. Additional software work: general task-and-motion symbolic search, wheel/slip drivetrain dynamics, distributed ROS mobile navigation/manipulation coordination, perception, whole-robot state-estimation integration beyond the new standalone planar EKF, longer stochastic contact tasks and multiple independent training seeds. Physical calibration and first-week commissioning are listed in the hardware guide.
+No fake hardware frames, camera perception, target HIL or multi-robot result is included. Additional software work: wheel/slip drivetrain dynamics, distributed ROS mobile navigation/manipulation coordination, whole-robot state-estimation integration beyond the new standalone planar EKF and longer changing-obstacle tasks. Perception, general symbolic task planning and broader training-seed studies are possible extensions. Physical calibration and first-week commissioning are listed in the hardware guide.
 
 ## Verification numbers and actual simulator evidence
 
 - Baseline: **161 Python tests**, five original demos executed; raw baseline stdout retained.
-- Latest complete project regression after the estimator: **242 passed in 16.87 s**, raw stdout in `artifacts/estimation/pytest_full.txt`. Earlier 220-test checkpoint was independently profiled in `artifacts/final_regression_profile.stdout.txt`; its resource measurements describe that earlier suite.
+- Latest complete project regression after the behavior tree: **268 passed in 24.20 s**, raw stdout in `artifacts/bt/pytest_full.txt`; its 26 module cases passed in 6.41 s. The estimator checkpoint separately passed 242 tests. Earlier 220-test checkpoint was independently profiled; its resource measurements describe that earlier suite.
 - C++: **4 release GoogleTests + 4 ASan/UBSan passes**; 30 full-range C++/Python numerical parity configurations.
-- ROS2: **3 plugin/DDS GoogleTests + 4 real-physics initialization pytest cases**, actual mock and MuJoCo acceptance runs, TF/service/action/fault tests and bag replay; latest precise metrics in `docs/ROS2_ACCEPTANCE.md`. These seven ROS-package cases have a separate denominator from the 242 project tests.
+- ROS2: **3 plugin/DDS GoogleTests + 4 real-physics initialization pytest cases**, actual mock and MuJoCo acceptance runs, TF/service/action/fault tests and bag replay; latest precise metrics in `docs/ROS2_ACCEPTANCE.md`. These seven ROS-package cases have a separate denominator from the 268 project tests.
 - Physical benchmark: **40/40 runs** (20 navigation, 5 fixed-arm, 5 mobile, 10 contact), five seeds. Bounded IK reachable target study: **100/100**.
 - Independent sensor-feedback base: **20/20 navigation goals and 5/5 deliberate outage safe aborts**, with EKF-only control and truth used offline. Worst position estimation RMSE 0.003331 m; outage final speed at most 0.002229 m/s. Simulated gyro bias and actuator gain/lag were measured independently per run. [Scope, failures and strict raw-data audit](STATE_ESTIMATION_ACCEPTANCE.md).
 - Failed-grasp injection: actual fingers remain open → failed contact criterion → fresh state recovery → success, recovery count 1.
+- Behavior-tree physical matrix: **30/30 expected outcomes** across five seeds; **15 completed place tasks, ten deliberate safe aborts and five exhausted-grasp safe failures**. Worst place error 0.001891 m and stop drift 0.001205 rad against the unchanged 0.02 rad gate. JSON resume uses the same live world, without overwriting physics. [Exact evidence](BT_ACCEPTANCE.md).
 - Physical engine startup/load: MuJoCo 3.12.0 models 16 qpos (Panda/object) and 19 qpos (mobile Panda/object); EGL renderer generated and visually verified actual frames. Wheel install outside the repository loaded both models from packaged assets.
 - Historical 220-test profiling: 21.023 s wall / 15.679 s kernel child CPU / sampled tree RSS max 495,108,096 bytes; current host, not target Pi. Raw methodology and stdout are in `artifacts/final_regression_profile.{json,stdout.txt}`; this is not a resource measurement of the expanded suite.
 
@@ -77,6 +78,8 @@ python -m demos.mobile_manipulation --grasp-fault --seed 7
 python -m demos.mobile_manipulation --render --seed 7
 python -m demos.estimation_benchmark
 python -m demos.estimation_evidence_audit
+python -m demos.bt_pick_place --mode recover --seed 7 --render
+python -m demos.bt_benchmark --no-render
 bash ros2/verify.sh
 ```
 
@@ -89,6 +92,8 @@ English README now includes actual architecture, implemented algorithms, tested 
 Hardware integration proceeds through a verified manufacturer adapter, read-only state validation, elevated-wheel/supported-arm response tests, bounded calibration, physical stop/disconnect tests, low-speed tracking and target timing measurements. The [hardware readiness guide](HARDWARE_READINESS.md) contains the day-by-day first-week checklist. Status remains **PENDING_HARDWARE** throughout this software delivery.
 
 ## Cloud verification checkpoint
+
+The BT source checkpoint `3d61ea4bdf1aeccbc3afd83b21cb4f3b6bcca6a4` passed actual [software/MuJoCo CI](https://github.com/Leo-7GOAT/EmbodiedSwarm/actions/runs/38152756887) and [ROS2/MoveIt2/MuJoCo CI](https://github.com/Leo-7GOAT/EmbodiedSwarm/actions/runs/38152756884). Job conclusions and exact source SHAs are saved in `artifacts/publication_ci.json`; static links/language/source-evidence checks are in `artifacts/publication_audit.json`.
 
 The estimator checkpoint `65fa747808e5398b6131cf73f7eec90f4ce9686e` also passed actual [software/MuJoCo CI](https://github.com/Leo-7GOAT/EmbodiedSwarm/actions/runs/38151282249) and [ROS2/MoveIt2/MuJoCo CI](https://github.com/Leo-7GOAT/EmbodiedSwarm/actions/runs/38151282257). Their success verifies the declared CI checks at that source, not hardware or entire original-scope completion.
 

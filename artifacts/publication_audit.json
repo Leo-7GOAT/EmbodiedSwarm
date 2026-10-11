@@ -1,0 +1,108 @@
+{
+  "status": "PASS_PUBLICATION_AUDIT",
+  "source_checkpoint": "e2fb53399092f6a42df4346ef0ba2f1e3073505c",
+  "evaluated_files": 671,
+  "credential_pattern_scan_files": 541,
+  "local_markdown_links": 59,
+  "readme_language": "ENGLISH",
+  "detailed_ledger_counts": {
+    "PASS_UNIT": 63,
+    "PASS_REAL_SIM": 80,
+    "PARTIAL": 9,
+    "PASS_MOCK": 3
+  },
+  "detailed_ledger_groups": {
+    "\u00a75.1 Navigation": {
+      "PASS_UNIT": 5,
+      "PASS_REAL_SIM": 5,
+      "PARTIAL": 1
+    },
+    "\u00a75.2 Arm kinematics": {
+      "PASS_REAL_SIM": 7,
+      "PASS_UNIT": 3
+    },
+    "\u00a75.3 Genuine MuJoCo": {
+      "PASS_REAL_SIM": 13
+    },
+    "\u00a75.4 ROS2/MoveIt2/ros2_control": {
+      "PASS_REAL_SIM": 17,
+      "PASS_MOCK": 1
+    },
+    "\u00a75.5 Task/TAMP": {
+      "PASS_REAL_SIM": 13,
+      "PASS_UNIT": 2,
+      "PARTIAL": 1
+    },
+    "\u00a75.6 Control/learning": {
+      "PASS_REAL_SIM": 6,
+      "PARTIAL": 1
+    },
+    "\u00a73/W08 C++ core engineering": {
+      "PASS_UNIT": 11
+    },
+    "\u00a76 Stable architecture": {
+      "PASS_UNIT": 5,
+      "PARTIAL": 1
+    },
+    "\u00a77 Hardware preparation": {
+      "PASS_UNIT": 10,
+      "PASS_MOCK": 2,
+      "PASS_REAL_SIM": 3,
+      "PARTIAL": 1
+    },
+    "\u00a78 Test classes": {
+      "PASS_UNIT": 3,
+      "PASS_REAL_SIM": 2,
+      "PARTIAL": 1
+    },
+    "\u00a78 Robot benchmark metrics": {
+      "PASS_REAL_SIM": 8
+    },
+    "\u00a78 Engineering metrics": {
+      "PASS_REAL_SIM": 4,
+      "PASS_UNIT": 3
+    },
+    "\u00a79 Portfolio": {
+      "PASS_UNIT": 13
+    },
+    "\u00a710\u201313 Delivery": {
+      "PASS_UNIT": 8,
+      "PASS_REAL_SIM": 1,
+      "PARTIAL": 1
+    },
+    "Additional W09 estimation/calibration": {
+      "PASS_REAL_SIM": 1,
+      "PARTIAL": 2
+    }
+  },
+  "original_milestones": {
+    "denominator": 16,
+    "accepted": 13,
+    "partial": 3
+  },
+  "strict_json_records": 81665,
+  "largest_files": [
+    {
+      "path": "artifacts/physical/mobile_task_seed_7.gif",
+      "bytes": 7140910
+    },
+    {
+      "path": "artifacts/bt/recover_seed_7.gif",
+      "bytes": 6955640
+    },
+    {
+      "path": "artifacts/physical/mobile_task_visual_seed_7.gif",
+      "bytes": 6856515
+    },
+    {
+      "path": "artifacts/physical/pick_place_seed_7.gif",
+      "bytes": 5474982
+    },
+    {
+      "path": "assets/franka_emika_panda/assets/link5_2.obj",
+      "bytes": 3856621
+    }
+  ],
+  "issues": [],
+  "scope": "Static file/link/language/hash/known-credential-pattern audit; not a guarantee that arbitrary secrets or hardware faults are absent"
+}

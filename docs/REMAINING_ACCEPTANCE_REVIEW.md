@@ -1,6 +1,6 @@
 # Original-scope acceptance review — 2026-10-11
 
-This is a read-only source/evidence audit against the user's original pasted brief, not a replacement scope. Only this review file was written. The current software stage is reviewable, but it does **not** satisfy the original final stopping condition: outstanding software items remain alongside PENDING_HARDWARE.
+This source/evidence audit retains the user's original scope and is updated after tested increments. The current software stage is reviewable, but it does **not** satisfy the original final stopping condition: outstanding software items remain alongside PENDING_HARDWARE.
 
 A PASS accepts only the stated experiment/component and its stated envelope. PASS_UNIT, PASS_MOCK and PASS_REAL_SIM are not interchangeable. PARTIAL means implementation or evidence is incomplete; it is not an environmental BLOCKED. No current missing simulator/component is classified BLOCKED: both native simulator and ROS environments actually ran. Physical vehicle/robot, manufacturer protocol validation, Raspberry Pi HIL and physical E-stop are PENDING_HARDWARE.
 
@@ -9,8 +9,8 @@ Counts below use named acceptance checks as the denominator, splitting compound 
 ## Material findings and remaining software
 
 1. Real MuJoCo physics is accepted. The mature licensed Panda uses actuator commands and mj_step; the object remains a free body with physical finger contact, lift and release. The physical base uses planar generalized-force/velocity servos with inertia and force bounds. It is not a wheel/slip or identified manufacturer drivetrain. Legacy overwritten-coordinate demonstrations are explicitly not used as physical acceptance evidence.
-2. Current arm safety supersedes the earlier bypass finding. PandaSimulation.step now applies the shared supervisor every physics step. halt latches stop, holds measured joints and zeros mobile commands. The actual regression test verifies less than 0.02 rad motion during a stop and a 20 ms simulation deadline interrupt within 24 ms; ctrl equals measured joints on timeout. [Source](../embodied_swarm/hal/panda_simulation.py) and [actual test](../tests/test_physical_stack.py) document this. The task also supplies an 80 s simulation deadline and abort callback. General TaskExecutor still cannot preempt an arbitrary blocking third-party callback; only the implemented physics-step path supplies that guarantee. Do not call it a general asynchronous BT engine.
-3. The sequential TaskExecutor is a useful bounded task framework with result, failure, retry, recovery, timeout and abort. It does not implement a general behavior tree, persistent resumable Task State or symbolic task-and-motion search. Five same-world mobile tasks and actual failed-grasp recovery pass, but navigation is a fixed straight approach, localization is simulator truth and random object offsets are ±15 mm. Changed-obstacle long tasks, generalized layouts and distributed ROS navigation/manipulation remain PARTIAL.
+2. PandaSimulation.step applies shared Safety every physics step. halt latches stop, holds measured joints and zeros mobile commands. The original regression verifies less than 0.02 rad stop drift and a 20 ms simulation deadline interrupt within 24 ms. The new memory BT has per-node deadline/abort checks plus the same per-physics-step gate; 30 physical cases include safe abort and exhausted-grasp failures, with worst drift 0.001205 rad. Arbitrary blocking third-party callbacks still cannot be forcibly preempted; cooperative actions must remain bounded. [Safety source](../embodied_swarm/hal/panda_simulation.py), [physical tests](../tests/test_physical_stack.py), [BT evidence](BT_ACCEPTANCE.md).
+3. The new tickable memory BT implements Sequence/Fallback/Condition/Action, persistent blackboard/node progress, deadline/abort and actual failed-grasp recovery. Five same-live-world JSON resume scenes finish physical place tasks; it does not claim crash recovery or restoring a moved physical world. This accepts the original behavior-tree framework option; symbolic task search is a possible extension rather than an additional mandatory condition. Five existing same-world mobile tasks also pass, but navigation remains a fixed straight approach with truth object localization and ±15 mm object offsets. Changed-obstacle long tasks, generalized layouts and distributed ROS navigation/manipulation remain PARTIAL.
 4. Native ROS2/ros2_control/MoveIt2/OMPL is genuine. Seven arm joint names, positions and limits agree with Panda/Menagerie, actual RRTConnect plans execute in MuJoCo, software-stop/stale-state/invalid-joint faults are exercised, and real bag data replay. The ROS hand is GenericSystem mock; it does not drive the physical fingers. The separate physical mobile task does not use MoveIt planning-scene object/base synchronization or ROS task orchestration. Do not merge the two passing experiments into a claim of ROS-controlled mobile Pick-and-Place with object collision safety.
 5. FK/Jacobian/IK cross-validation, actual C++ kernels and performance are accepted. The C++ library is not used as the live physics or ROS-arm controller hot path. FK/Jacobian parity covers 30 configurations; controller parity should not be inferred from it. At 10,000 matched FK+Jacobian calls, P50 Python/C++ is 363.675/0.758 µs; this benchmark is for that kernel, not the entire robot loop.
 6. W09 now has a separately accepted sensor-only planar base experiment: six-state virtual-encoder/IMU EKF, simulated stationary gyro-bias calibration and physical actuator step identification. Across five seeds, 20 navigation runs pass and five 500 ms outage runs safely abort. Physics truth is used only for offline scoring in this experiment. Known stationary initial pose, virtual encoders, short dead reckoning and no absolute pose anchor limit its scope. Existing manipulation/ROS tasks still use truth/state readback; whole-robot estimator integration and fitted payload, friction, joint or sensor-extrinsic calibration remain PARTIAL. Physical calibration remains PENDING_HARDWARE. [Exact evidence](STATE_ESTIMATION_ACCEPTANCE.md).
@@ -19,7 +19,7 @@ Counts below use named acceptance checks as the denominator, splitting compound 
 
 ## Current evidence and claim boundaries
 
-- Latest complete host regression after estimation: [242 passed in 16.87 s](../artifacts/estimation/pytest_full.txt). The earlier independently profiled 220-test run and isolated 220-test release remain historical checkpoints; their timings are not attributed to the expanded suite.
+- Latest complete host regression after the behavior tree: [268 passed in 24.20 s](../artifacts/bt/pytest_full.txt). The estimator separately passed 242 tests; independently profiled 220-test and isolated-release runs remain historical checkpoints.
 - C++: four release GoogleTests and four ASan/UBSan passes, 30 FK/Jacobian parity configurations.
 - [Physical benchmark](../artifacts/physical/benchmark.json): 40 runs (20 navigation, five fixed-arm, five same-world mobile, ten force-contact), five seeds; 100/100 reachable IK targets. These are a bounded benchmark set, not general task reliability estimates.
 - Latest complete native MuJoCo ROS execution: 12 trajectory points, max error 0.000892100 rad; nominal latency 166 samples, P50/P95/P99 0.514963/0.849739/1.580540 ms; controller-period jitter standard deviation 0.270296 ms. An independent cold-start repeat passes with nominal P99 5.959030 ms across 168 samples; no real-time bound is claimed. Full/repeat replay 457/377 JointState messages. Historical 476-sample numbers used a different startup window; full statistics, failures and current evidence are retained in [ROS report](ROS2_ACCEPTANCE.md).
@@ -27,7 +27,7 @@ Counts below use named acceptance checks as the denominator, splitting compound 
 
 ## Counts with explicit denominators
 
-Detailed ledger: **141/155 checks have passing evidence**, 14 PARTIAL, 0 current FAIL, 0 BLOCKED. Passing evidence by kind: 59 PASS_UNIT, 79 PASS_REAL_SIM, 3 PASS_MOCK. Historic failed experiment rows remain in raw logs and the findings above; a corrected current check is not counted as a current FAIL.
+Detailed ledger: **146/155 checks have passing evidence**, 9 PARTIAL, 0 current FAIL, 0 BLOCKED. Passing evidence by kind: 63 PASS_UNIT, 80 PASS_REAL_SIM, 3 PASS_MOCK. Historic failed experiment rows remain in raw logs and the findings above; a corrected current check is not counted as a current FAIL.
 
 | Original section/check group | Denominator | PASS checks | PARTIAL checks |
 | --- | --- | --- | --- |
@@ -35,7 +35,7 @@ Detailed ledger: **141/155 checks have passing evidence**, 14 PARTIAL, 0 current
 | §5.2 Arm kinematics | 10 | 10 | 0 |
 | §5.3 Genuine MuJoCo | 13 | 13 | 0 |
 | §5.4 ROS2/MoveIt2/ros2_control | 18 | 18 | 0 |
-| §5.5 Task/TAMP | 16 | 14 | 2 |
+| §5.5 Task/TAMP | 16 | 15 | 1 |
 | §5.6 Control/learning | 7 | 6 | 1 |
 | §3/W08 C++ core engineering | 11 | 11 | 0 |
 | §6 Stable architecture | 6 | 5 | 1 |
@@ -44,10 +44,10 @@ Detailed ledger: **141/155 checks have passing evidence**, 14 PARTIAL, 0 current
 | §8 Robot benchmark metrics | 8 | 8 | 0 |
 | §8 Engineering metrics | 7 | 7 | 0 |
 | §9 Portfolio | 13 | 13 | 0 |
-| §10–13 Delivery | 10 | 5 | 5 |
+| §10–13 Delivery | 10 | 9 | 1 |
 | Additional W09 estimation/calibration | 3 | 1 | 2 |
 
-The requested week matrix has **12/16 PASS and 4/16 PARTIAL** under the stated week-level scope. This count is not a claim that 12/16 of the entire project is complete.
+The requested week matrix has **13/16 PASS and 3/16 PARTIAL** under the stated week-level scope. This count is not a claim that 13/16 of the entire project is complete.
 
 | Week | Current status | Acceptance boundary |
 | --- | --- | --- |
@@ -61,7 +61,7 @@ The requested week matrix has **12/16 PASS and 4/16 PARTIAL** under the stated w
 | W08 | PASS_UNIT | ActualC++library4release+4sanitize, parityandperf; notliveoffloadclaim |
 | W09 | PARTIAL | TrueMuJoCo and standalone planar sensor-only EKF PASS; whole-robot estimation/calibration/integration pending |
 | W10 | PASS_REAL_SIM | Safetyperphysicalstep/armstop/deadline plusROSfaults; hardwareestoppending |
-| W11 | PARTIAL | Sequentialtaskframeworkaccepted; generalBT/symbolicTAMPmissing |
+| W11 | PASS_REAL_SIM | Minimum tickable memory BT accepted; physical recovery/abort/persistence; same-live-world resume only |
 | W12 | PARTIAL | Sameworldfixedapproach/recoveryaccepted; changedobstacleflexibletask/distributedROSnotaccepted |
 | W16 | PASS_REAL_SIM | RealPanda contact torqueimpedance/admittance/disturbance |
 | W17 | PASS_REAL_SIM | ActualminimalresidualPPO7680steps; one training seed |
@@ -70,7 +70,7 @@ The requested week matrix has **12/16 PASS and 4/16 PARTIAL** under the stated w
 
 ## Original §12 minimum visible gates
 
-These are exactly the original 11 project gates. A small set of visible gates can pass while detailed §3–§9 software remains open. Count: **9/11 PASS**, 2 PARTIAL.
+These are exactly the original 11 project gates. A small set of visible gates can pass while detailed §3–§9 software remains open. Count: **10/11 PASS**, 1 PARTIAL.
 
 | Original gate | Status | Evidence/boundary |
 | --- | --- | --- |
@@ -79,7 +79,7 @@ These are exactly the original 11 project gates. A small set of visible gates ca
 | FK/IK/Jacobian unit tests | PASS_UNIT | Cross-validation100IK/30C++parity |
 | ROS2/ros2_control | PASS_REAL_SIM | Nativecontrollers/plugin |
 | MoveIt2/OMPL | PASS_REAL_SIM | ActualRRTConnect/actionexecution |
-| BT/TAMP | PARTIAL | Sequentialframeworkvalid; generalBT/taskmotionsolvernotimplemented |
+| BT/TAMP | PASS_REAL_SIM | Requested behavior-tree framework option: memory BT and bounded real Panda recovery; full mobile/ROS task remains W12 |
 | Navigation/manipulation task | PASS_REAL_SIM | One-worldfixedstraightapproach5seeds; broaderW12partial |
 | Safety/failure recovery | PASS_REAL_SIM | Per-stepPandasupervisor/deadline plusactualfailedgraspandROSfaults |
 | Benchmark/logs | PASS_REAL_SIM | 40physicalrunsandrawdata |
@@ -166,9 +166,9 @@ Each row is the stated check, status and actual evidence/boundary. Passing a uni
 
 | Check | Status | Evidence or remaining requirement |
 | --- | --- | --- |
-| BT or task planning framework | PARTIAL | Sequential TaskExecutor valid bounded framework; no general BT/symbolic TAMP motion/task search |
+| BT or task planning framework | PASS_REAL_SIM | Tickable memory BT with physical recovery/abort, 30 expected outcomes; symbolic search not required in addition to the BT option |
 | Required navigation/localize/plan/grasp/move/place/verify chain | PASS_REAL_SIM | Physical same-world stages; ground-truth localization |
-| Task State | PASS_UNIT | TaskResult completed/failures/currentstage logs; no persistent resumable task state |
+| Task State | PASS_UNIT | Structured result plus JSON blackboard/node cursor/action-progress checkpoint; restore verified in the same live physics world |
 | Failure detection | PASS_REAL_SIM | Open-finger failed-grasp physical criterion |
 | Retry | PASS_REAL_SIM | Actual second attempt |
 | Timeout | PASS_REAL_SIM | Panda per-mj_step sim deadline; .02s interruption test |
@@ -247,7 +247,7 @@ Each row is the stated check, status and actual evidence/boundary. Passing a uni
 
 | Check | Status | Evidence or remaining requirement |
 | --- | --- | --- |
-| Unit | PASS_UNIT | 242 recorded fullsuite after estimation; later checkpoints require actual stdout |
+| Unit | PASS_UNIT | 268 recorded fullsuite after BT; 26 new BT cases and retained242estimatorcheckpoint |
 | Numerical | PASS_UNIT | FK/Jac/IK/C++parity |
 | Integration | PASS_REAL_SIM | Physics and actualROS actions |
 | Boundary | PASS_UNIT | State/config/limits/singular/unreachable tests |
@@ -275,7 +275,7 @@ Each row is the stated check, status and actual evidence/boundary. Passing a uni
 | CPU/memory | PASS_UNIT | HostprofilingnotPi |
 | Actual control-cycle jitter | PASS_REAL_SIM | controller_manager monotonic periods |
 | ROS message latency | PASS_REAL_SIM | Samehoststamp-to-callback |
-| Test success rate | PASS_UNIT | Versioned stdout242checkpoint plus retained earlier220run |
+| Test success rate | PASS_UNIT | Versioned stdout268checkpoint plus retained earlier242/220runs |
 | Fault recovery result | PASS_REAL_SIM | RealROSandphysics |
 | Version/host/seed/sample/statistics metadata | PASS_UNIT | Reportsdistinctnominal/faultandperformance/rendered |
 
@@ -303,14 +303,14 @@ Each row is the stated check, status and actual evidence/boundary. Passing a uni
 | --- | --- | --- |
 | M1 baseline/core | PASS_UNIT | 161baselineprotected |
 | M2 actual simulator/C++/ROS safety | PASS_REAL_SIM | Actual component acceptance |
-| M3 complete scope | PARTIAL | Whole-robot estimation/calibration/generalBT/TAMP/changingobstacletask gaps |
-| M4 final publication | PARTIAL | Pages exist; finalremoteCI/pushroot-owned |
+| M3 complete scope | PARTIAL | Whole-robot estimation/calibration/changing-obstacle task/distributed mobile ROS gaps |
+| M4 final publication | PASS_UNIT | English README, measured plots/screenshots/reproduction/failure analysis and proposed hardware deployment; publication audit passes |
 | Protected independent Git | PASS_UNIT | No destructive reset; parent backups/commits |
-| Incremental verified non-force push | PARTIAL | Rootpublishing; finalremoteSHACIpending |
-| Sensitive/oversize/cache scan | PARTIAL | Rootfinalpublicationcheck |
+| Incremental verified non-force push | PASS_UNIT | Separate protected Git history, tested module commits and verified non-force pushes; actual core CI in publication_ci.json |
+| Sensitive/oversize/cache scan | PASS_UNIT | publication_audit.json checks known credential/file patterns, oversized files, local links and English README; bounded scan scope explicit |
 | FINAL_DELIVERY_REPORT | PASS_UNIT | Present with checkpoint and partial statuses |
 | INTERVIEW_TECHNICAL_GUIDE | PASS_UNIT | Present |
-| Final commit/GitHub/matrix/evidence boundaries | PARTIAL | SnapshotSHApresent; pushedfinalrootreportpending |
+| Final commit/GitHub/matrix/evidence boundaries | PASS_UNIT | Exact core checkpoint and actual CI in publication_ci.json; final portfolio SHA is HEAD and final delivery message; every remaining software/hardware gate retained |
 
 ### Additional W09 estimation/calibration
 

@@ -74,9 +74,9 @@ python -m tools.hardware.deploy --root ../embodiedswarm-releases select FULL_COM
 python -m tools.hardware.deploy --root ../embodiedswarm-releases rollback
 ```
 
-`stage` exports committed sources into a new release folder, builds an isolated
-venv reusing installed host packages, installs this project without modifying
-global dependencies, and runs its Python regression. Failed tests leave the
+`stage` exports committed sources into a new release folder, builds a fully isolated
+venv, installs declared project/test dependencies, checks dependency consistency,
+builds/tests the C++ core and runs its Python regression. Failed tests leave the
 selection unchanged and retain the log. `--skip-tests` leaves a release
 unselectable. Selection/rollback update an atomic software manifest and start no
 process. Previous releases remain intact. Runtime launcher/supervisor owns safe

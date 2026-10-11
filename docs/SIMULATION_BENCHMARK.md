@@ -37,6 +37,10 @@ The separate [state estimation acceptance](STATE_ESTIMATION_ACCEPTANCE.md) conta
 
 Control uses a six-state encoder/IMU EKF with Joseph covariance update; simulator truth is used only for offline scoring. The model has no physical wheels: encoder observations are explicit virtual measurements derived from physical base velocity. Each run independently identifies finite actuator gain/lag and calibrates simulated stationary gyro bias. Initial delay/dropout failures remain in the evidence; accumulated IMU increments and an identified lateral prior fixed those failures. Known stationary initial pose, short dead reckoning, no absolute anchor and separate whole-robot/ROS integration are explicit limits. The strict evidence audit parsed 129 JSON/JSONL files and 74,648 records, retaining five injected NaNs as null plus reversible nonfinite-field metadata rather than invalid JSON.
 
+## Tickable behavior tree and physical failure recovery
+
+The [BT acceptance report](BT_ACCEPTANCE.md) adds 30 actual Panda scenes across five seeds: 15 completed place tasks (nominal, real first-grasp recovery and same-live-world JSON resume), ten deliberate safe aborts (operator/deadline), and five exhausted-grasp safe failures. All 30 expected physical outcomes pass; this is not 30 successful tasks. Worst stop drift 0.001205 rad remains below the existing 0.02 rad gate; worst place error is 0.001891 m. Node deadline/abort guards and per-physics-substep Safety remain active. The new memory BT accepts the framework option; it is separate from the existing mobile task and full ROS navigation/manipulation integration.
+
 ## Kinematics and C++
 
 - FK/Jacobian: 8 randomly seeded configurations cross-checked with independent NumPy transforms, MuJoCo FK/Jacobian and central finite differences.
@@ -69,7 +73,7 @@ The separate classical force-admittance experiment reaches 0.03 N steady error a
 
 The ROS2 acceptance report owns build/test numbers and raw logs. Its latest complete verification ran genuine MoveIt RRTConnect planning in 22.396 ms and ros2_control/MuJoCo execution in 1.127 s, with max joint error **0.00089210 rad**. Nominal 166 same-host messages: stamp-to-callback P50/P95/P99 **0.515/0.850/1.581 ms**. Actual controller-manager period P50/P95/P99 **9.919/10.516/10.569 ms**, jitter standard deviation **0.270 ms**. An independent cold-start repeat also passed all action/fault/replay assertions: max error 0.00099465 rad, 168 nominal samples, latency **0.444/0.698/5.959 ms**, period jitter **0.271 ms**. Full/repeat recorded five/one actual startup reset refusals before receiving physical-state packets; fresh-state Safety gates were retained. Nominal samples start after measured complete state/controller/TF/home/collision-validity checks and stop before injected faults; whole-run samples are separate. Earlier 476/167/164-sample checkpoints and failures remain in Git/logs. These are host transport measurements with explicit variation, not a real-time bound or target HIL result.
 
-The latest full regression after state estimation is **242 passed in 16.87 s**, with raw stdout in `artifacts/estimation/pytest_full.txt`. Historical independent profiling of the 220-test checkpoint measured 20.69 s pytest, 21.023 s wall / 15.679 s kernel child CPU / sampled tree RSS max 495,108,096 bytes (`artifacts/final_regression_profile.json` and stdout). The earlier 215-test checkpoint recorded 14.453 s wall, 8.951 s CPU and 456,253,440 bytes tree RSS. Shared pages can be counted more than once in summed RSS; historical resource figures are not attributed to the expanded suite. Benchmark-process `ru_maxrss` peak was 416,312 KiB. No CPU/memory number is attributed to the target Pi.
+The latest full regression after the behavior tree is **268 passed in 24.20 s**, with raw stdout in `artifacts/bt/pytest_full.txt`; the estimator checkpoint separately passed 242 in 16.87 s. Historical independent profiling of the 220-test checkpoint measured 20.69 s pytest, 21.023 s wall / 15.679 s kernel child CPU / sampled tree RSS max 495,108,096 bytes (`artifacts/final_regression_profile.json` and stdout). The earlier 215-test checkpoint recorded 14.453 s wall, 8.951 s CPU and 456,253,440 bytes tree RSS. Shared pages can be counted more than once in summed RSS; historical resource figures are not attributed to the expanded suite. Benchmark-process `ru_maxrss` peak was 416,312 KiB. No CPU/memory number is attributed to the target Pi.
 
 ## Reproduction and evidence
 
@@ -81,6 +85,7 @@ python -m demos.mobile_manipulation --render --seed 7
 python -m demos.train_residual_ppo --updates 30 --seed 7
 python -m demos.estimation_benchmark
 python -m demos.estimation_evidence_audit
+python -m demos.bt_benchmark --no-render
 ```
 
 `artifacts/physical/`: benchmark JSON, every run's JSON/JSONL, trajectory/metric PNGs, genuine MuJoCo PNG/GIFs and test stdout. `artifacts/learning/`: actual weights, training/evaluation JSON, reward/OOD PNG and training stdout. `ros2/evidence/`: real build, execution, bag recording/replay and fault data. Rendering was visually checked and is excluded from headline timing collection. EGL screenshot generation succeeded with explicit renderer cleanup.

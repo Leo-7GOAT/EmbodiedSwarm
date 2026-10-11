@@ -1,8 +1,10 @@
 # Tickable behavior tree and physical recovery acceptance
 
-Status: **PASS_REAL_SIM** for this bounded Panda task. General symbolic TAMP,
-reactive navigation planning, perception, distributed task execution and
-hardware acceptance remain outside this module. W11/W12 are still **PARTIAL**.
+Status: **PASS_REAL_SIM** for the minimum behavior-tree framework and this
+bounded Panda task. This satisfies the behavior-tree framework option; symbolic
+search is not an additional mandatory condition. The complete mobile/ROS
+navigation-to-grasp-to-place chain remains **PARTIAL**. Hardware acceptance is
+**PENDING_HARDWARE**.
 
 ## Reproduce
 
@@ -132,5 +134,7 @@ whole-project regression: **268 passed in 24.20 s** (`pytest_full.txt`).
 This module does not supply symbolic preconditions/effects, automatic task
 planning, general retry policies, dynamic obstacle replanning, perception-based
 object pose, distributed ROS BT nodes or the integrated encoder/IMU feedback
-from the independent estimation experiment. Those requirements must retain
-their separate PARTIAL/PENDING status and obtain their own evidence.
+from the independent estimation experiment. The complete mobile/ROS chain and
+flexible obstacle-goal execution remain separately unaccepted. Any later
+capability expansion needs its own measured evidence; symbolic task search is
+not required to recognize the implemented BT framework as accepted.
