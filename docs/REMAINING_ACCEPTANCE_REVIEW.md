@@ -22,7 +22,7 @@ Counts below use named acceptance checks as the denominator, splitting compound 
 - Final independent host regression: [220 passed in 20.69 s](../artifacts/final_regression_profile.stdout.txt); an isolated staged release separately passed 220 tests in 12.15 s. These are observed runs, not anticipated counts.
 - C++: four release GoogleTests and four ASan/UBSan passes, 30 FK/Jacobian parity configurations.
 - [Physical benchmark](../artifacts/physical/benchmark.json): 40 runs (20 navigation, five fixed-arm, five same-world mobile, ten force-contact), five seeds; 100/100 reachable IK targets. These are a bounded benchmark set, not general task reliability estimates.
-- Latest native MuJoCo ROS execution: 12 trajectory points, max error 0.000950414 rad; nominal latency 476 samples, P50/P95/P99 0.693767/1.054192/3.267442 ms; controller-period jitter standard deviation 0.257761 ms. Whole-run fault samples and replay counts are separately retained in [ROS report](ROS2_ACCEPTANCE.md).
+- Latest complete native MuJoCo ROS execution: 12 trajectory points, max error 0.000904243 rad; nominal latency 167 samples, P50/P95/P99 0.421417/0.652199/0.976465 ms; controller-period jitter standard deviation 0.244564 ms. An independent cold-start repeat passes with nominal P99 11.224823 ms across 164 samples; no real-time bound is claimed. Both replay 367 JointState messages. Historical 476-sample numbers used a different startup window; full statistics, failures and current evidence are retained in [ROS report](ROS2_ACCEPTANCE.md).
 - README now uses current ROS numbers and states the physical versus ROS task boundary. The architecture arrow through Safety should be read as the intended stable contract; separate torque-contact research and every future adapter are not automatically covered by the accepted Panda position-command supervisor. Final remote CI status and publication SHA remain coordinator-owned evidence.
 
 ## Counts with explicit denominators
@@ -66,7 +66,7 @@ The requested week matrix has **12/16 PASS and 4/16 PARTIAL** under the stated w
 | W16 | PASS_REAL_SIM | RealPanda contact torqueimpedance/admittance/disturbance |
 | W17 | PASS_REAL_SIM | ActualminimalresidualPPO7680steps; one training seed |
 | W18 | PASS_REAL_SIM | Boundedheldoutseed/stiffnessOOD; nogeneralizationclaim |
-| W19 | PARTIAL | Localengineeringaccepted; finalremoteCI/push/targetdeploymentclosurepending |
+| W19 | PARTIAL | Localengineering and regularGitpushaccepted; targetdeployment/running-processsafe-stopplusrollbacknotaccepted; exactremoteCIcheckpointreportedseparately |
 
 ## Original §12 minimum visible gates
 
