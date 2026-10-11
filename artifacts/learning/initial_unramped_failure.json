@@ -1,0 +1,375 @@
+{
+  "status": "PASS_TRAINING",
+  "seed": 7,
+  "algorithm": "PPO clipped ratio .2 with GAE(.99,.95)",
+  "environment": "actual MuJoCo Panda floor contact",
+  "torch": "2.14.0+cu130",
+  "samples": 7680,
+  "curve": [
+    {
+      "update": 0,
+      "environment_steps": 256,
+      "mean_reward": -6.288311883386045,
+      "loss": 2046.52392578125
+    },
+    {
+      "update": 1,
+      "environment_steps": 512,
+      "mean_reward": -8.540491980857901,
+      "loss": 2923.23681640625
+    },
+    {
+      "update": 2,
+      "environment_steps": 768,
+      "mean_reward": -7.375631455735934,
+      "loss": 2696.4306640625
+    },
+    {
+      "update": 3,
+      "environment_steps": 1024,
+      "mean_reward": -6.910476382738143,
+      "loss": 1852.558349609375
+    },
+    {
+      "update": 4,
+      "environment_steps": 1280,
+      "mean_reward": -6.765403778552086,
+      "loss": 2768.798828125
+    },
+    {
+      "update": 5,
+      "environment_steps": 1536,
+      "mean_reward": -6.642311440210957,
+      "loss": 2421.859375
+    },
+    {
+      "update": 6,
+      "environment_steps": 1792,
+      "mean_reward": -5.498270436793446,
+      "loss": 1227.390869140625
+    },
+    {
+      "update": 7,
+      "environment_steps": 2048,
+      "mean_reward": -5.122123397064195,
+      "loss": 1093.842041015625
+    },
+    {
+      "update": 8,
+      "environment_steps": 2304,
+      "mean_reward": -5.065074323422959,
+      "loss": 936.9906616210938
+    },
+    {
+      "update": 9,
+      "environment_steps": 2560,
+      "mean_reward": -4.784084077594074,
+      "loss": 928.8285522460938
+    },
+    {
+      "update": 10,
+      "environment_steps": 2816,
+      "mean_reward": -5.657676381715441,
+      "loss": 1087.730224609375
+    },
+    {
+      "update": 11,
+      "environment_steps": 3072,
+      "mean_reward": -4.8638969358688815,
+      "loss": 806.1190185546875
+    },
+    {
+      "update": 12,
+      "environment_steps": 3328,
+      "mean_reward": -5.547718148961508,
+      "loss": 1047.2301025390625
+    },
+    {
+      "update": 13,
+      "environment_steps": 3584,
+      "mean_reward": -4.355406306616828,
+      "loss": 664.6553344726562
+    },
+    {
+      "update": 14,
+      "environment_steps": 3840,
+      "mean_reward": -4.725631372668454,
+      "loss": 615.1445922851562
+    },
+    {
+      "update": 15,
+      "environment_steps": 4096,
+      "mean_reward": -4.780627577075313,
+      "loss": 730.9539794921875
+    },
+    {
+      "update": 16,
+      "environment_steps": 4352,
+      "mean_reward": -4.015239976297046,
+      "loss": 468.8668518066406
+    },
+    {
+      "update": 17,
+      "environment_steps": 4608,
+      "mean_reward": -3.834266362424584,
+      "loss": 357.9344482421875
+    },
+    {
+      "update": 18,
+      "environment_steps": 4864,
+      "mean_reward": -3.6333607484089403,
+      "loss": 304.3511962890625
+    },
+    {
+      "update": 19,
+      "environment_steps": 5120,
+      "mean_reward": -3.234744317193489,
+      "loss": 194.5017547607422
+    },
+    {
+      "update": 20,
+      "environment_steps": 5376,
+      "mean_reward": -3.435441186323704,
+      "loss": 244.4860382080078
+    },
+    {
+      "update": 21,
+      "environment_steps": 5632,
+      "mean_reward": -3.1769790409741154,
+      "loss": 232.1609649658203
+    },
+    {
+      "update": 22,
+      "environment_steps": 5888,
+      "mean_reward": -3.2510448119729434,
+      "loss": 128.29736328125
+    },
+    {
+      "update": 23,
+      "environment_steps": 6144,
+      "mean_reward": -2.800145914966258,
+      "loss": 114.65311431884766
+    },
+    {
+      "update": 24,
+      "environment_steps": 6400,
+      "mean_reward": -2.4118800483331064,
+      "loss": 55.453697204589844
+    },
+    {
+      "update": 25,
+      "environment_steps": 6656,
+      "mean_reward": -2.46260791609087,
+      "loss": 62.76670837402344
+    },
+    {
+      "update": 26,
+      "environment_steps": 6912,
+      "mean_reward": -2.57351299222905,
+      "loss": 62.04356002807617
+    },
+    {
+      "update": 27,
+      "environment_steps": 7168,
+      "mean_reward": -2.689136373883791,
+      "loss": 52.2513427734375
+    },
+    {
+      "update": 28,
+      "environment_steps": 7424,
+      "mean_reward": -2.628122807765058,
+      "loss": 85.7469711303711
+    },
+    {
+      "update": 29,
+      "environment_steps": 7680,
+      "mean_reward": -2.5469031308015557,
+      "loss": 33.5964469909668
+    }
+  ],
+  "evaluation": [
+    {
+      "seed": 17,
+      "stiffness": 150.0,
+      "residual": false,
+      "mean_reward": -2.505274539749281,
+      "force_rmse_N": null,
+      "force_mean_N": null,
+      "unsafe_steps": 3,
+      "samples": 53
+    },
+    {
+      "seed": 17,
+      "stiffness": 150.0,
+      "residual": true,
+      "mean_reward": -0.9647819926974079,
+      "force_rmse_N": null,
+      "force_mean_N": null,
+      "unsafe_steps": 3,
+      "samples": 69
+    },
+    {
+      "seed": 27,
+      "stiffness": 150.0,
+      "residual": false,
+      "mean_reward": -2.140599165618856,
+      "force_rmse_N": null,
+      "force_mean_N": null,
+      "unsafe_steps": 3,
+      "samples": 52
+    },
+    {
+      "seed": 27,
+      "stiffness": 150.0,
+      "residual": true,
+      "mean_reward": -0.528202119549915,
+      "force_rmse_N": 0.8110514364490065,
+      "force_mean_N": 1.234904501371155,
+      "unsafe_steps": 2,
+      "samples": 110
+    },
+    {
+      "seed": 37,
+      "stiffness": 150.0,
+      "residual": false,
+      "mean_reward": -2.564777249550331,
+      "force_rmse_N": null,
+      "force_mean_N": null,
+      "unsafe_steps": 3,
+      "samples": 53
+    },
+    {
+      "seed": 37,
+      "stiffness": 150.0,
+      "residual": true,
+      "mean_reward": -0.5312522880427928,
+      "force_rmse_N": 0.8116528629612333,
+      "force_mean_N": 1.2353801362037062,
+      "unsafe_steps": 2,
+      "samples": 110
+    },
+    {
+      "seed": 17,
+      "stiffness": 300.0,
+      "residual": false,
+      "mean_reward": -4.977302718007811,
+      "force_rmse_N": null,
+      "force_mean_N": null,
+      "unsafe_steps": 3,
+      "samples": 36
+    },
+    {
+      "seed": 17,
+      "stiffness": 300.0,
+      "residual": true,
+      "mean_reward": -2.18737565081012,
+      "force_rmse_N": null,
+      "force_mean_N": null,
+      "unsafe_steps": 3,
+      "samples": 48
+    },
+    {
+      "seed": 27,
+      "stiffness": 300.0,
+      "residual": false,
+      "mean_reward": -5.361996568841923,
+      "force_rmse_N": null,
+      "force_mean_N": null,
+      "unsafe_steps": 3,
+      "samples": 36
+    },
+    {
+      "seed": 27,
+      "stiffness": 300.0,
+      "residual": true,
+      "mean_reward": -2.422922606195136,
+      "force_rmse_N": null,
+      "force_mean_N": null,
+      "unsafe_steps": 3,
+      "samples": 48
+    },
+    {
+      "seed": 37,
+      "stiffness": 300.0,
+      "residual": false,
+      "mean_reward": -5.030921413745892,
+      "force_rmse_N": null,
+      "force_mean_N": null,
+      "unsafe_steps": 3,
+      "samples": 36
+    },
+    {
+      "seed": 37,
+      "stiffness": 300.0,
+      "residual": true,
+      "mean_reward": -2.2459547903587294,
+      "force_rmse_N": null,
+      "force_mean_N": null,
+      "unsafe_steps": 3,
+      "samples": 48
+    },
+    {
+      "seed": 17,
+      "stiffness": 450.0,
+      "residual": false,
+      "mean_reward": -15.61654302952464,
+      "force_rmse_N": null,
+      "force_mean_N": null,
+      "unsafe_steps": 3,
+      "samples": 30
+    },
+    {
+      "seed": 17,
+      "stiffness": 450.0,
+      "residual": true,
+      "mean_reward": -2.8237399989497898,
+      "force_rmse_N": null,
+      "force_mean_N": null,
+      "unsafe_steps": 3,
+      "samples": 39
+    },
+    {
+      "seed": 27,
+      "stiffness": 450.0,
+      "residual": false,
+      "mean_reward": -16.346587314247753,
+      "force_rmse_N": null,
+      "force_mean_N": null,
+      "unsafe_steps": 3,
+      "samples": 30
+    },
+    {
+      "seed": 27,
+      "stiffness": 450.0,
+      "residual": true,
+      "mean_reward": -3.1968827839885603,
+      "force_rmse_N": null,
+      "force_mean_N": null,
+      "unsafe_steps": 3,
+      "samples": 39
+    },
+    {
+      "seed": 37,
+      "stiffness": 450.0,
+      "residual": false,
+      "mean_reward": -15.775071822664946,
+      "force_rmse_N": null,
+      "force_mean_N": null,
+      "unsafe_steps": 3,
+      "samples": 30
+    },
+    {
+      "seed": 37,
+      "stiffness": 450.0,
+      "residual": true,
+      "mean_reward": -2.9630640537849677,
+      "force_rmse_N": null,
+      "force_mean_N": null,
+      "unsafe_steps": 3,
+      "samples": 39
+    }
+  ],
+  "limitation": "Single bounded vertical-target residual; no grasp policy or multi-agent learning",
+  "evaluation_status": "FAIL",
+  "diagnosis": "Abrupt Cartesian target caused physical force spikes; corrected by physical contact ramp and residual slew before retraining"
+}
