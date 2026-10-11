@@ -12,10 +12,13 @@ requires-python = ">=3.10"
 dependencies = [
     "numpy>=1.24",
     "mujoco>=3.1",
+    "scipy>=1.10",
 ]
 
 
 [project.optional-dependencies]
+profiling = ["psutil>=5.9"]
+learning = ["torch>=2.2"]
 dev = [
     "pytest>=8",
 ]
@@ -28,7 +31,14 @@ demo = [
 [tool.setuptools.packages.find]
 include = [
     "embodied_swarm*",
+    "demos*",
+    "tools*",
 ]
+
+[tool.setuptools.data-files]
+"share/embodied_swarm/assets/mjcf" = ["assets/mjcf/*.xml"]
+"share/embodied_swarm/assets/franka_emika_panda" = ["assets/franka_emika_panda/panda.xml", "assets/franka_emika_panda/LICENSE", "assets/franka_emika_panda/UPSTREAM.json", "assets/franka_emika_panda/README.md"]
+"share/embodied_swarm/assets/franka_emika_panda/assets" = ["assets/franka_emika_panda/assets/*.obj", "assets/franka_emika_panda/assets/*.stl"]
 
 
 [tool.pytest.ini_options]

@@ -1,0 +1,27 @@
+Planning: PASS
+Raw grid path nodes: 51
+Simplified path nodes: 3
+Simplified path: [(2, 2), (19, 15), (27, 27)]
+Smoothing: PASS
+
+=== Navigation Result ===
+
+Simulation steps: 7959
+Final robot pose:
+(27.500153038040768, 27.25246196146074, 1.5712288130810568)
+Goal:
+(27.5, 27.5)
+Final goal distance: 0.24753808584641407
+
+Collision check: PASS
+Tracking: PASS
+Goal reached: PASS
+
+=== W03 Navigation Pipeline ===
+
+OccupancyGrid       : PASS
+A* planning         : PASS
+Path smoothing      : PASS
+Pure Pursuit        : PASS
+Collision avoidance : PASS
+Goal convergence    : PASS

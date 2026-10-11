@@ -1,0 +1,21 @@
+K: [[1.76945736 2.34949738]]
+
+initial pose: (0.0, 6.0, 0.0)
+initial lateral error: 1.0
+initial yaw error: 0.0
+step=  0 y=6.0000 yaw=-8.594 deg e_y=1.0000 e_yaw=-8.594 deg omega=-1.5000
+step= 10 y=5.5553 yaw=-30.219 deg e_y=0.5553 e_yaw=-30.219 deg omega=0.2146
+step= 20 y=5.1715 yaw=-13.450 deg e_y=0.1715 e_yaw=-13.450 deg omega=0.2645
+step= 30 y=5.0287 yaw=-3.514 deg e_y=0.0287 e_yaw=-3.514 deg omega=0.1053
+step= 40 y=4.9980 yaw=-0.414 deg e_y=-0.0020 e_yaw=-0.414 deg omega=0.0246
+step= 50 y=4.9966 yaw=0.118 deg e_y=-0.0034 e_yaw=0.118 deg omega=0.0019
+step= 60 y=4.9987 yaw=0.089 deg e_y=-0.0013 e_yaw=0.089 deg omega=-0.0013
+step= 70 y=4.9997 yaw=0.029 deg e_y=-0.0003 e_yaw=0.029 deg omega=-0.0007
+step= 80 y=5.0000 yaw=0.006 deg e_y=-0.0000 e_yaw=0.006 deg omega=-0.0002
+step= 90 y=5.0000 yaw=-0.000 deg e_y=0.0000 e_yaw=-0.000 deg omega=-0.0000
+
+final pose: (9.79251161556294, 5.000010300568381, -9.248804169599838e-06)
+final lateral error: 1.030056838136062e-05
+final yaw error: -9.248804169599838e-06
+
+LQR tracking convergence: PASS

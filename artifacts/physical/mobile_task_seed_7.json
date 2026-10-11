@@ -1,0 +1,48 @@
+{
+  "status": "PASS_REAL_SIM",
+  "seed": 7,
+  "mujoco": "3.12.0",
+  "task": {
+    "success": true,
+    "completed": [
+      "NAVIGATE",
+      "LOCALIZE_OBJECT",
+      "PLAN_GRASP",
+      "DESCEND",
+      "GRASP",
+      "LIFT",
+      "MOVE",
+      "PLACE",
+      "RELEASE",
+      "VERIFY"
+    ],
+    "failures": [],
+    "recoveries": 0,
+    "elapsed_s": 0.6014967129999604
+  },
+  "object_final": [
+    0.9496337425535013,
+    0.21696678934726232,
+    0.024848262917576976
+  ],
+  "target": [
+    0.95,
+    0.22,
+    0.025
+  ],
+  "max_object_height_m": 0.2090304814760105,
+  "max_finger_contact_force_N": 5.0906276027210815,
+  "joint_tracking_rmse_rad": 0.02132439485850442,
+  "control_runtime_us": {
+    "p50": 31.2,
+    "p95": 89.65139999999992,
+    "p99": 153.13481999999954
+  },
+  "simulation_time_s": 17.260000000001313,
+  "grasp_fault_injected": false,
+  "base_final": [
+    0.4915838185815544,
+    0.0002962746003198556,
+    0.001511500345245628
+  ]
+}

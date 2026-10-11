@@ -1,0 +1,15 @@
+{
+  "status": "PASS_REAL_SIM",
+  "mujoco": "3.12.0",
+  "seed": 37,
+  "stiffness": 300.0,
+  "admittance": false,
+  "steady_contact_force_mean_N": 8.524949787667278,
+  "steady_contact_force_std_N": 4.039151901285591e-05,
+  "force_target_N": null,
+  "force_rmse_N": 6.524949787792296,
+  "steady_position_error_m": 0.02841634129571317,
+  "disturbance_joint2_torque_Nm": 2.0,
+  "samples": 300,
+  "simulation_time_s": 7.999999999999341
+}

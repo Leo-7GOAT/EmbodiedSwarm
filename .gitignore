@@ -13,6 +13,9 @@ htmlcov/
 .DS_Store
 Thumbs.db
 *.log
+!ros2/evidence/**/*.log
+cpp/build-sanitize/
+artifacts/package/*.whl
 dist/
 build/
 *.egg-info/

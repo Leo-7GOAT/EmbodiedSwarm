@@ -1,0 +1,14 @@
+initial path points: 271
+initial safe: True
+current pose: (11.272507910767976, 8.01249784068244, 1.2000000000000002)
+injected obstacle cell: (9, 18)
+old remaining safe: False
+replanned: True
+replan success: True
+expanded: 72
+new path safe: True
+new end: (26.40449812305182, 5.716265721522274, -2.8449465006019636e-16)
+goal position error: 0.23641377033957875
+goal yaw error: 2.8449465006019636e-16
+
+Dynamic replanning: PASS

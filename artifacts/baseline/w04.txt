@@ -1,0 +1,19 @@
+initial path points: 271
+initial expanded: 732
+initial path safe: True
+injected obstacle cell: (8, 11)
+old remaining safe: False
+replanned: True
+replan success: True
+replan expanded: 589
+replanned path safe: True
+goal region reached at step: 1645
+
+final pose: (25.726423377668304, 5.64203632514858, -0.24142329576532265)
+goal position error: 0.7865081743248624
+executed path points: 1647
+dynamic obstacle injected: True
+dynamic replanning triggered: True
+
+W04 integrated navigation: PASS
+GIF saved: artifacts/w04_navigation_replanning.gif

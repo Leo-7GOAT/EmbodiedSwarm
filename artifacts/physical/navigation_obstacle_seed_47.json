@@ -1,0 +1,20 @@
+{
+  "status": "PASS_REAL_SIM",
+  "seed": 47,
+  "scenario": "obstacle",
+  "mujoco": "3.12.0",
+  "planning_ms": 96.444623,
+  "tracking_rmse_m": 0.031520689688978414,
+  "final_error_m": 0.081177346237964,
+  "obstacle_contact_steps": 0,
+  "steps": 579,
+  "simulation_time_s": 11.580000000000537,
+  "recovery_count": 0,
+  "safety_interventions": 89,
+  "fault_injected": false,
+  "control_runtime_us": {
+    "p50": 59.475,
+    "p95": 153.17280000000005,
+    "p99": 289.8780000000012
+  }
+}

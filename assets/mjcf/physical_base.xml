@@ -1,0 +1,21 @@
+<mujoco model="embodied_physical_planar_base">
+  <option timestep="0.002" gravity="0 0 -9.81" integrator="implicitfast"/>
+  <default><geom friction="0.8 0.01 0.001"/><joint damping="0.3"/></default>
+  <worldbody>
+    <light pos="0 0 5"/>
+    <geom name="floor" type="plane" size="5 5 0.1" rgba="0.8 0.85 0.88 1"/>
+    <geom name="obstacle" type="box" pos="1.5 0.6 0.3" size="0.2 0.5 0.3" rgba="0.8 0.2 0.2 1"/>
+    <body name="base_link" pos="0 0 0.13">
+      <joint name="base_x" type="slide" axis="1 0 0"/>
+      <joint name="base_y" type="slide" axis="0 1 0"/>
+      <joint name="base_yaw" type="hinge" axis="0 0 1"/>
+      <geom name="base_geom" type="box" size="0.18 0.14 0.1" mass="12" rgba="0.12 0.28 0.6 1"/>
+      <geom type="box" pos="0.15 0 0.12" size="0.05 0.08 0.03" mass="0.1" rgba="0.1 0.9 0.4 1"/>
+    </body>
+  </worldbody>
+  <actuator>
+    <velocity name="base_x_velocity" joint="base_x" kv="120" forcerange="-60 60"/>
+    <velocity name="base_y_velocity" joint="base_y" kv="120" forcerange="-60 60"/>
+    <velocity name="base_yaw_velocity" joint="base_yaw" kv="25" forcerange="-15 15"/>
+  </actuator>
+</mujoco>

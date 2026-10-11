@@ -1,0 +1,19 @@
+{
+  "status": "PASS_UNIT",
+  "python_samples": 10000,
+  "python_fk_jacobian_us": {
+    "p50": 363.675,
+    "p95": 626.0697999999998,
+    "p99": 1070.2997500000015
+  },
+  "cpp": {
+    "samples": 10000,
+    "fk_jacobian_us": {
+      "p50": 0.758,
+      "p95": 0.866,
+      "p99": 0.975
+    },
+    "checksum": 5258.77
+  },
+  "method": "Same WSL host; 10000 timed calls, no process startup, non-real-time; C++ release and Python NumPy"
+}
