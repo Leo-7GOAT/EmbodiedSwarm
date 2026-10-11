@@ -1,0 +1,32 @@
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/leo/software_releases_embodied_offline_20261011/releases/b1c13cc8d7f273d028151916c5d9b8c4e513bb35/cpp/build
+[ 16%] Building CXX object CMakeFiles/embodied_core.dir/src/core.cpp.o
+[ 33%] Linking CXX static library libembodied_core.a
+[ 33%] Built target embodied_core
+[ 66%] Building CXX object CMakeFiles/core_tests.dir/tests/core_tests.cpp.o
+[ 66%] Building CXX object CMakeFiles/core_cli.dir/src/cli.cpp.o
+[ 83%] Linking CXX executable core_cli
+[ 83%] Built target core_cli
+[100%] Linking CXX executable core_tests
+[100%] Built target core_tests
+Internal ctest changing into directory: /home/leo/software_releases_embodied_offline_20261011/releases/b1c13cc8d7f273d028151916c5d9b8c4e513bb35/cpp/build
+Test project /home/leo/software_releases_embodied_offline_20261011/releases/b1c13cc8d7f273d028151916c5d9b8c4e513bb35/cpp/build
+    Start 1: Kinematics.HomeAndFiniteDifference
+1/4 Test #1: Kinematics.HomeAndFiniteDifference ......   Passed    0.00 sec
+    Start 2: Kinematics.InvalidJointState
+2/4 Test #2: Kinematics.InvalidJointState ............   Passed    0.00 sec
+    Start 3: Control.PursuitSaturationAndGoal
+3/4 Test #3: Control.PursuitSaturationAndGoal ........   Passed    0.00 sec
+    Start 4: Control.ImpedanceBiasDampingAndLimits
+4/4 Test #4: Control.ImpedanceBiasDampingAndLimits ...   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Total Test time (real) =   0.01 sec

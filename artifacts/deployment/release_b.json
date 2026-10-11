@@ -1,0 +1,8 @@
+{
+  "commit": "b1c13cc8d7f273d028151916c5d9b8c4e513bb35",
+  "source": "/mnt/c/Users/Leo/Desktop/project/EmbodiedSwarm",
+  "release": "/home/leo/software_releases_embodied_offline_20261011/releases/b1c13cc8d7f273d028151916c5d9b8c4e513bb35",
+  "hardware_enabled": false,
+  "status": "STAGED_TESTED",
+  "physical_validation": "PENDING_HARDWARE"
+}
