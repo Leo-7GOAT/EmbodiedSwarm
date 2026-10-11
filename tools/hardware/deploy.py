@@ -52,7 +52,8 @@ def stage(repo: Path, root: Path, verify: bool = True) -> dict:
         venv_path = destination/".venv"
         subprocess.run([sys.executable, "-m", "venv", "--system-site-packages", str(venv_path)], check=True)
         executable = venv_path/("Scripts/python.exe" if os.name == "nt" else "bin/python")
-        subprocess.run([str(executable), "-m", "pip", "install", "--no-deps", "-e", str(destination)], check=True)
+        subprocess.run([str(executable), "-m", "pip", "install", "-e", str(destination)+"[dev,profiling]"], check=True)
+        subprocess.run([str(executable), "-m", "pip", "check"], check=True)
         with (destination/"deployment_tests.txt").open("w", encoding="utf-8") as log:
             result = subprocess.run([str(executable), "-m", "pytest", "-q"], cwd=destination,
                                     stdout=log, stderr=subprocess.STDOUT)
