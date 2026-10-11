@@ -50,10 +50,19 @@ def stage(repo: Path, root: Path, verify: bool = True) -> dict:
     metadata_path.write_text(json.dumps(metadata, indent=2), encoding="utf-8")
     if verify:
         venv_path = destination/".venv"
-        subprocess.run([sys.executable, "-m", "venv", "--system-site-packages", str(venv_path)], check=True)
+        subprocess.run([sys.executable, "-m", "venv", str(venv_path)], check=True)
         executable = venv_path/("Scripts/python.exe" if os.name == "nt" else "bin/python")
-        subprocess.run([str(executable), "-m", "pip", "install", "-e", str(destination)+"[dev,profiling]"], check=True)
+        subprocess.run([str(executable), "-m", "pip", "install", "--upgrade",
+                        "pip", "setuptools", "wheel", "packaging"], check=True)
+        subprocess.run([str(executable), "-m", "pip", "install", "-e", str(destination)+"[dev,demo,profiling]"], check=True)
         subprocess.run([str(executable), "-m", "pip", "check"], check=True)
+        if (destination/"cpp"/"CMakeLists.txt").exists():
+            build = destination/"cpp"/"build"
+            with (destination/"deployment_cpp.txt").open("w", encoding="utf-8") as log:
+                for command in (["cmake", "-S", str(destination/"cpp"), "-B", str(build), "-DCMAKE_BUILD_TYPE=Release"],
+                                ["cmake", "--build", str(build), "-j2"],
+                                ["ctest", "--test-dir", str(build), "--output-on-failure"]):
+                    subprocess.run(command, check=True, stdout=log, stderr=subprocess.STDOUT)
         with (destination/"deployment_tests.txt").open("w", encoding="utf-8") as log:
             result = subprocess.run([str(executable), "-m", "pytest", "-q"], cwd=destination,
                                     stdout=log, stderr=subprocess.STDOUT)

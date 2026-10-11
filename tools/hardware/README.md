@@ -87,3 +87,5 @@ Linux/WSL profiling (psutil required):
 python -m tools.hardware.profile --output artifacts/regression_profile.json -- python -m pytest -q
 
 Measurements describe the recorded host; target-platform HIL remains pending.
+
+Staging creates a fully isolated virtual environment, upgrades its build tools, installs declared dependencies, checks dependency consistency, builds/tests the C++ core and runs the Python regression. CMake, a C++17 compiler and the documented GoogleTest/Eigen dependencies must be installed. Failed releases remain unselectable; logs and the prior selection are preserved. These checks do not launch a hardware process or validate a target Pi.
