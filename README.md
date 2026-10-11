@@ -4,9 +4,9 @@
 
 The stack turns a task into a navigation path, bounded arm motion, actuator commands and monitored execution. A standard Franka Panda model physically grips, lifts and releases an object on a force-actuated mobile base in one MuJoCo world after a fixed straight approach. Separate physical A* navigation experiments verify obstacle avoidance. A separately tested ROS2/MoveIt2 pipeline plans and executes Panda trajectories through a MuJoCo topic bridge.
 
-**Stage: verified software components / pending physical validation.** Local evidence: **220 Python tests**, **4 C++ GoogleTests**, **4 ASan/UBSan tests**, 30 C++/Python numerical parity cases, **40 real-physics benchmark runs** across five seeds, and actual ROS2/MoveIt2 execution. The broader roadmap contains 12 accepted milestone groups and 4 partial groups; this is a measured software stage, not a claim of complete hardware commissioning, Raspberry Pi HIL or multi-robot deployment validation.
+**Stage: verified software components / pending physical validation.** Local evidence: **242 Python tests**, **4 C++ GoogleTests**, **4 ASan/UBSan tests**, 30 C++/Python numerical parity cases, **40 real-physics benchmark runs**, plus **20 sensor-feedback navigation runs and 5 safe aborts**, and actual ROS2/MoveIt2 execution. The broader roadmap contains 12 accepted milestone groups and 4 partial groups; this is a measured software stage, not a claim of complete hardware commissioning, Raspberry Pi HIL or multi-robot deployment validation.
 
-[中文导航](docs/README_ZH.md) · [Baseline audit](docs/BASELINE_AUDIT.md) · [Benchmark](docs/SIMULATION_BENCHMARK.md) · [Hardware guide](docs/HARDWARE_READINESS.md) · [Delivery matrix](docs/FINAL_DELIVERY_REPORT.md) · [Interview guide](docs/INTERVIEW_TECHNICAL_GUIDE.md) · [ROS2 evidence](docs/ROS2_ACCEPTANCE.md)
+[中文导航](docs/README_ZH.md) · [Baseline audit](docs/BASELINE_AUDIT.md) · [Benchmark](docs/SIMULATION_BENCHMARK.md) · [Sensor estimation](docs/STATE_ESTIMATION_ACCEPTANCE.md) · [Hardware guide](docs/HARDWARE_READINESS.md) · [Delivery matrix](docs/FINAL_DELIVERY_REPORT.md) · [Interview guide](docs/INTERVIEW_TECHNICAL_GUIDE.md) · [ROS2 evidence](docs/ROS2_ACCEPTANCE.md)
 
 ![Actual MuJoCo mobile Panda contact grasp](artifacts/physical/mobile_task_visual_seed_7.png)
 
@@ -24,6 +24,10 @@ flowchart LR
     HAL --> Sim[MuJoCo force / actuator / contact dynamics]
     Sim --> State[Timestamped SI state / online ground truth]
     State --> Plan
+    Sim --> Sensors[Planar sensor experiment: virtual encoder / IMU]
+    Sensors --> EKF[Six-state EKF / packet freshness]
+    EKF --> BaseCtrl[Separate sensor-only navigation controller]
+    BaseCtrl --> Safe
     HAL --> HW[Future verified hardware transport]
 ```
 
@@ -34,6 +38,7 @@ flowchart LR
 | Area | Implementation | Evidence / boundary |
 |---|---|---|
 | Navigation | Dijkstra, A*, forward Hybrid A*, collision-aware smoothing, pure pursuit, LQR, reactive replanning | Existing unit/demo coverage; force-driven MuJoCo regression uses A* + pursuit |
+| State estimation | Six-state planar EKF, Joseph covariance update, timestamp/order checks, IMU increments across packet loss, fitted actuator lag and simulated gyro bias | Separate sensor-only base navigation; virtual encoder derived from physical velocity, known stationary initial pose; full robot/ROS estimator integration pending |
 | Arm kinematics | Independent NumPy FK, geometric Jacobian, adaptive damped least squares IK, joint limits, manipulability | Cross-checked against `mj_forward`, `mj_jacSite`, finite differences and C++ |
 | Physical manipulation | Licensed upstream Panda, affine position actuators, two physical fingers, free object, frictional contact | 5/5 fixed-base and 5/5 same-world mobile tasks; no grasp weld or object teleportation |
 | Task framework | NAVIGATE → LOCALIZE → PLAN → GRASP → LIFT → MOVE → PLACE → RELEASE → VERIFY | Success criteria, fresh-state retries, timeout, recovery and abort; physical failed-grasp retry tested |
@@ -52,6 +57,8 @@ Five fixed seeds: `7, 17, 27, 37, 47`; no rendering during performance collectio
 |---|---:|
 | Navigation straight / obstacle / 100 ms delay / stale-command recovery | 20/20 success; 0 obstacle contact steps |
 | Path tracking RMSE, straight / obstacle / delay / fault | 0.0106 / 0.0315 / 0.0382 / 0.0312 m |
+| Sensor-feedback navigation: noisy / delayed / dropout / anomalous packets | 20/20 goal passes; worst position-estimation RMSE 0.003331 m |
+| 500 ms sensor outage | 5/5 safe aborts; maximum final speed 0.002229 m/s; these are stop tests, not goal successes |
 | Fixed-base physical grasp/place | 5/5 success; 0.02139 rad joint RMSE |
 | One-world mobile NAV → grasp/place | 5/5 success; 0.02127 rad joint RMSE |
 | Injected failed grasp | Actual open-finger failure, 1 recovery, task success |
@@ -98,9 +105,13 @@ python -m demos.impedance_contact --admittance --seed 7
 
 # All 40 physical benchmark runs + figures + 100 IK targets
 python -m demos.benchmark
+
+# Separate sensor-feedback base experiment: 20 goal runs + 5 safe aborts
+python -m demos.estimation_benchmark
+python -m demos.estimation_evidence_audit
 ```
 
-`--render` requires functioning EGL/OpenGL; headless physical simulation needs no renderer. Object localization and occupancy geometry use explicitly labeled simulator ground truth. A rendered run has higher wall time than headless benchmarking.
+`--render` requires functioning EGL/OpenGL; headless physical simulation needs no renderer. Object localization and occupancy geometry use explicitly labeled simulator ground truth. The separate estimation experiment uses only encoder/IMU feedback for base control and reads ground truth for offline scoring. A rendered run has higher wall time than headless benchmarking.
 
 ## Tests and C++
 
@@ -129,7 +140,7 @@ python -m demos.train_residual_ppo --seed 7 --updates 30
 
 - **PENDING_HARDWARE:** no real controller, wheelbase, motor driver, encoder, IMU, Raspberry Pi or physical E-stop was validated. Unknown manufacturer protocol/calibration fields remain null; no R550 serial/CAN format is invented.
 - The physical mobile base uses planar generalized force/velocity servos. It exhibits inertia, actuator force limits and contact response, but is not a wheel-ground slip or specific drivetrain model.
-- The Panda model is pinned licensed MuJoCo Menagerie geometry/dynamics. Simulator ground truth supplies localization. There is no camera perception, hardware calibration, payload identification or validated contact-force sensor.
+- The Panda model is pinned licensed MuJoCo Menagerie geometry/dynamics. Existing manipulation tasks use simulator-truth localization. A separate planar base experiment uses encoder/IMU EKF feedback; it assumes a known stationary reset and short dead reckoning, has no absolute pose anchor, and is not integrated with the whole mobile Panda/ROS task. There is no camera perception, hardware calibration, payload identification or validated physical contact-force sensor.
 - Hybrid A* is forward-only; occupancy collision checks require footprint inflation. Physical navigation uses conservative inflated obstacles. Task orchestration is sequential with bounded recovery, not a general symbolic TAMP solver.
 - The stable ROS bridge executes arm trajectories. The integrated mobile task currently runs directly in MuJoCo with a fixed straight navigation approach; flexible obstacle task planning and distributed ROS navigation plus manipulation orchestration are later integration steps.
 - Software stop, bag replay and local timing measurements do not certify braking distance, real-time guarantees or hardware HIL.

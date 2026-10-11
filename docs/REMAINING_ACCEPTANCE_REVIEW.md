@@ -13,13 +13,13 @@ Counts below use named acceptance checks as the denominator, splitting compound 
 3. The sequential TaskExecutor is a useful bounded task framework with result, failure, retry, recovery, timeout and abort. It does not implement a general behavior tree, persistent resumable Task State or symbolic task-and-motion search. Five same-world mobile tasks and actual failed-grasp recovery pass, but navigation is a fixed straight approach, localization is simulator truth and random object offsets are ±15 mm. Changed-obstacle long tasks, generalized layouts and distributed ROS navigation/manipulation remain PARTIAL.
 4. Native ROS2/ros2_control/MoveIt2/OMPL is genuine. Seven arm joint names, positions and limits agree with Panda/Menagerie, actual RRTConnect plans execute in MuJoCo, software-stop/stale-state/invalid-joint faults are exercised, and real bag data replay. The ROS hand is GenericSystem mock; it does not drive the physical fingers. The separate physical mobile task does not use MoveIt planning-scene object/base synchronization or ROS task orchestration. Do not merge the two passing experiments into a claim of ROS-controlled mobile Pick-and-Place with object collision safety.
 5. FK/Jacobian/IK cross-validation, actual C++ kernels and performance are accepted. The C++ library is not used as the live physics or ROS-arm controller hot path. FK/Jacobian parity covers 30 configurations; controller parity should not be inferred from it. At 10,000 matched FK+Jacobian calls, P50 Python/C++ is 363.675/0.758 µs; this benchmark is for that kernel, not the entire robot loop.
-6. W09 still lacks an independent simulated sensor/encoder/IMU state-estimator experiment and measured robot calibration/identification. Current states are physics ground truth, and prepared hardware tools are not fitted robot payload, friction, joint, sensor/extrinsic or delay calibration.
+6. W09 now has a separately accepted sensor-only planar base experiment: six-state virtual-encoder/IMU EKF, simulated stationary gyro-bias calibration and physical actuator step identification. Across five seeds, 20 navigation runs pass and five 500 ms outage runs safely abort. Physics truth is used only for offline scoring in this experiment. Known stationary initial pose, virtual encoders, short dead reckoning and no absolute pose anchor limit its scope. Existing manipulation/ROS tasks still use truth/state readback; whole-robot estimator integration and fitted payload, friction, joint or sensor-extrinsic calibration remain PARTIAL. Physical calibration remains PENDING_HARDWARE. [Exact evidence](STATE_ESTIMATION_ACCEPTANCE.md).
 7. P1 residual PPO is actual training (7,680 control steps, one training seed, real weights/reward curve), with three held-out seeds and stiffness OOD. Accept only the bounded vertical contact residual study. PPO force RMSE about 0.49 N and classical admittance 0.03 N use different evaluation windows; do not imply a general RL grasp/swarm result or an apples-to-apples global ranking. More training seeds would strengthen the result but do not invalidate the minimum experiment already run.
 8. Release stage/selection/rollback tools and first-week commissioning guide exist. A joined running-process safe-stop plus deployment rollback remains unaccepted. Physical hardware, force-sensor calibration, target Pi timing and physical E-stop are PENDING_HARDWARE.
 
 ## Current evidence and claim boundaries
 
-- Final independent host regression: [220 passed in 20.69 s](../artifacts/final_regression_profile.stdout.txt); an isolated staged release separately passed 220 tests in 12.15 s. These are observed runs, not anticipated counts.
+- Latest complete host regression after estimation: [242 passed in 16.87 s](../artifacts/estimation/pytest_full.txt). The earlier independently profiled 220-test run and isolated 220-test release remain historical checkpoints; their timings are not attributed to the expanded suite.
 - C++: four release GoogleTests and four ASan/UBSan passes, 30 FK/Jacobian parity configurations.
 - [Physical benchmark](../artifacts/physical/benchmark.json): 40 runs (20 navigation, five fixed-arm, five same-world mobile, ten force-contact), five seeds; 100/100 reachable IK targets. These are a bounded benchmark set, not general task reliability estimates.
 - Latest complete native MuJoCo ROS execution: 12 trajectory points, max error 0.000892100 rad; nominal latency 166 samples, P50/P95/P99 0.514963/0.849739/1.580540 ms; controller-period jitter standard deviation 0.270296 ms. An independent cold-start repeat passes with nominal P99 5.959030 ms across 168 samples; no real-time bound is claimed. Full/repeat replay 457/377 JointState messages. Historical 476-sample numbers used a different startup window; full statistics, failures and current evidence are retained in [ROS report](ROS2_ACCEPTANCE.md).
@@ -27,7 +27,7 @@ Counts below use named acceptance checks as the denominator, splitting compound 
 
 ## Counts with explicit denominators
 
-Detailed ledger: **140/155 checks have passing evidence**, 15 PARTIAL, 0 current FAIL, 0 BLOCKED. Passing evidence by kind: 59 PASS_UNIT, 78 PASS_REAL_SIM, 3 PASS_MOCK. Historic failed experiment rows remain in raw logs and the findings above; a corrected current check is not counted as a current FAIL.
+Detailed ledger: **141/155 checks have passing evidence**, 14 PARTIAL, 0 current FAIL, 0 BLOCKED. Passing evidence by kind: 59 PASS_UNIT, 79 PASS_REAL_SIM, 3 PASS_MOCK. Historic failed experiment rows remain in raw logs and the findings above; a corrected current check is not counted as a current FAIL.
 
 | Original section/check group | Denominator | PASS checks | PARTIAL checks |
 | --- | --- | --- | --- |
@@ -45,7 +45,7 @@ Detailed ledger: **140/155 checks have passing evidence**, 15 PARTIAL, 0 current
 | §8 Engineering metrics | 7 | 7 | 0 |
 | §9 Portfolio | 13 | 13 | 0 |
 | §10–13 Delivery | 10 | 5 | 5 |
-| Additional W09 estimation/calibration | 3 | 0 | 3 |
+| Additional W09 estimation/calibration | 3 | 1 | 2 |
 
 The requested week matrix has **12/16 PASS and 4/16 PARTIAL** under the stated week-level scope. This count is not a claim that 12/16 of the entire project is complete.
 
@@ -59,7 +59,7 @@ The requested week matrix has **12/16 PASS and 4/16 PARTIAL** under the stated w
 | W06 | PASS_UNIT | FK/Jac cross-validation andHIL-readyinterface; physicalHILpending |
 | W07 | PASS_REAL_SIM | ActualMoveItRRTConnect andDLSIK |
 | W08 | PASS_UNIT | ActualC++library4release+4sanitize, parityandperf; notliveoffloadclaim |
-| W09 | PARTIAL | TrueMuJoCoPASS; estimation/calibrationnotaccepted |
+| W09 | PARTIAL | TrueMuJoCo and standalone planar sensor-only EKF PASS; whole-robot estimation/calibration/integration pending |
 | W10 | PASS_REAL_SIM | Safetyperphysicalstep/armstop/deadline plusROSfaults; hardwareestoppending |
 | W11 | PARTIAL | Sequentialtaskframeworkaccepted; generalBT/symbolicTAMPmissing |
 | W12 | PARTIAL | Sameworldfixedapproach/recoveryaccepted; changedobstacleflexibletask/distributedROSnotaccepted |
@@ -247,7 +247,7 @@ Each row is the stated check, status and actual evidence/boundary. Passing a uni
 
 | Check | Status | Evidence or remaining requirement |
 | --- | --- | --- |
-| Unit | PASS_UNIT | 220latestrecorded fullsuite; root latest countmayincrease |
+| Unit | PASS_UNIT | 242 recorded fullsuite after estimation; later checkpoints require actual stdout |
 | Numerical | PASS_UNIT | FK/Jac/IK/C++parity |
 | Integration | PASS_REAL_SIM | Physics and actualROS actions |
 | Boundary | PASS_UNIT | State/config/limits/singular/unreachable tests |
@@ -275,7 +275,7 @@ Each row is the stated check, status and actual evidence/boundary. Passing a uni
 | CPU/memory | PASS_UNIT | HostprofilingnotPi |
 | Actual control-cycle jitter | PASS_REAL_SIM | controller_manager monotonic periods |
 | ROS message latency | PASS_REAL_SIM | Samehoststamp-to-callback |
-| Test success rate | PASS_UNIT | Versioned stdout220checkpoint |
+| Test success rate | PASS_UNIT | Versioned stdout242checkpoint plus retained earlier220run |
 | Fault recovery result | PASS_REAL_SIM | RealROSandphysics |
 | Version/host/seed/sample/statistics metadata | PASS_UNIT | Reportsdistinctnominal/faultandperformance/rendered |
 
@@ -303,7 +303,7 @@ Each row is the stated check, status and actual evidence/boundary. Passing a uni
 | --- | --- | --- |
 | M1 baseline/core | PASS_UNIT | 161baselineprotected |
 | M2 actual simulator/C++/ROS safety | PASS_REAL_SIM | Actual component acceptance |
-| M3 complete scope | PARTIAL | Estimation/calibration/generalBT/TAMP/changingobstacletask gaps |
+| M3 complete scope | PARTIAL | Whole-robot estimation/calibration/generalBT/TAMP/changingobstacletask gaps |
 | M4 final publication | PARTIAL | Pages exist; finalremoteCI/pushroot-owned |
 | Protected independent Git | PASS_UNIT | No destructive reset; parent backups/commits |
 | Incremental verified non-force push | PARTIAL | Rootpublishing; finalremoteSHACIpending |
@@ -316,7 +316,7 @@ Each row is the stated check, status and actual evidence/boundary. Passing a uni
 
 | Check | Status | Evidence or remaining requirement |
 | --- | --- | --- |
-| State estimation beyond simulator truth | PARTIAL | Physics and ROSstatesdirectgroundtruth; no independent simulated IMU/encoder estimator |
+| State estimation beyond simulator truth | PASS_REAL_SIM | Separate planar six-state virtual-encoder/IMU EKF feedback: 20 goal runs +5 safe outage aborts, truth only offline scoring; whole-robot/ROS integration remains pending |
 | Measured robot calibration | PARTIAL | Panda exactmodelused; no fittedpayload/joint/friction/extrinsic/sensorparameters |
 | Unified MoveIt mobile task model/world safety | PARTIAL | Sevenarmjointlimitsconsistent; separate ROSarmhandmock vs physicalmobilehand; no ROSplanning-sceneobject/base/worldsync |
 
