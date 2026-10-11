@@ -81,3 +81,9 @@ selection unchanged and retain the log. `--skip-tests` leaves a release
 unselectable. Selection/rollback update an atomic software manifest and start no
 process. Previous releases remain intact. Runtime launcher/supervisor owns safe
 stop; switching software selection does not certify physical braking.
+
+Linux/WSL profiling (psutil required):
+
+python -m tools.hardware.profile --output artifacts/regression_profile.json -- python -m pytest -q
+
+Measurements describe the recorded host; target-platform HIL remains pending.

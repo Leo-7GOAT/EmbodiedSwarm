@@ -1,11 +1,14 @@
 import json
 import math
+import os
+import sys
 
 import pytest
 
 from tools.hardware.telemetry import Recorder, replay, timing_summary
 from tools.hardware.commission import inject_fault, mock_record, step_plan, step_response
 from tools.hardware.deploy import select, stage
+from tools.hardware.profile import profile_command
 
 
 def test_create_only_and_provenance(tmp_path):
@@ -129,3 +132,26 @@ def test_deployment_selection_requires_tested_release_and_rolls_back(tmp_path):
 def test_stage_rejects_inside_source_directory(tmp_path):
     with pytest.raises(ValueError, match="outside source"):
         stage(tmp_path, tmp_path/"releases", verify=False)
+
+
+@pytest.mark.skipif(os.name != "posix", reason="Linux/WSL process profiler")
+@pytest.mark.parametrize("code", [0, 3])
+def test_process_profiler_preserves_real_exit_code(tmp_path, code):
+    pytest.importorskip("psutil")
+    path = tmp_path/"profile.json"
+    result = profile_command([sys.executable, "-c", f"print('real subprocess'); raise SystemExit({code})"], path)
+    assert result["exit_code"] == code
+    assert result["status"] == ("PASS_PROCESS" if code == 0 else "FAIL")
+    assert result["wall_s"] > 0 and result["sampled_tree_rss_max_bytes"] > 0
+    assert "real subprocess" in path.with_suffix(".stdout.txt").read_text()
+    with pytest.raises(FileExistsError):
+        profile_command([sys.executable, "-c", "pass"], path)
+
+
+def test_profiler_platform_or_invalid_arguments(tmp_path):
+    if os.name != "posix":
+        with pytest.raises(RuntimeError, match="Linux/WSL"):
+            profile_command([], tmp_path/"profile")
+    else:
+        with pytest.raises(ValueError): profile_command([], tmp_path/"profile")
+        with pytest.raises(ValueError): profile_command(["true"], tmp_path/"profile", interval=0)
