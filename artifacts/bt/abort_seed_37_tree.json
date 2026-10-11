@@ -1,0 +1,158 @@
+{
+  "version": 1,
+  "names": [
+    "PICK_PLACE",
+    "INITIAL_LOCALIZATION",
+    "APPROACH",
+    "DESCEND",
+    "GRASP_WITH_RECOVERY",
+    "FIRST_ATTEMPT",
+    "CLOSE_FIRST",
+    "CHECK_FIRST_CONTACT",
+    "RECOVERY_AND_SECOND_ATTEMPT",
+    "FRESH_FAILURE_LOCALIZATION",
+    "RECOVERY_RETREAT",
+    "FRESH_RETRY_LOCALIZATION",
+    "RETRY_DESCEND",
+    "CLOSE_RETRY",
+    "CHECK_RETRY_CONTACT",
+    "LIFT",
+    "VERIFY_LIFT",
+    "TRANSPORT",
+    "PLACE",
+    "RELEASE",
+    "RETREAT",
+    "VERIFY_PLACE"
+  ],
+  "nodes": {
+    "PICK_PLACE": {
+      "status": "RUNNING",
+      "data": {
+        "cursor": 2
+      }
+    },
+    "INITIAL_LOCALIZATION": {
+      "status": "SUCCESS",
+      "data": {}
+    },
+    "APPROACH": {
+      "status": "SUCCESS",
+      "data": {
+        "start": [
+          0.0,
+          0.0,
+          0.0,
+          -1.57079,
+          0.0,
+          1.57079,
+          -0.7853
+        ],
+        "target": [
+          -0.017009688601040403,
+          0.11183799918141106,
+          0.026402772869664533,
+          -2.36862302215176,
+          -0.004798266155012505,
+          2.4804168209194066,
+          0.7984133457939302
+        ],
+        "step": 1000,
+        "steps": 1000,
+        "position_error_m": 1.1638344905372867e-05
+      }
+    },
+    "DESCEND": {
+      "status": "RUNNING",
+      "data": {
+        "start": [
+          -0.017008580391654114,
+          0.11183746356232269,
+          0.026401291121727646,
+          -2.3685839913105253,
+          -0.004798178568265274,
+          2.480360510570987,
+          0.7983110089645528
+        ],
+        "target": [
+          -0.009993499117820768,
+          0.483367298999961,
+          0.016021181303196512,
+          -2.34114032479749,
+          -0.023934678793253526,
+          2.8243683484393824,
+          0.8123199899720858
+        ],
+        "step": 505,
+        "steps": 1000
+      }
+    }
+  },
+  "blackboard": {
+    "cube": [
+      0.5061245909484071,
+      0.004850061624074222,
+      0.025
+    ],
+    "observations": [
+      {
+        "time": 0.0,
+        "position": [
+          0.5061245909484071,
+          0.004850061624074222,
+          0.025
+        ],
+        "label": "INITIAL_LOCALIZATION"
+      }
+    ]
+  },
+  "events": [
+    {
+      "tick": 1,
+      "time": 0.0,
+      "node": "INITIAL_LOCALIZATION",
+      "previous": "IDLE",
+      "status": "SUCCESS"
+    },
+    {
+      "tick": 1,
+      "time": 0.01,
+      "node": "APPROACH",
+      "previous": "IDLE",
+      "status": "RUNNING"
+    },
+    {
+      "tick": 1,
+      "time": 0.01,
+      "node": "PICK_PLACE",
+      "previous": "IDLE",
+      "status": "RUNNING"
+    },
+    {
+      "tick": 200,
+      "time": 2.0000000000000013,
+      "node": "APPROACH",
+      "previous": "RUNNING",
+      "status": "SUCCESS"
+    },
+    {
+      "tick": 200,
+      "time": 2.0100000000000002,
+      "node": "DESCEND",
+      "previous": "IDLE",
+      "status": "RUNNING"
+    },
+    {
+      "tick": 300,
+      "time": 3.00999999999989,
+      "node": "__tree__",
+      "status": "ABORTED",
+      "reason": "operator_abort"
+    }
+  ],
+  "deadline": 80.0,
+  "last_clock": 3.00999999999989,
+  "ticks": 300,
+  "status": "ABORTED",
+  "abort_reason": "operator_abort",
+  "abort_requested": "operator_abort"
+}

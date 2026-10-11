@@ -18,7 +18,7 @@
     ],
     "failures": [],
     "recoveries": 0,
-    "elapsed_s": 1.029679841999993
+    "elapsed_s": 1.2271690480000643
   },
   "object_final": [
     0.9510444281428256,
@@ -34,9 +34,9 @@
   "max_finger_contact_force_N": 5.724381046220726,
   "joint_tracking_rmse_rad": 0.021155162999757032,
   "control_runtime_us": {
-    "p50": 88.075,
-    "p95": 178.7013999999999,
-    "p99": 224.0477499999997
+    "p50": 104.325,
+    "p95": 206.267,
+    "p99": 270.98706999999985
   },
   "simulation_time_s": 17.260000000001313,
   "grasp_fault_injected": false,

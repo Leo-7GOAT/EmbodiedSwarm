@@ -1,0 +1,52 @@
+{
+  "status": "PASS_REAL_SIM",
+  "seed": 37,
+  "mode": "deadline",
+  "mujoco": "3.12.0",
+  "tree_status": "ABORTED",
+  "abort_reason": "deadline",
+  "ticks": 300,
+  "terminal_time_s": 3.001999999999891,
+  "simulation_time_s": 3.501999999999836,
+  "object_final": [
+    0.5061245909139162,
+    0.004850061341049019,
+    0.02484826291757701
+  ],
+  "target": [
+    0.45,
+    0.22,
+    0.025
+  ],
+  "place_error_m": 0.22234987252122457,
+  "max_object_height_m": 0.024848262918624957,
+  "grasp_checks": [],
+  "recovery_success": false,
+  "observations": [
+    {
+      "time": 0.0,
+      "position": [
+        0.5061245909484071,
+        0.004850061624074222,
+        0.025
+      ],
+      "label": "INITIAL_LOCALIZATION"
+    }
+  ],
+  "checkpoint_restored": false,
+  "hold_drift_rad": 0.001201936951422733,
+  "safety_latched_reason": "deadline",
+  "joint_tracking_rmse_rad": 0.03665733166084415,
+  "tick_runtime_us": {
+    "p50": 410.746,
+    "p95": 569.97895,
+    "p99": 821.1590799999984
+  },
+  "localization_provenance": "Online MuJoCo object pose, not perception; no object pose overwrites after initialization",
+  "acceptance": {
+    "place_error_m": 0.04,
+    "lift_height_m": 0.14,
+    "cartesian_motion_error_m": 0.012,
+    "abort_hold_drift_rad": 0.02
+  }
+}

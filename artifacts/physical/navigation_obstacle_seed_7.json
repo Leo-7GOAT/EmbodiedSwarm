@@ -3,7 +3,7 @@
   "seed": 7,
   "scenario": "obstacle",
   "mujoco": "3.12.0",
-  "planning_ms": 49.151808,
+  "planning_ms": 60.43841,
   "tracking_rmse_m": 0.03170637766336563,
   "final_error_m": 0.08380732528120936,
   "obstacle_contact_steps": 0,
@@ -13,8 +13,8 @@
   "safety_interventions": 89,
   "fault_injected": false,
   "control_runtime_us": {
-    "p50": 44.2,
-    "p95": 86.9056,
-    "p99": 108.73574000000008
+    "p50": 48.75,
+    "p95": 95.9291,
+    "p99": 145.76000000000025
   }
 }

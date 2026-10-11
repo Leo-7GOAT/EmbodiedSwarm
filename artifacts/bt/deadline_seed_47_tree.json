@@ -1,0 +1,159 @@
+{
+  "version": 1,
+  "names": [
+    "PICK_PLACE",
+    "INITIAL_LOCALIZATION",
+    "APPROACH",
+    "DESCEND",
+    "GRASP_WITH_RECOVERY",
+    "FIRST_ATTEMPT",
+    "CLOSE_FIRST",
+    "CHECK_FIRST_CONTACT",
+    "RECOVERY_AND_SECOND_ATTEMPT",
+    "FRESH_FAILURE_LOCALIZATION",
+    "RECOVERY_RETREAT",
+    "FRESH_RETRY_LOCALIZATION",
+    "RETRY_DESCEND",
+    "CLOSE_RETRY",
+    "CHECK_RETRY_CONTACT",
+    "LIFT",
+    "VERIFY_LIFT",
+    "TRANSPORT",
+    "PLACE",
+    "RELEASE",
+    "RETREAT",
+    "VERIFY_PLACE"
+  ],
+  "nodes": {
+    "PICK_PLACE": {
+      "status": "RUNNING",
+      "data": {
+        "cursor": 2
+      }
+    },
+    "INITIAL_LOCALIZATION": {
+      "status": "SUCCESS",
+      "data": {}
+    },
+    "APPROACH": {
+      "status": "SUCCESS",
+      "data": {
+        "start": [
+          0.0,
+          0.0,
+          0.0,
+          -1.57079,
+          0.0,
+          1.57079,
+          -0.7853
+        ],
+        "target": [
+          -0.013200598380845443,
+          0.11472664867560388,
+          0.028002332004304586,
+          -2.364612807731727,
+          -0.00521240830067153,
+          2.4792881246921663,
+          0.8041258870596798
+        ],
+        "step": 1000,
+        "steps": 1000,
+        "position_error_m": 1.1469038667052309e-05
+      }
+    },
+    "DESCEND": {
+      "status": "RUNNING",
+      "data": {
+        "start": [
+          -0.013199660145358583,
+          0.11472597773429248,
+          0.028000822065672972,
+          -2.3645740006751437,
+          -0.005212298380384165,
+          2.4792318855511466,
+          0.8040223367898311
+        ],
+        "target": [
+          -0.005773647000992406,
+          0.4852685918094595,
+          0.017033832409442187,
+          -2.337131221188536,
+          -0.025370861318563226,
+          2.8222425307166747,
+          0.8187695165210921
+        ],
+        "step": 502,
+        "steps": 1000
+      }
+    }
+  },
+  "blackboard": {
+    "cube": [
+      0.5072540598392768,
+      0.007610064513588234,
+      0.025
+    ],
+    "observations": [
+      {
+        "time": 0.0,
+        "position": [
+          0.5072540598392768,
+          0.007610064513588234,
+          0.025
+        ],
+        "label": "INITIAL_LOCALIZATION"
+      }
+    ],
+    "exception": "RuntimeError: simulation task deadline expired"
+  },
+  "events": [
+    {
+      "tick": 1,
+      "time": 0.0,
+      "node": "INITIAL_LOCALIZATION",
+      "previous": "IDLE",
+      "status": "SUCCESS"
+    },
+    {
+      "tick": 1,
+      "time": 0.01,
+      "node": "APPROACH",
+      "previous": "IDLE",
+      "status": "RUNNING"
+    },
+    {
+      "tick": 1,
+      "time": 0.01,
+      "node": "PICK_PLACE",
+      "previous": "IDLE",
+      "status": "RUNNING"
+    },
+    {
+      "tick": 200,
+      "time": 2.0000000000000013,
+      "node": "APPROACH",
+      "previous": "RUNNING",
+      "status": "SUCCESS"
+    },
+    {
+      "tick": 200,
+      "time": 2.0100000000000002,
+      "node": "DESCEND",
+      "previous": "IDLE",
+      "status": "RUNNING"
+    },
+    {
+      "tick": 300,
+      "time": 3.001999999999891,
+      "node": "__tree__",
+      "status": "ABORTED",
+      "reason": "deadline"
+    }
+  ],
+  "deadline": 3.0,
+  "last_clock": 2.999999999999891,
+  "ticks": 300,
+  "status": "ABORTED",
+  "abort_reason": "deadline",
+  "abort_requested": null
+}

@@ -1,0 +1,22 @@
+.............F............                                               [100%]
+=================================== FAILURES ===================================
+__ test_invalid_checkpoint_schema_does_not_modify_running_tree[nodes-value7] ___
+
+field = 'nodes', value = {'work': None}
+
+    @pytest.mark.parametrize("field,value",[
+        ("deadline",True),("last_clock",False),("deadline",float("inf")),
+        ("nodes",[]),("events",{}),("events",[None]),("events",[{"tick":0}]),
+        ("nodes",{"work":None}),("nodes",{"work":[]}),
+        ("blackboard",[]),("ticks",True),("status",[]),("abort_reason",5),
+    ])
+    def test_invalid_checkpoint_schema_does_not_modify_running_tree(field,value):
+        tree=BehaviorTree(Action("work",lambda context,memory:Status.RUNNING),clock=lambda:0.)
+        tree.tick();before=tree.snapshot();bad=tree.snapshot();bad[field]=value
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/test_bt.py:100: Failed
+=========================== short test summary info ============================
+FAILED tests/test_bt.py::test_invalid_checkpoint_schema_does_not_modify_running_tree[nodes-value7]
+1 failed, 25 passed in 6.25s

@@ -1,0 +1,81 @@
+{
+  "status": "PASS_REAL_SIM",
+  "seed": 37,
+  "mode": "resume",
+  "mujoco": "3.12.0",
+  "tree_status": "SUCCESS",
+  "abort_reason": null,
+  "ticks": 1890,
+  "terminal_time_s": 19.000000000000348,
+  "simulation_time_s": 19.000000000000348,
+  "object_final": [
+    0.45174523160754054,
+    0.22002776234079546,
+    0.02484826291757696
+  ],
+  "target": [
+    0.45,
+    0.22,
+    0.025
+  ],
+  "place_error_m": 0.0017454524088398834,
+  "max_object_height_m": 0.20350985180325065,
+  "grasp_checks": [
+    {
+      "time": 4.999999999999671,
+      "contacts": 0,
+      "force_N": 0.0
+    },
+    {
+      "time": 10.000000000000009,
+      "contacts": 32,
+      "force_N": 2.188019037708169
+    }
+  ],
+  "recovery_success": true,
+  "observations": [
+    {
+      "time": 0.0,
+      "position": [
+        0.5061245909484071,
+        0.004850061624074222,
+        0.025
+      ],
+      "label": "INITIAL_LOCALIZATION"
+    },
+    {
+      "time": 4.999999999999671,
+      "position": [
+        0.5061245908971772,
+        0.004850061203688839,
+        0.02484826291757701
+      ],
+      "label": "FRESH_FAILURE_LOCALIZATION"
+    },
+    {
+      "time": 6.999999999999451,
+      "position": [
+        0.5061245908749059,
+        0.004850061020928928,
+        0.02484826291757701
+      ],
+      "label": "FRESH_RETRY_LOCALIZATION"
+    }
+  ],
+  "checkpoint_restored": true,
+  "hold_drift_rad": 0.0,
+  "safety_latched_reason": null,
+  "joint_tracking_rmse_rad": 0.01893117509917112,
+  "tick_runtime_us": {
+    "p50": 533.379,
+    "p95": 1020.88495,
+    "p99": 1452.2543599999976
+  },
+  "localization_provenance": "Online MuJoCo object pose, not perception; no object pose overwrites after initialization",
+  "acceptance": {
+    "place_error_m": 0.04,
+    "lift_height_m": 0.14,
+    "cartesian_motion_error_m": 0.012,
+    "abort_hold_drift_rad": 0.02
+  }
+}

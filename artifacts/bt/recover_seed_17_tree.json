@@ -1,0 +1,680 @@
+{
+  "version": 1,
+  "names": [
+    "PICK_PLACE",
+    "INITIAL_LOCALIZATION",
+    "APPROACH",
+    "DESCEND",
+    "GRASP_WITH_RECOVERY",
+    "FIRST_ATTEMPT",
+    "CLOSE_FIRST",
+    "CHECK_FIRST_CONTACT",
+    "RECOVERY_AND_SECOND_ATTEMPT",
+    "FRESH_FAILURE_LOCALIZATION",
+    "RECOVERY_RETREAT",
+    "FRESH_RETRY_LOCALIZATION",
+    "RETRY_DESCEND",
+    "CLOSE_RETRY",
+    "CHECK_RETRY_CONTACT",
+    "LIFT",
+    "VERIFY_LIFT",
+    "TRANSPORT",
+    "PLACE",
+    "RELEASE",
+    "RETREAT",
+    "VERIFY_PLACE"
+  ],
+  "nodes": {
+    "PICK_PLACE": {
+      "status": "SUCCESS",
+      "data": {
+        "cursor": 11
+      }
+    },
+    "INITIAL_LOCALIZATION": {
+      "status": "SUCCESS",
+      "data": {}
+    },
+    "APPROACH": {
+      "status": "SUCCESS",
+      "data": {
+        "start": [
+          0.0,
+          0.0,
+          0.0,
+          -1.57079,
+          0.0,
+          1.57079,
+          -0.7853
+        ],
+        "target": [
+          -0.02727832047978239,
+          0.12247508431478697,
+          0.00730233000519179,
+          -2.3537422749925487,
+          -0.0014450255153168328,
+          2.4762137550576067,
+          0.7665042225519635
+        ],
+        "step": 1000,
+        "steps": 1000,
+        "position_error_m": 1.2012790681055031e-05
+      }
+    },
+    "DESCEND": {
+      "status": "SUCCESS",
+      "data": {
+        "start": [
+          -0.027276919714099932,
+          0.12247406698680305,
+          0.007301605988112393,
+          -2.3537040632341446,
+          -0.0014451143814006178,
+          2.476157711792422,
+          0.7664075375122903
+        ],
+        "target": [
+          -0.025345288170871404,
+          0.4903088798253087,
+          0.0044648720973916155,
+          -2.326334173932132,
+          -0.0065977703165012325,
+          2.816631497532839,
+          0.770242072265337
+        ],
+        "step": 1000,
+        "steps": 1000,
+        "position_error_m": 9.946914884145294e-05
+      }
+    },
+    "GRASP_WITH_RECOVERY": {
+      "status": "SUCCESS",
+      "data": {
+        "cursor": 1
+      }
+    },
+    "FIRST_ATTEMPT": {
+      "status": "FAILURE",
+      "data": {
+        "cursor": 1
+      }
+    },
+    "CLOSE_FIRST": {
+      "status": "SUCCESS",
+      "data": {
+        "start": [
+          -0.02534544336647591,
+          0.4902921096439044,
+          0.0044649515574875665,
+          -2.32633830464417,
+          -0.006597538795121146,
+          2.8166104453927576,
+          0.7702418432003215
+        ],
+        "target": [
+          -0.02534544336647591,
+          0.4902921096439044,
+          0.0044649515574875665,
+          -2.32633830464417,
+          -0.006597538795121146,
+          2.8166104453927576,
+          0.7702418432003215
+        ],
+        "step": 500,
+        "steps": 500
+      }
+    },
+    "CHECK_FIRST_CONTACT": {
+      "status": "FAILURE",
+      "data": {}
+    },
+    "RECOVERY_AND_SECOND_ATTEMPT": {
+      "status": "SUCCESS",
+      "data": {
+        "cursor": 6
+      }
+    },
+    "FRESH_FAILURE_LOCALIZATION": {
+      "status": "SUCCESS",
+      "data": {}
+    },
+    "RECOVERY_RETREAT": {
+      "status": "SUCCESS",
+      "data": {
+        "start": [
+          -0.025345443366474135,
+          0.4902921096605246,
+          0.004464951557333442,
+          -2.3263383046469364,
+          -0.00659753879533846,
+          2.8166104453967664,
+          0.7702418432003225
+        ],
+        "target": [
+          -0.027760239492606205,
+          0.1874250676946166,
+          0.007663586029282719,
+          -2.3629857943272357,
+          -0.002562035834143309,
+          2.5504040889369053,
+          0.7672944766912901
+        ],
+        "step": 1000,
+        "steps": 1000,
+        "position_error_m": 4.841149220156787e-06
+      }
+    },
+    "FRESH_RETRY_LOCALIZATION": {
+      "status": "SUCCESS",
+      "data": {}
+    },
+    "RETRY_DESCEND": {
+      "status": "SUCCESS",
+      "data": {
+        "start": [
+          -0.027760041982823024,
+          0.18743910433671115,
+          0.007663475025731464,
+          -2.362981827758495,
+          -0.0025622258913355054,
+          2.550420425269252,
+          0.7672946549893123
+        ],
+        "target": [
+          -0.025808229980208208,
+          0.49076225802687623,
+          0.004847296930300043,
+          -2.325933731368753,
+          -0.007156532145993187,
+          2.8166835086396445,
+          0.7706472071153434
+        ],
+        "step": 1000,
+        "steps": 1000,
+        "position_error_m": 4.985719206931966e-06
+      }
+    },
+    "CLOSE_RETRY": {
+      "status": "SUCCESS",
+      "data": {
+        "start": [
+          -0.025808382104672536,
+          0.49074834625946306,
+          0.0048473871280966,
+          -2.3259378635228547,
+          -0.007156314018919057,
+          2.8166670431920613,
+          0.7706470065545548
+        ],
+        "target": [
+          -0.025808382104672536,
+          0.49074834625946306,
+          0.0048473871280966,
+          -2.3259378635228547,
+          -0.007156314018919057,
+          2.8166670431920613,
+          0.7706470065545548
+        ],
+        "step": 500,
+        "steps": 500
+      }
+    },
+    "CHECK_RETRY_CONTACT": {
+      "status": "SUCCESS",
+      "data": {}
+    },
+    "LIFT": {
+      "status": "SUCCESS",
+      "data": {
+        "start": [
+          -0.025808382199618337,
+          0.4907483477965711,
+          0.004847386980722599,
+          -2.3259378646860056,
+          -0.007156314009800099,
+          2.8166670425615865,
+          0.7706470065545712
+        ],
+        "target": [
+          -0.028851510054005804,
+          0.06390091720824935,
+          0.008927285838301149,
+          -2.337351133609631,
+          -0.0008458987540987067,
+          2.401251159996959,
+          0.7660806950975803
+        ],
+        "step": 1000,
+        "steps": 1000,
+        "position_error_m": 5.91998476450342e-05
+      }
+    },
+    "VERIFY_LIFT": {
+      "status": "SUCCESS",
+      "data": {}
+    },
+    "TRANSPORT": {
+      "status": "SUCCESS",
+      "data": {
+        "start": [
+          -0.028851246387590446,
+          0.06396490999941988,
+          0.008927120997656876,
+          -2.337393282178962,
+          -0.0008461835331122938,
+          2.401259237314028,
+          0.7660809719247498
+        ],
+        "target": [
+          0.2144198643626188,
+          0.03970603676408767,
+          0.24024545883486037,
+          -2.3700683601034602,
+          -0.014061620270615496,
+          2.4086161618458872,
+          1.2503535858258565
+        ],
+        "step": 1000,
+        "steps": 1000,
+        "position_error_m": 8.495770664357152e-05
+      }
+    },
+    "PLACE": {
+      "status": "SUCCESS",
+      "data": {
+        "start": [
+          0.2144101740416821,
+          0.03974949235890843,
+          0.24023715393678066,
+          -2.3701123338356918,
+          -0.014061128797058764,
+          2.408598248721385,
+          1.250324667555317
+        ],
+        "target": [
+          0.28034396359707686,
+          0.48157197238479477,
+          0.14223119555324518,
+          -2.3543828948215357,
+          -0.21256501622537483,
+          2.825130186429695,
+          1.3942813806039636
+        ],
+        "step": 1000,
+        "steps": 1000,
+        "position_error_m": 9.581491515781533e-05
+      }
+    },
+    "RELEASE": {
+      "status": "SUCCESS",
+      "data": {
+        "start": [
+          0.28033908539140057,
+          0.4814695163689537,
+          0.14224375213648682,
+          -2.354322961757383,
+          -0.2125532063478011,
+          2.8251399853148738,
+          1.394272790163191
+        ],
+        "target": [
+          0.28033908539140057,
+          0.4814695163689537,
+          0.14224375213648682,
+          -2.354322961757383,
+          -0.2125532063478011,
+          2.8251399853148738,
+          1.394272790163191
+        ],
+        "step": 500,
+        "steps": 500
+      }
+    },
+    "RETREAT": {
+      "status": "SUCCESS",
+      "data": {
+        "start": [
+          0.28033908539259283,
+          0.48146951643461516,
+          0.14224375213161258,
+          -2.3543229618012833,
+          -0.21255320635233055,
+          2.8251399853048573,
+          1.394272790165134
+        ],
+        "target": [
+          0.19291642550252625,
+          0.10225550913395981,
+          0.2598605523879047,
+          -2.3864920071565936,
+          -0.042980683799127554,
+          2.4848916863984054,
+          1.2709284206465608
+        ],
+        "step": 1000,
+        "steps": 1000,
+        "position_error_m": 6.60388003899345e-06
+      }
+    },
+    "VERIFY_PLACE": {
+      "status": "SUCCESS",
+      "data": {}
+    }
+  },
+  "blackboard": {
+    "cube": [
+      0.5103522437027689,
+      -0.010170807866802658,
+      0.024848262917577007
+    ],
+    "observations": [
+      {
+        "time": 0.0,
+        "position": [
+          0.5103522437839371,
+          -0.010170807264926791,
+          0.025
+        ],
+        "label": "INITIAL_LOCALIZATION"
+      },
+      {
+        "time": 4.999999999999671,
+        "position": [
+          0.5103522437272905,
+          -0.010170807684975478,
+          0.024848262917577007
+        ],
+        "label": "FRESH_FAILURE_LOCALIZATION"
+      },
+      {
+        "time": 6.999999999999451,
+        "position": [
+          0.5103522437027689,
+          -0.010170807866802658,
+          0.024848262917577007
+        ],
+        "label": "FRESH_RETRY_LOCALIZATION"
+      }
+    ],
+    "grasp_attempts": 2,
+    "grasp_checks": [
+      {
+        "time": 4.999999999999671,
+        "contacts": 0,
+        "force_N": 0.0
+      },
+      {
+        "time": 10.000000000000009,
+        "contacts": 32,
+        "force_N": 2.188019037708165
+      }
+    ]
+  },
+  "events": [
+    {
+      "tick": 1,
+      "time": 0.0,
+      "node": "INITIAL_LOCALIZATION",
+      "previous": "IDLE",
+      "status": "SUCCESS"
+    },
+    {
+      "tick": 1,
+      "time": 0.01,
+      "node": "APPROACH",
+      "previous": "IDLE",
+      "status": "RUNNING"
+    },
+    {
+      "tick": 1,
+      "time": 0.01,
+      "node": "PICK_PLACE",
+      "previous": "IDLE",
+      "status": "RUNNING"
+    },
+    {
+      "tick": 200,
+      "time": 2.0000000000000013,
+      "node": "APPROACH",
+      "previous": "RUNNING",
+      "status": "SUCCESS"
+    },
+    {
+      "tick": 200,
+      "time": 2.0100000000000002,
+      "node": "DESCEND",
+      "previous": "IDLE",
+      "status": "RUNNING"
+    },
+    {
+      "tick": 399,
+      "time": 3.999999999999781,
+      "node": "DESCEND",
+      "previous": "RUNNING",
+      "status": "SUCCESS"
+    },
+    {
+      "tick": 399,
+      "time": 4.00999999999978,
+      "node": "CLOSE_FIRST",
+      "previous": "IDLE",
+      "status": "RUNNING"
+    },
+    {
+      "tick": 399,
+      "time": 4.00999999999978,
+      "node": "FIRST_ATTEMPT",
+      "previous": "IDLE",
+      "status": "RUNNING"
+    },
+    {
+      "tick": 399,
+      "time": 4.00999999999978,
+      "node": "GRASP_WITH_RECOVERY",
+      "previous": "IDLE",
+      "status": "RUNNING"
+    },
+    {
+      "tick": 498,
+      "time": 4.999999999999671,
+      "node": "CLOSE_FIRST",
+      "previous": "RUNNING",
+      "status": "SUCCESS"
+    },
+    {
+      "tick": 498,
+      "time": 4.999999999999671,
+      "node": "CHECK_FIRST_CONTACT",
+      "previous": "IDLE",
+      "status": "FAILURE"
+    },
+    {
+      "tick": 498,
+      "time": 4.999999999999671,
+      "node": "FIRST_ATTEMPT",
+      "previous": "RUNNING",
+      "status": "FAILURE"
+    },
+    {
+      "tick": 498,
+      "time": 4.999999999999671,
+      "node": "FRESH_FAILURE_LOCALIZATION",
+      "previous": "IDLE",
+      "status": "SUCCESS"
+    },
+    {
+      "tick": 498,
+      "time": 5.00999999999967,
+      "node": "RECOVERY_RETREAT",
+      "previous": "IDLE",
+      "status": "RUNNING"
+    },
+    {
+      "tick": 498,
+      "time": 5.00999999999967,
+      "node": "RECOVERY_AND_SECOND_ATTEMPT",
+      "previous": "IDLE",
+      "status": "RUNNING"
+    },
+    {
+      "tick": 697,
+      "time": 6.999999999999451,
+      "node": "RECOVERY_RETREAT",
+      "previous": "RUNNING",
+      "status": "SUCCESS"
+    },
+    {
+      "tick": 697,
+      "time": 6.999999999999451,
+      "node": "FRESH_RETRY_LOCALIZATION",
+      "previous": "IDLE",
+      "status": "SUCCESS"
+    },
+    {
+      "tick": 697,
+      "time": 7.00999999999945,
+      "node": "RETRY_DESCEND",
+      "previous": "IDLE",
+      "status": "RUNNING"
+    },
+    {
+      "tick": 896,
+      "time": 8.999999999999675,
+      "node": "RETRY_DESCEND",
+      "previous": "RUNNING",
+      "status": "SUCCESS"
+    },
+    {
+      "tick": 896,
+      "time": 9.009999999999678,
+      "node": "CLOSE_RETRY",
+      "previous": "IDLE",
+      "status": "RUNNING"
+    },
+    {
+      "tick": 995,
+      "time": 10.000000000000009,
+      "node": "CLOSE_RETRY",
+      "previous": "RUNNING",
+      "status": "SUCCESS"
+    },
+    {
+      "tick": 995,
+      "time": 10.000000000000009,
+      "node": "CHECK_RETRY_CONTACT",
+      "previous": "IDLE",
+      "status": "SUCCESS"
+    },
+    {
+      "tick": 995,
+      "time": 10.000000000000009,
+      "node": "RECOVERY_AND_SECOND_ATTEMPT",
+      "previous": "RUNNING",
+      "status": "SUCCESS"
+    },
+    {
+      "tick": 995,
+      "time": 10.000000000000009,
+      "node": "GRASP_WITH_RECOVERY",
+      "previous": "RUNNING",
+      "status": "SUCCESS"
+    },
+    {
+      "tick": 995,
+      "time": 10.010000000000012,
+      "node": "LIFT",
+      "previous": "IDLE",
+      "status": "RUNNING"
+    },
+    {
+      "tick": 1194,
+      "time": 12.000000000000677,
+      "node": "LIFT",
+      "previous": "RUNNING",
+      "status": "SUCCESS"
+    },
+    {
+      "tick": 1194,
+      "time": 12.000000000000677,
+      "node": "VERIFY_LIFT",
+      "previous": "IDLE",
+      "status": "SUCCESS"
+    },
+    {
+      "tick": 1194,
+      "time": 12.01000000000068,
+      "node": "TRANSPORT",
+      "previous": "IDLE",
+      "status": "RUNNING"
+    },
+    {
+      "tick": 1393,
+      "time": 14.000000000001345,
+      "node": "TRANSPORT",
+      "previous": "RUNNING",
+      "status": "SUCCESS"
+    },
+    {
+      "tick": 1393,
+      "time": 14.010000000001348,
+      "node": "PLACE",
+      "previous": "IDLE",
+      "status": "RUNNING"
+    },
+    {
+      "tick": 1592,
+      "time": 16.00000000000201,
+      "node": "PLACE",
+      "previous": "RUNNING",
+      "status": "SUCCESS"
+    },
+    {
+      "tick": 1592,
+      "time": 16.010000000002005,
+      "node": "RELEASE",
+      "previous": "IDLE",
+      "status": "RUNNING"
+    },
+    {
+      "tick": 1691,
+      "time": 17.000000000001457,
+      "node": "RELEASE",
+      "previous": "RUNNING",
+      "status": "SUCCESS"
+    },
+    {
+      "tick": 1691,
+      "time": 17.01000000000145,
+      "node": "RETREAT",
+      "previous": "IDLE",
+      "status": "RUNNING"
+    },
+    {
+      "tick": 1890,
+      "time": 19.000000000000348,
+      "node": "RETREAT",
+      "previous": "RUNNING",
+      "status": "SUCCESS"
+    },
+    {
+      "tick": 1890,
+      "time": 19.000000000000348,
+      "node": "VERIFY_PLACE",
+      "previous": "IDLE",
+      "status": "SUCCESS"
+    },
+    {
+      "tick": 1890,
+      "time": 19.000000000000348,
+      "node": "PICK_PLACE",
+      "previous": "RUNNING",
+      "status": "SUCCESS"
+    }
+  ],
+  "deadline": 80.0,
+  "last_clock": 19.000000000000348,
+  "ticks": 1890,
+  "status": "SUCCESS",
+  "abort_reason": null,
+  "abort_requested": null
+}
