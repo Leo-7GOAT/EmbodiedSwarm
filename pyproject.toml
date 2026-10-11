@@ -37,7 +37,7 @@ include = [
 
 [tool.setuptools.data-files]
 "share/embodied_swarm/assets/mjcf" = ["assets/mjcf/*.xml"]
-"share/embodied_swarm/assets/franka_emika_panda" = ["assets/franka_emika_panda/panda.xml", "assets/franka_emika_panda/LICENSE", "assets/franka_emika_panda/UPSTREAM.json", "assets/franka_emika_panda/README.md"]
+"share/embodied_swarm/assets/franka_emika_panda" = ["assets/franka_emika_panda/panda.xml", "assets/franka_emika_panda/LICENSE", "assets/franka_emika_panda/UPSTREAM.json", "assets/franka_emika_panda/README.md", "assets/franka_emika_panda/CHANGELOG.md"]
 "share/embodied_swarm/assets/franka_emika_panda/assets" = ["assets/franka_emika_panda/assets/*.obj", "assets/franka_emika_panda/assets/*.stl"]
 
 
