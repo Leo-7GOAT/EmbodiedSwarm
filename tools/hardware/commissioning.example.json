@@ -1,0 +1,31 @@
+{
+  "status": "Hardware-Ready / Pending Physical Validation",
+  "hil_status": "HIL-ready; target-platform measurements pending",
+  "target_compute": "Raspberry Pi 4B 8GB (planned, not measured)",
+  "hardware_enabled": false,
+  "transport": null,
+  "protocol_document": null,
+  "clock": "monotonic_seconds_on_one_host",
+  "frames": {
+    "world": "x forward, y left, yaw CCW",
+    "angles": "radians"
+  },
+  "calibrated_parameters": {
+    "wheel_radius_m": null,
+    "track_width_m": null,
+    "joint_limits_rad": null,
+    "motor_torque_limits_nm": null,
+    "actuator_delay_s": null,
+    "joint_zero_offsets_rad": null,
+    "encoder_ticks_per_revolution": null,
+    "imu_mount_transform": null,
+    "tool_transform": null
+  },
+  "activation_prerequisites": [
+    "Manufacturer steering mechanism and transport documentation",
+    "Verified units, signs, wheel geometry and limits",
+    "Physical emergency stop and independent power isolation",
+    "Wheels elevated during first actuator/encoder checks",
+    "Measured latency, command watchdog and safe stop on disconnect"
+  ]
+}
