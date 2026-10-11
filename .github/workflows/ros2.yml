@@ -10,7 +10,7 @@ jobs:
       MUJOCO_GL: egl
     steps:
       - uses: actions/checkout@v7.0.1
-      - run: apt-get update && apt-get install -y python3-pip python3-colcon-common-extensions ros-humble-moveit ros-humble-ros2-control ros-humble-ros2-controllers ros-humble-moveit-resources-panda-moveit-config ros-humble-moveit-resources-panda-description ros-humble-xacro ros-humble-ament-cmake-gtest
+      - run: apt-get update && apt-get install -y build-essential cmake time procps python3-pip python3-colcon-common-extensions ros-humble-moveit ros-humble-ros2-control ros-humble-ros2-controllers ros-humble-moveit-resources-panda-moveit-config ros-humble-moveit-resources-panda-description ros-humble-xacro ros-humble-ament-cmake-gtest
       - run: python3 -m pip install --upgrade pip setuptools wheel
       - run: python3 -m pip install ".[dev,demo]"
       - run: bash ros2/verify.sh
